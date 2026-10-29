@@ -74,10 +74,14 @@
         </a>
 
         <!-- Center: Desktop Navigation with Left-to-Right Underline -->
-        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-gray-600">
+        <nav class="hidden md:flex items-center gap-6 xl:gap-7 text-sm font-semibold text-gray-600">
           <a href="#home" class="nav-link active hover:text-forest">Trang chủ</a>
           <a href="#tours-section" class="nav-link hover:text-forest">Tour</a>
           <a href="#schedule-section" class="nav-link hover:text-forest">Lịch khởi hành</a>
+          <a href="javascript:openPolicyModal()" class="nav-link hover:text-forest flex items-center gap-1">
+            <i data-lucide="shield-check" class="w-3.5 h-3.5 text-forest"></i>
+            <span>Hoàn hủy</span>
+          </a>
           <a href="#about-section" class="nav-link hover:text-forest">Về chúng tôi</a>
           <a href="#testimonials-section" class="nav-link hover:text-forest">Đánh giá</a>
           <a href="#contact-section" class="nav-link hover:text-forest">Liên hệ</a>
@@ -749,7 +753,11 @@
           <div class="space-y-2 text-xs text-stone-300">
             <p class="flex items-center gap-2">
               <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 shrink-0"></i>
-              <span>126 Trần Tử Bình, Cầu Giấy, Hà Nội</span>
+              <span>Văn phòng: 126 Trần Tử Bình, Cầu Giấy, Hà Nội</span>
+            </p>
+            <p class="flex items-start gap-2">
+              <i data-lucide="navigation" class="w-4 h-4 text-emerald-400 shrink-0 mt-0.5"></i>
+              <span>Điểm đón đoàn: 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt</span>
             </p>
             <p class="flex items-center gap-2">
               <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
@@ -854,12 +862,12 @@
       <!-- Bottom Bar -->
       <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
         <p>© 2026 Trekking Đi Cùng Gió. Giấy phép kinh doanh lữ hành số 01-1234/2026/TCDL-GP LHQT. All rights reserved.</p>
-        <div class="flex items-center gap-4">
+        <div class="flex flex-wrap items-center gap-3 sm:gap-4">
+          <button type="button" onclick="openPolicyModal()" class="hover:text-emerald-300 font-semibold cursor-pointer underline-offset-2 hover:underline">Chính sách hoàn hủy & Bảo lưu</button>
+          <span>•</span>
           <a href="#" class="hover:text-stone-300">Điều khoản dịch vụ</a>
           <span>•</span>
-          <a href="#" class="hover:text-stone-300">Chính sách bảo mật</a>
-          <span>•</span>
-          <a href="#" class="hover:text-stone-300">Bảo hiểm du lịch</a>
+          <a href="#" class="hover:text-stone-300">Bảo hiểm du lịch 100tr</a>
         </div>
       </div>
     </div>
@@ -979,7 +987,14 @@
               <i data-lucide="check" class="w-4 h-4"></i>
               <span>Hoàn tất đăng ký tour</span>
             </button>
-            <p class="text-[11px] text-gray-400 text-center mt-2">
+            <div class="flex items-center justify-center gap-1.5 text-[11px] text-gray-500 text-center mt-2.5">
+              <i data-lucide="shield-check" class="w-3.5 h-3.5 text-forest shrink-0"></i>
+              <span>Cam kết hoàn 100% trước 10 ngày.</span>
+              <button type="button" onclick="openPolicyModal()" class="text-forest font-bold underline hover:text-forest-dark cursor-pointer">
+                Chi tiết hoàn hủy
+              </button>
+            </div>
+            <p class="text-[10px] text-gray-400 text-center mt-1">
               🔒 Cam kết bảo mật thông tin 100%. Tư vấn viên sẽ liên hệ xác nhận chi tiết.
             </p>
           </div>
@@ -1140,7 +1155,168 @@
     </div>
   </div>
 
-  <!-- 7. MOBILE NAVIGATION DRAWER -->
+  <!-- 7. OFFICIAL CANCELLATION & RESCHEDULE POLICY MODAL (CHÍNH SÁCH HOÀN HỦY) -->
+  <div id="policy-modal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-4">
+    <div class="relative bg-white rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl modal-enter border border-gray-100 max-h-[92vh] flex flex-col">
+      
+      <!-- Close Button -->
+      <button 
+        type="button" 
+        onclick="closePolicyModal()" 
+        class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
+        title="Đóng"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Header -->
+      <div class="flex items-center gap-3.5 pb-4 border-b border-gray-100 shrink-0">
+        <div class="w-12 h-12 rounded-2xl bg-emerald-50 text-forest flex items-center justify-center border border-emerald-100 shadow-2xs">
+          <i data-lucide="shield-alert" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-lg sm:text-xl font-black text-gray-900 leading-tight">
+            Chính sách hoàn hủy & Cam kết dịch vụ
+          </h3>
+          <p class="text-xs text-emerald-700 font-semibold mt-0.5">
+            Áp dụng chính thức cho tất cả các tour của Trekking Đi Cùng Gió
+          </p>
+        </div>
+      </div>
+
+      <!-- Scrollable Body Content -->
+      <div class="overflow-y-auto flex-1 space-y-5 py-4 pr-1 text-xs sm:text-sm text-gray-700 leading-relaxed">
+        
+        <!-- Section 1: Quy định hoàn hủy & bảo lưu -->
+        <div class="space-y-2.5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+            <i data-lucide="clock" class="w-4 h-4 text-forest"></i>
+            <span>1. Mốc thời gian hoàn tiền & Bảo lưu</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+            <div class="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200">
+              <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-600 text-white mb-1.5">Trước 10 ngày</span>
+              <p class="text-sm font-black text-emerald-950">Hoàn 100%</p>
+              <p class="text-[11px] text-emerald-800 mt-1 leading-snug">Hoàn lại 100% chi phí quý khách đã thanh toán hoặc đặt cọc.</p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200">
+              <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-600 text-white mb-1.5">Từ 5 – 10 ngày</span>
+              <p class="text-sm font-black text-amber-950">Bảo lưu 45 ngày</p>
+              <p class="text-[11px] text-amber-800 mt-1 leading-snug">Hỗ trợ bảo lưu suất đi sang tour khác trong vòng 45 ngày.</p>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-rose-50/80 border border-rose-200">
+              <span class="inline-block px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-600 text-white mb-1.5">Dưới 5 ngày (1 – 5 ngày)</span>
+              <p class="text-sm font-black text-rose-950">Không hoàn – Không bảo lưu</p>
+              <p class="text-[11px] text-rose-800 mt-1 leading-snug">Do xe, porter, lán nghỉ và thực phẩm đã được thanh toán cố định.</p>
+            </div>
+          </div>
+          <p class="text-[11px] text-gray-500 italic">
+            * Riêng với các tour mang tính mùa vụ ngắn ngày đặc thù (như Cúc Phương mùa bướm): Hủy trước 15 ngày hoàn 100%, từ 5–10 ngày bảo lưu 45 ngày, dưới 5 ngày không hoàn/hủy.
+          </p>
+        </div>
+
+        <!-- Section 2: Điểm đón & Quy trình xác nhận -->
+        <div class="space-y-2.5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+            <i data-lucide="map-pin" class="w-4 h-4 text-forest"></i>
+            <span>2. Điểm đón tại Hà Nội & Quy trình chăm sóc</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+              <p class="font-bold text-gray-900 text-xs mb-1">📍 2 Điểm đón cố định tại Hà Nội:</p>
+              <ul class="text-xs space-y-1 text-gray-600">
+                <li>• <strong>Điểm 1:</strong> Số 55 Nguyễn Quốc Trị, Cầu Giấy</li>
+                <li>• <strong>Điểm 2:</strong> Số 489 Hoàng Quốc Việt, Cầu Giấy</li>
+              </ul>
+            </div>
+            <div class="p-3 bg-gray-50 rounded-xl border border-gray-100">
+              <p class="font-bold text-gray-900 text-xs mb-1">💬 Nhóm Zalo đoàn khởi hành:</p>
+              <p class="text-xs text-gray-600 leading-relaxed">
+                Trước ngày khởi hành <strong>02 – 04 ngày</strong>, quý khách sẽ được mời vào Nhóm Zalo riêng của đoàn để Leader cập nhật danh sách xe, số tài xế, thời tiết và lưu ý trang phục.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 3: Cam kết khởi hành & Phụ thu -->
+        <div class="space-y-2.5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+            <i data-lucide="badge-check" class="w-4 h-4 text-forest"></i>
+            <span>3. Cam kết khởi hành & Chính sách phụ thu</span>
+          </h4>
+          <ul class="text-xs space-y-1.5 bg-[#F6F7F2] p-3.5 rounded-xl border border-stone-200/70 text-gray-700">
+            <li>• <strong>Cam kết chạy:</strong> Tất cả các tour đều chắc chắn khởi hành chỉ từ <strong>05 khách</strong>.</li>
+            <li>• <strong>Trẻ em từ 5 – 9 tuổi:</strong> Tính <strong>75%</strong> giá tour người lớn (tiêu chuẩn suất ăn và chỗ ngồi riêng).</li>
+            <li>• <strong>Khách quốc tịch nước ngoài:</strong> Phụ thu <strong>200.000đ/khách</strong> (lệ phí khai báo an ninh và giấy phép biên phòng vùng cao).</li>
+          </ul>
+        </div>
+
+        <!-- Section 4: Dịch vụ bao gồm & Độc quyền -->
+        <div class="space-y-2.5">
+          <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+            <i data-lucide="award" class="w-4 h-4 text-forest"></i>
+            <span>4. Dịch vụ tiêu chuẩn độc quyền của Đi Cùng Gió</span>
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Xe ô tô du lịch đời mới đưa đón khứ hồi từ Hà Nội</span>
+            </div>
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Huy chương leo núi bằng gỗ độc quyền thân thiện môi trường</span>
+            </div>
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Leader & Porter chuyên nghiệp theo sát (tỉ lệ 8-10 khách/1 leader)</span>
+            </div>
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Bảo hiểm du lịch trọn gói mức 20.000.000đ – 100.000.000đ/vụ</span>
+            </div>
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Gậy trekking trợ lực, đèn pin đeo đầu & túi y tế sơ cứu cơ bản</span>
+            </div>
+            <div class="p-2.5 bg-emerald-50/50 rounded-xl border border-emerald-100 flex items-start gap-2">
+              <i data-lucide="check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+              <span>Nước uống tinh khiết 500ml/ngày & các bữa ăn nóng sốt địa phương</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Section 5: Trách nhiệm & Sức khỏe -->
+        <div class="p-4 bg-amber-50/80 border-l-4 border-amber-500 rounded-r-2xl space-y-1.5 text-xs text-amber-950">
+          <p class="font-bold flex items-center gap-1.5 text-amber-900">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
+            <span>Lưu ý trách nhiệm & Sức khỏe cá nhân:</span>
+          </p>
+          <p class="leading-relaxed">
+            • Quý khách bắt buộc mang theo CCCD/Hộ chiếu bản gốc hợp pháp khi tham gia tour.<br/>
+            • Khách hàng tự chịu trách nhiệm về thể lực và tình trạng sức khỏe cá nhân (bệnh tim mạch, huyết áp, tiền sử bệnh...).<br/>
+            • Tự bảo quản tài sản, tư trang cá nhân suốt hành trình.<br/>
+            • Tuyệt đối tôn trọng thiên nhiên và môi trường: <em>Không xả rác, không bẻ cành hái hoa, mang 100% rác xuống núi</em>.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Footer CTA -->
+      <div class="pt-4 border-t border-gray-100 flex items-center justify-between shrink-0">
+        <span class="text-xs text-gray-500 font-medium">Hotline tư vấn: <strong class="text-forest">0965 983 302</strong></span>
+        <button 
+          type="button" 
+          onclick="closePolicyModal()" 
+          class="px-6 py-2.5 rounded-full bg-forest text-white font-bold text-xs sm:text-sm hover:bg-forest/90 transition-all cursor-pointer"
+        >
+          Đã hiểu & Đóng
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- 8. MOBILE NAVIGATION DRAWER -->
   <div id="mobile-nav-backdrop" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"></div>
   <div id="mobile-nav-drawer" class="fixed top-0 left-0 bottom-0 z-50 w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6">
     <div class="space-y-6">
@@ -1158,6 +1334,10 @@
         <a href="#home" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Trang chủ</a>
         <a href="#tours-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Tour nổi bật</a>
         <a href="#schedule-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Lịch khởi hành</a>
+        <a href="javascript:openPolicyModal(); document.getElementById('mobile-menu-close').click();" class="py-2 px-3 rounded-lg hover:bg-emerald-50 text-forest font-bold flex items-center gap-2">
+          <i data-lucide="shield-check" class="w-4 h-4 text-forest"></i>
+          <span>Chính sách hoàn hủy</span>
+        </a>
         <a href="#why-us-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Vì sao chọn chúng tôi</a>
         <a href="#about-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Về ĐI CÙNG GIÓ</a>
         <a href="#testimonials-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Đánh giá khách hàng</a>

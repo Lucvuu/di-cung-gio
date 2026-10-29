@@ -1,690 +1,1626 @@
-# -*- coding: utf-8 -*-
-"""
-Script to generate assets/js/main.js with complete datasets, route steps,
-historical storytelling, and refined UI/UX interactions.
-"""
-
-import sys
-
-content = r'''/**
- * Trekking Đi Cùng Gió - Interactive Prototype Engine (Version 3.2)
- * "Khám phá thiên nhiên, chinh phục mọi giới hạn"
+/**
+ * TREKKING ĐI CÙNG GIÓ - OFFICIAL APPLICATION SCRIPT
+ * Cập nhật bảng giá & chính sách hoàn hủy chính thức theo tài liệu Google Sheets 2026
+ * Pure Vanilla JavaScript ES6+ (Zero Build Pipeline)
  */
 
 // ==========================================
-// 1. TOUR DATA REPOSITORY (ALL 5 CATEGORIES)
+// 1. TOUR DATA REPOSITORY (ALL 20 TOURS)
 // ==========================================
 const TOURS_DATA = [
-  // --- TOUR 1: YÊN TỬ – CHÙA ĐỒNG ---
   {
-    id: 1,
-    title: 'Trekking Yên Tử – Chùa Đồng',
-    category: 'trekking',
-    subCategory: 'spiritual',
-    categoryName: 'Trekking',
-    duration: '1 ngày',
-    location: 'Hà Nội – Yên Tử (Quảng Ninh)',
-    price: '1.200.000đ/người',
-    priceNum: 1200000,
-    rating: 5.0,
-    reviews: 128,
-    image: 'assets/images/tour-yen-tu.jpg',
-    badge: 'Trekking',
-    altitudeBadge: '⛰️ 1.068m',
-    altitude: '1.068m',
-    trekDistance: '14 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ - Trung bình',
-    isFeatured: true,
-    shortSummary: 'Hành hương về non thiêng đất Phật, băng rừng Tùng cổ thụ chạm đỉnh Chùa Đồng (1.068m).',
-    routeMap: 'Xuất phát từ Hà Nội đi thành phố Uông Bí (tỉnh Quảng Ninh). Cung trekking bắt đầu từ suối Giải Oan, băng qua Đường Tùng cổ thụ 700 năm tuổi, vườn tháp Tổ Huệ Quang, chùa Hoa Yên, chùa Một Mái, chùa Bảo Sái, vượt dốc Đá Chồng và chinh phục đỉnh cao nhất tại Chùa Đồng (1.068m) giữa mây ngàn Đông Bắc.',
-    routeSteps: ['Hà Nội', 'Suối Giải Oan', 'Đường Tùng 700 năm', 'Vườn Tháp Huệ Quang', 'Chùa Hoa Yên', 'Dốc Đá Chồng', 'Đỉnh Chùa Đồng (1.068m)'],
-    historyStory: 'Núi Yên Tử (còn gọi là Bạch Vân Sơn – núi mây trắng) là cái nôi của Thiền phái Trúc Lâm Việt Nam. Năm 1299, sau khi lãnh đạo quân dân Đại Việt hai lần đánh bại đế quốc Nguyên – Mông, vua Trần Nhân Tông đã nhường ngôi, từ bỏ hoàng cung để lên núi Yên Tử tu hành, lấy hiệu là Hương Vân Đại Đầu Đà (Phật hoàng Trần Nhân Tông) và hợp nhất các dòng thiền thành Thiền phái Trúc Lâm mang đậm tinh thần nhập thế và bản sắc dân tộc Việt. Chùa Đồng trên đỉnh núi được khởi dựng từ thời Hậu Lê và hiện là ngôi chùa bằng đồng nguyên khối trên đỉnh núi lớn nhất châu Á.',
-    description: 'Hành trình leo núi thiêng Yên Tử, chiêm bái Chùa Đồng trên đỉnh Phù Vân, rèn luyện thể lực và tìm lại an yên trong tâm hồn giữa mây ngàn đại ngàn.',
-    departureDates: ['26/10/2026', '02/11/2026', '09/11/2026', '16/11/2026'],
-    gallery: [
-      { url: 'assets/images/tour-yen-tu.jpg', caption: 'Chóp Chùa Đồng giữa mây ngàn Yên Tử' },
-      { url: 'assets/images/yen-tu-1.jpg', caption: 'Mái chùa đồng cổ kính linh thiêng trên đỉnh núi đá' },
-      { url: 'assets/images/yen-tu-2.jpg', caption: 'Toàn cảnh non thiêng Yên Tử từ độ cao 1.068m' },
-      { url: 'assets/images/yen-tu-3.jpg', caption: 'Hành hương qua Đường Tùng cổ thụ 700 năm tuổi' }
+    "id": 1,
+    "code": "YT01",
+    "title": "Trekking Yên Tử – Chùa Đồng",
+    "category": "spiritual",
+    "subCategory": "trekking",
+    "badge": "Tâm linh & Non thiêng",
+    "altitudeBadge": "Đỉnh 1.068m",
+    "image": "assets/images/tour-yen-tu.jpg",
+    "price": "550.000đ/người",
+    "priceNum": 550000,
+    "agencyPrice": "500.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Hàng ngày",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Uông Bí, Quảng Ninh",
+    "altitude": "1.068m",
+    "trekDistance": "Khoảng 6 km (~6.000 bậc đá)",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ - Trung bình",
+    "isFeatured": true,
+    "reviews": 128,
+    "shortSummary": "Hành hương về non thiêng đất Phật, băng rừng Tùng cổ thụ 700 năm chạm đỉnh Chùa Đồng (1.068m).",
+    "routeMap": "Xuất phát từ Hà Nội theo cao tốc Hải Phòng đi Uông Bí (Quảng Ninh). Tuyến trekking bắt đầu từ Suối Giải Oan, qua Đường Tùng cổ thụ 700 năm tuổi, Vườn Tháp Tổ Huệ Quang, Chùa Hoa Yên, Chùa Một Mái, tượng đá An Kỳ Sinh, vượt dốc Đá Chồng và chạm đỉnh Chùa Đồng 1.068m giữa mây ngàn Đông Bắc.",
+    "routeSteps": [
+      "Hà Nội",
+      "Suối Giải Oan",
+      "Đường Tùng 700 năm",
+      "Chùa Hoa Yên",
+      "Tượng An Kỳ Sinh",
+      "Đỉnh Chùa Đồng (1.068m)"
     ],
-    highlights: [
-      'Chạm tay vào Chùa Đồng đúc bằng đồng nguyên khối lớn nhất Châu Á trên đỉnh Phù Vân.',
-      'Dạo bước giữa rừng trúc bạt ngàn ngàn năm tuổi và đường Tùng cổ thụ 700 năm.',
-      'Đón ánh hoàng hôn dát vàng trên non thiêng Yên Tử thanh tịnh và an lạc.'
+    "historyStory": "Núi Yên Tử (còn gọi là Bạch Vân Sơn – núi mây trắng) là cái nôi của Thiền phái Trúc Lâm Đại Việt do Phật hoàng Trần Nhân Tông sáng lập năm 1299 sau hai lần đánh thắng quân Nguyên Mông. Chùa Đồng trên đỉnh núi được đúc hoàn toàn bằng đồng nguyên khối trên đỉnh núi lớn nhất châu Á, tọa lạc tại độ cao 1.068m giữa biển mây hùng vĩ.",
+    "description": "Hành trình leo núi thiêng Yên Tử, chiêm bái Chùa Đồng trên đỉnh Phù Vân, rèn luyện thể lực và tìm lại an yên trong tâm hồn giữa mây ngàn đại ngàn.",
+    "departureDates": [
+      "26/10/2026",
+      "02/11/2026",
+      "09/11/2026",
+      "16/11/2026"
     ],
-    itinerary: [
-      { day: '05:30', title: 'Hà Nội – Uông Bí', desc: 'Xe đón đoàn tại Nhà Hát Lớn Hà Nội, khởi hành đi Uông Bí (Quảng Ninh). Dừng chân ăn sáng đặc sản bánh cuốn chả mực.' },
-      { day: '08:30', title: 'Bắt đầu trekking Yên Tử', desc: 'Đoàn khởi động tại chân núi, trekking qua Tháp Tổ, chùa Hoa Yên, chùa Một Mái giữa tiếng suối reo và rừng thông rì rào.' },
-      { day: '12:00', title: 'Chạm đỉnh Chùa Đồng 1.068m', desc: 'Chiêm bái Chùa Đồng linh thiêng trong sương mây, thưởng ngoạn panorama toàn cảnh Đông Bắc, dùng bữa trưa picnic nóng hổi.' },
-      { day: '17:30', title: 'Trở về Hà Nội', desc: 'Xuống núi, thư giãn ngâm chân thảo dược lá thuốc người Dao, lên xe về lại thủ đô lúc 20:00.' }
+    "gallery": [
+      {
+        "url": "assets/images/tour-yen-tu.jpg",
+        "caption": "Chóp Chùa Đồng giữa mây ngàn Yên Tử"
+      },
+      {
+        "url": "assets/images/yen-tu-1.jpg",
+        "caption": "Mái chùa đồng cổ kính linh thiêng trên đỉnh núi đá"
+      },
+      {
+        "url": "assets/images/yen-tu-2.jpg",
+        "caption": "Toàn cảnh non thiêng Yên Tử từ độ cao 1.068m"
+      },
+      {
+        "url": "assets/images/yen-tu-3.jpg",
+        "caption": "Hành hương qua Đường Tùng cổ thụ 700 năm tuổi"
+      }
     ],
-    included: ['Xe du lịch 16-29 chỗ khứ hồi', 'Leader dẫn đường & Hướng dẫn viên', 'Bữa trưa nóng hổi trên núi', 'Bảo hiểm du lịch 100.000.000đ', 'Gậy trekking & áo mưa tiêu chuẩn', 'Nước uống điện giải suốt tuyến'],
-    preparation: ['Giày leo núi có gai bám đá tốt', 'Quần áo co giãn thấm hút mồ hôi', 'Áo gió nhẹ giữ ấm khi lên đỉnh gió to', 'Bình nước cá nhân & mũ nón']
+    "highlights": [
+      "Chạm tay vào Chùa Đồng đúc bằng đồng nguyên khối lớn nhất Châu Á trên đỉnh Phù Vân.",
+      "Dạo bước giữa rừng trúc bạt ngàn ngàn năm tuổi và đường Tùng cổ thụ 700 năm.",
+      "Đón bình minh hoặc hoàng hôn dát vàng trên non thiêng Yên Tử thanh tịnh và an lạc."
+    ],
+    "itinerary": [
+      {
+        "day": "05:30",
+        "title": "Hà Nội – Uông Bí",
+        "desc": "Xe đón đoàn tại 55 Nguyễn Quốc Trị và 489 Hoàng Quốc Việt, khởi hành đi Uông Bí (Quảng Ninh). Dừng chân ăn sáng đặc sản bánh cuốn chả mực."
+      },
+      {
+        "day": "08:30",
+        "title": "Bắt đầu trekking Yên Tử",
+        "desc": "Khởi động tại chân núi, trekking qua suối Giải Oan, Tháp Tổ Huệ Quang, chùa Hoa Yên, chùa Một Mái giữa rừng thông xanh ngát."
+      },
+      {
+        "day": "12:00",
+        "title": "Chạm đỉnh Chùa Đồng 1.068m",
+        "desc": "Chiêm bái Chùa Đồng linh thiêng trong sương mây, thưởng ngoạn panorama toàn cảnh Đông Bắc, dùng bữa trưa picnic."
+      },
+      {
+        "day": "16:00",
+        "title": "Xuống núi & Về Hà Nội",
+        "desc": "Xuống núi, thư giãn ngâm chân thảo dược suối Giải Oan. Lên xe về lại thủ đô Hà Nội lúc 19:30."
+      }
+    ],
+    "included": [
+      "Xe ô tô du lịch đời mới khứ hồi Hà Nội – Yên Tử",
+      "Hướng dẫn viên / Leader kinh nghiệm theo sát (tỉ lệ 8-10 khách/leader)",
+      "Nước suối tinh khiết 500ml/khách",
+      "Huy chương leo núi bằng gỗ độc quyền của Đi Cùng Gió",
+      "Gậy leo núi trekking & đồ y tế sơ cứu cơ bản",
+      "Bảo hiểm du lịch trọn gói 20.000.000đ/vụ"
+    ],
+    "preparation": [
+      "Giày trekking hoặc thể thao bám tốt",
+      "CCCD/Hộ chiếu bản gốc",
+      "Áo khoác gió nhẹ, mũ nón chống nắng",
+      "Thuốc cá nhân và sạc dự phòng"
+    ]
   },
-
-  // --- TOUR 2: TÀ XÙA – SĂN MÂY ---
   {
-    id: 2,
-    title: 'Tà Xùa – Săn mây',
-    category: 'trekking',
-    subCategory: 'experience',
-    categoryName: 'Trekking',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Tà Xùa (Sơn La)',
-    price: '1.850.000đ/người',
-    priceNum: 1850000,
-    rating: 5.0,
-    reviews: 96,
-    image: 'assets/images/tour-ta-xua.jpg',
-    badge: 'Trekking',
-    altitudeBadge: '☁️ 2.865m',
-    altitude: '2.865m',
-    trekDistance: '16 km',
-    difficultyLevel: 3,
-    difficultyText: 'Trung bình',
-    isFeatured: true,
-    shortSummary: 'Chinh phục "Sống lưng khủng long" Háng Đồng và đón biển mây kỳ vĩ bậc nhất Tây Bắc.',
-    routeMap: 'Khởi hành từ Hà Nội theo hướng Quốc lộ 32 lên xã vùng cao Tà Xùa (huyện Bắc Yên, tỉnh Sơn La). Hành trình đưa bạn đi dọc "Sống lưng khủng long" tại bản Háng Đồng, check-in Mỏm Cá Heo, Cây Cô Đơn, Đỉnh Gió, thảo nguyên Tà Xùa và khám phá bản làng của người Mông ẩn mình giữa đại ngàn.',
-    routeSteps: ['Hà Nội', 'Bắc Yên (Sơn La)', 'Xã Tà Xùa', 'Sống lưng khủng long Háng Đồng', 'Mỏm Cá Heo & Cây Cô Đơn', 'Đỉnh Gió (2.865m)'],
-    historyStory: 'Tà Xùa là dãy núi hợp thành từ ba đỉnh núi hùng vĩ thuộc phần kéo dài về phía Nam của dãy Hoàng Liên Sơn, tạo nên ranh giới tự nhiên giữa hai tỉnh Sơn La và Yên Bái. Nhờ địa hình thung lũng lòng chảo được bao bọc bởi các dãy núi cao chắn gió, Tà Xùa giữ được những biển mây dày đặc, lâu tan bậc nhất Việt Nam. Đây cũng là vùng đất sinh sống lâu đời của đồng bào dân tộc Mông với những rừng chè Shan Tuyết cổ thụ hàng trăm năm tuổi mọc tự nhiên trong sương mù.',
-    description: 'Chinh phục "sống lưng khủng long" huyền thoại Bản Công, đắm chìm trong biển mây bồng bềnh lúc bình minh và tận hưởng bầu không khí Tây Bắc se lạnh.',
-    departureDates: ['01/11/2026', '08/11/2026', '15/11/2026', '22/11/2026'],
-    gallery: [
-      { url: 'assets/images/tour-ta-xua.jpg', caption: 'Biển mây bồng bềnh cuộn trào thung lũng Tà Xùa' },
-      { url: 'assets/images/ta-xua-1.jpg', caption: 'Bình minh rực rỡ trên sống lưng khủng long Háng Đồng' },
-      { url: 'assets/images/ta-xua-2.jpg', caption: 'Trekker check-in mỏm đá ngắm đại ngàn Tây Bắc' },
-      { url: 'assets/images/hero-bg.jpg', caption: 'Toàn cảnh biển mây Tây Bắc lúc rạng đông' }
+    "id": 2,
+    "code": "PSP01",
+    "title": "Tà Xùa – Phu Sa Phìn Săn Mây",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Đại dương mây",
+    "altitudeBadge": "Đỉnh 2.868m",
+    "image": "assets/images/tour-ta-xua.jpg",
+    "price": "1.600.000đ/người",
+    "priceNum": 1600000,
+    "agencyPrice": "1.450.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Bắc Yên, Sơn La",
+    "altitude": "2.868m",
+    "trekDistance": "Khoảng 12 km",
+    "difficultyLevel": 3,
+    "difficultyText": "Trung bình",
+    "isFeatured": true,
+    "reviews": 186,
+    "shortSummary": "Chinh phục 'Sống lưng khủng long' Háng Đồng, đón biển mây bồng bềnh cuộn trào và khám phá đỉnh Phu Sa Phìn.",
+    "routeMap": "Khởi hành từ Hà Nội theo QL32 lên huyện Bắc Yên (Sơn La). Tuyến trekking đưa bạn dọc 'Sống lưng khủng long' tại bản Háng Đồng, check-in Mỏm Cá Heo, Cây Cô Đơn, Đỉnh Gió, thảo nguyên Tà Xùa và rừng nguyên sinh rêu phong huyền ảo.",
+    "routeSteps": [
+      "Hà Nội",
+      "Bắc Yên (Sơn La)",
+      "Xã Tà Xùa",
+      "Sống lưng Háng Đồng",
+      "Mỏm Cá Heo & Cây Cô Đơn",
+      "Đỉnh Phu Sa Phìn (2.868m)"
     ],
-    highlights: [
-      'Đi bộ trên Sống Lưng Khủng Long kỳ vĩ với biển mây cuồn cuộn hai bên vực sâu.',
-      'Check-in Mỏm Cá Heo, Cây Táo Mèo cô đơn ngắm hoàng hôn đỏ rực thung lũng Bản Công.',
-      'Thưởng thức lẩu gà đen đồi H’Mông nóng hổi bên bếp than hồng và đốt lửa trại giao lưu.'
+    "historyStory": "Dãy Tà Xùa hợp thành từ ba đỉnh núi cao kỳ vĩ thuộc phần đuôi kéo dài về phía Nam của dãy Hoàng Liên Sơn hùng vĩ. Nơi đây sở hữu thung lũng lòng chảo giữ mây dày đặc và lâu tan bậc nhất Việt Nam, là quê hương của những cây chè Shan Tuyết cổ thụ hàng trăm năm tuổi của người Mông.",
+    "description": "Chinh phục 'sống lưng khủng long' huyền thoại Bản Công, đắm chìm trong biển mây bồng bềnh lúc bình minh và tận hưởng bầu không khí Tây Bắc se lạnh.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Bắc Yên – Đỉnh Gió Tà Xùa', desc: '06:00 xuất phát từ Hà Nội qua đèo Kê, đèo Chẹn. Chiều trekking Mỏm Cá Heo, đón hoàng hôn trên Đỉnh Gió. Tối thưởng thức lẩu gà đen.' },
-      { day: 'Ngày 2', title: 'Sống lưng khủng long – Biển mây – Hà Nội', desc: '05:30 dậy sớm đón bình minh biển mây ngút ngàn tại Háng Đồng. Chinh phục Sống Lưng Khủng Long. Chiều về lại Hà Nội khoảng 19:30.' }
+    "gallery": [
+      {
+        "url": "assets/images/tour-ta-xua.jpg",
+        "caption": "Biển mây bồng bềnh cuộn trào thung lũng Tà Xùa"
+      },
+      {
+        "url": "assets/images/ta-xua-1.jpg",
+        "caption": "Bình minh rực rỡ trên sống lưng khủng long Háng Đồng"
+      },
+      {
+        "url": "assets/images/ta-xua-2.jpg",
+        "caption": "Trekker check-in mỏm đá ngắm đại ngàn Tây Bắc"
+      },
+      {
+        "url": "assets/images/hero-bg.jpg",
+        "caption": "Toàn cảnh biển mây Tây Bắc lúc rạng đông"
+      }
     ],
-    included: ['Xe giường nằm / Limousine khứ hồi', 'Homestay view mây Bản Công', 'Các bữa ăn tiêu chuẩn vùng cao', 'Leader & Porter bản địa chu đáo', 'Bảo hiểm du lịch trọn gói 100tr', 'Gậy trekking & đồ y tế sơ cứu'],
-    preparation: ['Áo khoác ấm (nhiệt độ đêm ~10°C)', 'Giày trekking chống trơn trượt', 'Sạc dự phòng & máy ảnh', 'Thuốc chống cảm & dầu gió']
+    "highlights": [
+      "Đi bộ trên Sống Lưng Khủng Long kỳ vĩ với biển mây cuộn trào hai bên sườn núi.",
+      "Check-in Mỏm Cá Heo, Cây Táo Mèo cô đơn ngắm hoàng hôn rực rỡ thung lũng Bản Công.",
+      "Thưởng thức lẩu gà đen đồi H’Mông nóng hổi bên bếp than hồng và giao lưu đốt lửa trại."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Tà Xùa",
+        "desc": "19:00 đón đoàn tại 55 Nguyễn Quốc Trị và 489 Hoàng Quốc Việt đi Bắc Yên. Đến Tà Xùa lúc nửa đêm, nhận phòng homestay view mây nghỉ ngơi."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Khám phá Tà Xùa & Rừng rêu",
+        "desc": "Đón bình minh Đỉnh Gió, check-in Cây Cô Đơn, Mỏm Cá Heo. Trekking nhẹ xuyên rừng rêu ma mị. Tối ăn lẩu gà đen."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Sống lưng khủng long – Hà Nội",
+        "desc": "05:30 trekking Sống Lưng Khủng Long Háng Đồng săn biển mây cuồn cuộn. 13:30 lên xe về Hà Nội lúc 19:30."
+      }
+    ],
+    "included": [
+      "Xe ô tô giường nằm / Limousine khứ hồi Hà Nội – Tà Xùa",
+      "Homestay view mây Bản Công tiêu chuẩn",
+      "Các bữa ăn tiêu chuẩn vùng cao (lẩu gà đen, thịt nướng)",
+      "Leader & Porter bản địa chu đáo (tỉ lệ 8-10 khách/leader)",
+      "Huy chương leo núi bằng gỗ độc quyền Đi Cùng Gió",
+      "Bảo hiểm du lịch trọn gói 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Áo khoác ấm (nhiệt độ đêm 10-14°C)",
+      "Giày trekking chống trơn trượt",
+      "CCCD/Hộ chiếu bản gốc",
+      "Sạc dự phòng & máy ảnh"
+    ]
   },
-
-  // --- TOUR 3: PHU SA PHIN – CHINH PHỤC ĐỈNH CAO ---
   {
-    id: 3,
-    title: 'Phu Sa Phin – Chinh phục đỉnh cao',
-    category: 'trekking',
-    subCategory: 'experience',
-    categoryName: 'Trekking',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Phu Sa Phin',
-    price: '1.890.000đ/người',
-    priceNum: 1890000,
-    rating: 5.0,
-    reviews: 74,
-    image: 'assets/images/tour-phu-sa-phin.jpg',
-    badge: 'Trekking',
-    altitudeBadge: '🏔️ 2.868m',
-    altitude: '2.868m',
-    trekDistance: '22 km',
-    difficultyLevel: 4,
-    difficultyText: 'Thách thức',
-    isFeatured: true,
-    shortSummary: 'Băng rừng rêu cổ tích nguyên sinh, chinh phục chóp đỉnh Phu Sa Phin (2.868m) hùng vĩ.',
-    routeMap: 'Di chuyển từ Hà Nội đến vùng núi giáp ranh giữa huyện Trạm Tấu (Yên Bái) và huyện Bắc Yên (Sơn La). Cung đường trekking dài khoảng 22km đưa người leo vượt qua Mỏm Đầu Rùa, sống lưng khủng long cheo leo dài gần 3km và xuyên qua khu rừng nguyên sinh phủ đầy rêu xanh ma mị trước khi chạm tay vào chóp inox trên đỉnh Phu Sa Phin (2.868m).',
-    routeSteps: ['Hà Nội', 'Bản Trạm Tấu / Bắc Yên', 'Mỏm Đầu Rùa', 'Sống lưng khủng long 3km', 'Rừng rêu nguyên sinh', 'Chóp đỉnh Phu Sa Phin (2.868m)'],
-    historyStory: 'Phu Sa Phin là tên gọi nguyên bản theo tiếng của người Mông bản địa dành cho đỉnh núi cao nhất trên dãy Tà Xùa (nằm trong Top 10 đỉnh núi cao nhất Việt Nam). Trong nhiều năm trước đây, giới leo núi thường gọi chung đỉnh này là "Đỉnh Tà Xùa". Đến cuối năm 2022, tên gọi lịch sử "Phu Sa Phin" cùng độ cao chuẩn 2.868m chính thức được khắc lên chóp đỉnh mới, tôn vinh văn hóa bản địa và đánh dấu một trong những cung đường trekking có địa hình sống núi đẹp và thử thách nhất Tây Bắc.',
-    description: 'Cung đường hoang sơ đầy thách thức với những vách đá hùng vĩ, thảm thực vật đỗ quyên nguyên sinh và tầm nhìn panorama ngoạn mục bậc nhất Tây Bắc.',
-    departureDates: ['08/11/2026', '22/11/2026', '06/12/2026'],
-    highlights: [
-      'Băng qua khu rừng rêu ma mị đẹp tựa thế giới Avatar giữa lòng Tây Bắc.',
-      'Vượt sống lưng khủng long dốc cheo leo dài gần 3km đầy phấn khích.',
-      'Chạm mốc đỉnh Phu Sa Phin 2.868m – Top 10 đỉnh núi cao nhất Việt Nam.'
+    "id": 3,
+    "code": "SM01",
+    "title": "Sa Mu – U Bò (2.756m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Rừng rêu ma mị",
+    "altitudeBadge": "Đỉnh 2.756m",
+    "image": "assets/images/tour-samu.jpg",
+    "price": "2.800.000đ/người",
+    "priceNum": 2800000,
+    "agencyPrice": "2.500.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Bắc Yên, Sơn La",
+    "altitude": "2.756m",
+    "trekDistance": "Khoảng 14 km",
+    "difficultyLevel": 3,
+    "difficultyText": "Trung bình",
+    "isFeatured": true,
+    "reviews": 94,
+    "shortSummary": "Chinh phục đỉnh Sa Mu – U Bò (2.756m), ngắm khu rừng rêu cổ thụ ma mị và check-in Cây Thần Kỳ độc nhất vô nhị.",
+    "routeMap": "Hành trình từ Hà Nội qua Bắc Yên đến điểm trek Xím Vàng. Tuyến leo xuyên qua thảm thực vật rừng nguyên sinh nguyên sơ với các tầng rêu phủ kín thân cây cổ thụ hàng trăm năm, vượt dốc đá lên lán nghỉ và chạm đỉnh Sa Mu 2.756m.",
+    "routeSteps": [
+      "Hà Nội",
+      "Bắc Yên",
+      "Điểm trek Xím Vàng",
+      "Cây Thần Kỳ",
+      "Lán ngủ trên núi",
+      "Đỉnh Sa Mu (2.756m)"
     ],
-    itinerary: [
-      { day: 'Đêm 0', title: 'Hà Nội – Điểm tập kết', desc: '21:30 đón tại Hà Nội đi xe giường nằm chất lượng cao tới chân núi.' },
-      { day: 'Ngày 1', title: 'Bắt đầu leo dốc – Hạ trại lán rừng', desc: 'Ăn sáng, phân chia đồ dùng cùng Porter. Bắt đầu leo qua các dốc đá và rừng thảo quả. Chiều tới lán nghỉ 2.400m, nướng thịt ăn tối.' },
-      { day: 'Ngày 2', title: 'Chạm đỉnh đón bình minh – Xuống núi', desc: '05:00 xuất phát lên đỉnh đón bình minh biển mây. Xuống núi, tắm lá thuốc người Dao đỏ và lên xe về Hà Nội.' }
+    "historyStory": "Đỉnh Sa Mu (U Bò) cao 2.756m là ranh giới tự nhiên giữa Sơn La và Yên Bái. Cung trek nổi tiếng với cánh rừng rêu ma mị đẹp bậc nhất vùng Tây Bắc, nơi lưu giữ hệ sinh thái rừng á nhiệt đới nguyên sinh gần như nguyên vẹn chưa bị tác động của con người.",
+    "description": "Hành trình lạc bước vào khu rừng cổ tích rêu phong, săn mây đại ngàn và ngắm dải ngân hà lấp lánh khi ngủ đêm trong lán gỗ trên núi.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe đưa đón giường nằm cao cấp', 'Porter bản địa gùi đồ & nấu ăn', 'Ngủ lán gỗ ấm cúng có chăn dày', 'Các bữa ăn đậm đà bản sắc', 'Bảo hiểm du lịch 100.000.000đ', 'Giấy phép trekking ban quản lý'],
-    preparation: ['Balo trợ lực 30-40L', 'Đèn pin đội đầu loại sáng tốt', 'Áo mưa bộ chống nước tuyệt đối', 'Găng tay leo núi có hạt cao su']
+    "highlights": [
+      "Chiêm ngưỡng khu rừng rêu ma mị với cây cổ thụ phủ kín rêu phong như truyện cổ tích tích.",
+      "Check-in Cây Thần Kỳ khổng lồ đứng sừng sững giữa rừng già Tây Bắc.",
+      "Ngắm biển mây lúc bình minh từ chóp Sa Mu 2.756m và thưởng thức thịt nướng thơm lừng bên lán gỗ."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Bắc Yên",
+        "desc": "19:00 xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Bắc Yên. Nghỉ đêm homestay chuẩn bị thể lực."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Trek Xím Vàng – Lán rừng rêu",
+        "desc": "Ăn sáng, xe đưa vào điểm trek. Leo dốc qua rừng rêu nguyên sinh ma mị, check-in Cây Thần Kỳ. Chiều đến lán ngủ, ngắm hoàng hôn ăn tối lẩu nóng."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh Sa Mu 2.756m – Hà Nội",
+        "desc": "05:00 trekking lên chóp Sa Mu đón bình minh biển mây. Xuống núi ăn trưa, lên xe về lại Hà Nội lúc 20:00."
+      }
+    ],
+    "included": [
+      "Xe ô tô giường nằm đưa đón khứ hồi từ Hà Nội",
+      "Lán gỗ ngủ trên núi có túi ngủ & chăn ấm",
+      "Porter bản địa gùi đồ & nấu các bữa ăn nóng sốt",
+      "Huy chương gỗ Sa Mu kỷ niệm độc quyền",
+      "Gậy trekking & đồ y tế, bảo hiểm du lịch trọn gói 100tr"
+    ],
+    "preparation": [
+      "Giày leo núi có gai bám chống trơn",
+      "Áo ấm giữ nhiệt",
+      "Đèn pin đeo đầu",
+      "Găng tay trekking"
+    ]
   },
-
-  // --- TOUR 4: KỲ QUAN SAN – ĐỈNH NÚI HÙNG VĨ ---
   {
-    id: 4,
-    title: 'Kỳ Quan San – Đỉnh núi hùng vĩ',
-    category: 'trekking',
-    subCategory: 'experience',
-    categoryName: 'Trekking',
-    duration: '3 ngày 2 đêm',
-    location: 'Hà Nội – Lào Cai',
-    price: '2.650.000đ/người',
-    priceNum: 2650000,
-    rating: 5.0,
-    reviews: 52,
-    image: 'assets/images/tour-ky-quan-san.jpg',
-    badge: 'Trekking',
-    altitudeBadge: '🏔️ 3.046m',
-    altitude: '3.046m',
-    trekDistance: '32 km',
-    difficultyLevel: 5,
-    difficultyText: 'Thử thách cao',
-    isFeatured: true,
-    shortSummary: 'Chinh phục ngọn núi cao thứ 4 Việt Nam (3.046m) và ngắm bình minh huyền thoại tại Đỉnh Núi Muối.',
-    routeMap: 'Xuất phát từ Hà Nội lên bản Kỳ Quan San (xã Sàng Ma Sáo, huyện Bát Xát, tỉnh Lào Cai). Đoàn trekking băng qua rừng thảo quả, rừng trúc lùn, rừng đỗ quyên cổ thụ, nghỉ đêm tại lán gỗ ở độ cao 2.100m để đón bình minh rực lửa trên Đỉnh Núi Muối, sau đó vượt các vách đá dựng đứng chinh phục đỉnh Kỳ Quan San ở độ cao 3.046m.',
-    routeSteps: ['Hà Nội', 'Bản Sàng Ma Sáo (Bát Xát)', 'Rừng Thảo Quả & Trúc Lùn', 'Lán Gỗ 2.100m', 'Đón bình minh Núi Muối', 'Chóp đỉnh Kỳ Quan San (3.046m)'],
-    historyStory: 'Nằm trên ranh giới tự nhiên giữa hai huyện Bát Xát (Lào Cai) và Phong Thổ (Lai Châu), ngọn núi cao thứ 4 Việt Nam này từng được những nhóm phượt thủ đầu tiên mở đường vào năm 2012 đặt tên là "Bạch Mộc Lương Tử" (dãy núi cây gỗ trắng). Sau này, chính quyền và cộng đồng địa phương đã khôi phục lại tên gọi lịch sử chính xác trên bản đồ địa chính là "Kỳ Quan San" – gắn liền với ngôi bản cổ của đồng bào người Mông và người Dao dưới chân núi vùng biên viễn Tây Bắc.',
-    description: 'Chinh phục đỉnh núi cao thứ 4 Việt Nam (3.046m), ngắm đồi Muối lung linh dưới ánh sao đêm và biển mây ngút ngàn tầm mắt đón bình minh.',
-    departureDates: ['15/11/2026', '29/11/2026', '13/12/2026'],
-    highlights: [
-      'Chinh phục đỉnh núi Bạch Mộc Lương Tử (Kỳ Quan San) cao 3.046m huyền thoại.',
-      'Đón hoàng hôn và bình minh ngoạn mục tại Đồi Muối 2.100m đẹp bậc nhất Việt Nam.',
-      'Vượt qua sống trâu đá hiểm trở với sự bọc lót an toàn tuyệt đối từ đội ngũ Leader.'
+    "id": 4,
+    "code": "KQS01",
+    "title": "Kỳ Quan San – Bạch Mộc Lương Tử",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Top 4 Nóc nhà VN",
+    "altitudeBadge": "Đỉnh 3.046m",
+    "image": "assets/images/tour-ky-quan-san.jpg",
+    "price": "3.500.000đ/người",
+    "priceNum": 3500000,
+    "agencyPrice": "3.000.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 6 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "3 ngày 2 đêm",
+    "location": "Bát Xát, Lào Cai",
+    "altitude": "3.046m",
+    "trekDistance": "Khoảng 28 – 30 km",
+    "difficultyLevel": 4,
+    "difficultyText": "Thử thách cao",
+    "isFeatured": true,
+    "reviews": 115,
+    "shortSummary": "Hành trình chinh phục đỉnh Kỳ Quan San (3.046m), đón bình minh tráng lệ trên sống lưng khủng long Đồi Muối.",
+    "routeMap": "Từ Hà Nội đi Bát Xát (Lào Cai). Tuyến trekking xuất phát từ bản Dền Sung, vượt suối, leo rừng thảo quả, chinh phục Đồi Muối (2.100m) và men theo sống núi hiểm trở để chạm chóp inox 3.046m.",
+    "routeSteps": [
+      "Hà Nội",
+      "Bát Xát (Lào Cai)",
+      "Bản Dền Sung",
+      "Lán Đồi Muối (2.100m)",
+      "Sống lưng khủng long",
+      "Đỉnh Kỳ Quan San (3.046m)"
     ],
-    itinerary: [
-      { day: 'Đêm 0', title: 'Hà Nội – Sàng Ma Sáo', desc: 'Xe giường nằm khởi hành 22:00 từ Hà Nội lên Bát Xát (Lào Cai).' },
-      { day: 'Ngày 1', title: 'Sàng Ma Sáo – Đồi Muối 2.100m', desc: 'Trekking xuyên rừng trúc, suối đá. 16:30 đến Đồi Muối, cắm trại ngắm hoàng hôn dát vàng biển mây.' },
-      { day: 'Ngày 2', title: 'Chinh phục đỉnh 3.046m – Về lán', desc: 'Vượt qua sống trâu hiểm trở, chạm đỉnh Kỳ Quan San lúc 10:30 trưa. Quay về Đồi Muối nghỉ đêm thứ hai.' },
-      { day: 'Ngày 3', title: 'Xuống núi – Tắm lá Dao – Hà Nội', desc: 'Xuống núi về bản Mông, tắm lá thuốc thư giãn, liên hoan lẩu cá tầm Sa Pa trước khi lên xe về Hà Nội.' }
+    "historyStory": "Kỳ Quan San (thường gọi là Bạch Mộc Lương Tử) là đỉnh núi cao thứ 4 tại Việt Nam (3.046m). Tên gọi Kỳ Quan San theo tiếng địa phương nghĩa là 'ngọn núi kỳ vĩ'. Cung đường này được giới mê leo núi mệnh danh là cung đường săn bình minh và biển mây tráng lệ nhất Việt Nam.",
+    "description": "Cung trekking huyền thoại thử thách thể lực và ý chí, đón bình minh rực đỏ trên sống lưng Đồi Muối và chạm tay vào đỉnh cao 3.046m.",
+    "departureDates": [
+      "15/11/2026",
+      "22/11/2026",
+      "29/11/2026",
+      "06/12/2026"
     ],
-    included: ['Toàn bộ xe di chuyển khứ hồi', 'Đội ngũ Porter & Leader 1:3', 'Chỗ ngủ lán gỗ đầy đủ chăn đệm', 'Thực đơn 6 bữa chính thịnh soạn', 'Bảo hiểm du lịch mạo hiểm cao cấp', 'Huy chương & Chứng nhận chinh phục'],
-    preparation: ['Thể lực rèn luyện trước tối thiểu 2 tuần', 'Giày leo núi chuyên dụng chống trơn', 'Quần áo ấm nhiều lớp (nhiệt độ đỉnh 0-5°C)', 'Miếng dán giữ nhiệt & gậy trekking']
+    "highlights": [
+      "Chiêm ngưỡng bình minh Đồi Muối – một trong những khung cảnh bình minh kỳ vĩ bậc nhất Đông Nam Á.",
+      "Đi bộ trên Sống Lưng Khủng Long cheo leo giữa hai bên vực sâu ngút ngàn mây trắng.",
+      "Chạm tay vào chóp inox đỉnh cao 3.046m và nhận huy chương gỗ độc quyền của Đi Cùng Gió."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Sapa – Bát Xát",
+        "desc": "21:00 đón đoàn tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, xe giường nằm chạy đêm lên Lào Cai."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Bản Dền Sung – Lán Đồi Muối 2.100m",
+        "desc": "Ăn sáng, xe đưa đến chân núi. Trekking qua suối đá, rừng trúc, rừng thảo quả. Đến lán Đồi Muối, ngắm biển mây hoàng hôn đỏ rực."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh Kỳ Quan San 3.046m",
+        "desc": "04:30 trekking vượt Sống lưng khủng long đón bình minh, chạm đỉnh 3.046m lúc 09:30. Chiều quay về lại lán Đồi Muối nghỉ ngơi ăn mừng."
+      },
+      {
+        "day": "Ngày 3",
+        "title": "Xuống núi – Tắm lá thuốc Dao đỏ – Hà Nội",
+        "desc": "Xuống chân núi, tắm lá thuốc Dao Đỏ xua tan mệt mỏi tại Sapa. Lên xe về lại Hà Nội lúc 21:00."
+      }
+    ],
+    "included": [
+      "Xe giường nằm khứ hồi Hà Nội – Sapa – Bát Xát",
+      "Lán ngủ Đồi Muối có đầy đủ chăn đệm ấm áp",
+      "Đội ngũ Porter bản địa nhiệt tình gùi hành lý và nấu ăn",
+      "Tắm lá thuốc người Dao đỏ thư giãn hồi phục cơ thể",
+      "Huy chương gỗ Kỳ Quan San khắc tên kỷ niệm",
+      "Bảo hiểm du lịch mức 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Giày trekking chuyên dụng bám đá",
+      "Áo ấm lông vũ, áo gió chống nước",
+      "Bó gối, tất dài, găng tay bám",
+      "CCCD/Hộ chiếu bản gốc"
+    ]
   },
-
-  // --- TOUR 5: TÀ CHÌ NHÙ – MÙA HOA CHI PÂU ---
   {
-    id: 5,
-    title: 'Tà Chì Nhù – Mùa Hoa Chi Pâu',
-    category: 'trekking',
-    subCategory: 'experience',
-    categoryName: 'Trekking',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Yên Bái',
-    price: '1.850.000đ/người',
-    priceNum: 1850000,
-    rating: 5.0,
-    reviews: 86,
-    image: 'assets/images/tour-ta-chi-nhu.jpg',
-    badge: 'Trekking',
-    altitudeBadge: '🌸 2.979m',
-    altitude: '2.979m',
-    trekDistance: '24 km',
-    difficultyLevel: 4,
-    difficultyText: 'Khá thách thức',
-    isFeatured: false,
-    shortSummary: 'Lạc bước giữa đại ngàn hoa Chi Pâu tím biếc và thảo nguyên ngựa hoang trên mây ở độ cao 2.979m.',
-    routeMap: 'Từ Hà Nội di chuyển tới khu vực Mỏ Chì (xã Xà Hồ, huyện Trạm Tấu, tỉnh Yên Bái). Cung trekking vượt qua những con dốc đất dài bất tận để lên tới vùng thảo nguyên núi cao trên 2.400m – nơi những triền đồi phủ kín sắc tím hoa Chi Pâu mỗi độ thu về, trước khi chinh phục đỉnh Tà Chì Nhù (2.979m).',
-    routeSteps: ['Hà Nội', 'Trạm Tấu (Yên Bái)', 'Khu Mỏ Chì (Xã Xà Hồ)', 'Dốc Ba Tầng', 'Lán nghỉ 2.400m (Thảo nguyên Chi Pâu)', 'Chóp đỉnh Tà Chì Nhù (2.979m)'],
-    historyStory: 'Thuộc khối núi Pú Luông của dãy Hoàng Liên Sơn, đỉnh núi cao thứ 7 Việt Nam này được người Thái gọi là "Pú Luông", còn người Mông bản địa gọi là "Tà Chì Nhù". Khu vực chân núi xã Xà Hồ từng là nơi người Pháp mở mỏ khai thác chì – kẽm từ đầu thế kỷ 20, trong khi các sườn cỏ mênh mông phía trên đỉnh núi từ bao đời nay là bãi chăn thả ngựa và dê tự nhiên của đồng bào người Mông, tạo nên khung cảnh du mục độc nhất vô nhị tại Việt Nam.',
-    description: 'Chinh phục nóc nhà Yên Bái 2.979m, đắm chìm trong sắc tím hoa Chi Pâu bung nở khắp thảo nguyên và ngắm những đàn ngựa thong dong gặm cỏ trên biển mây.',
-    departureDates: ['22/11/2026', '06/12/2026', '20/12/2026'],
-    highlights: [
-      'Ngắm trọn vẹn thảo nguyên hoa Chi Pâu tím biếc phủ kín các sườn núi cao trên 2.400m.',
-      'Chạm tay vào chóp kim loại đỉnh Tà Chì Nhù 2.979m – nóc nhà tỉnh Yên Bái.',
-      'Thưởng thức khoai nướng, thịt nướng thơm lừng bên lán gỗ ấm áp giữa biển sương.'
+    "id": 5,
+    "code": "TCN01",
+    "title": "Tà Chì Nhù – Mùa Hoa Chi Pâu (2.979m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Mùa hoa Chi Pâu",
+    "altitudeBadge": "Đỉnh 2.979m",
+    "image": "assets/images/tour-ta-chi-nhu.jpg",
+    "price": "2.800.000đ/người",
+    "priceNum": 2800000,
+    "agencyPrice": "2.500.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Trạm Tấu, Yên Bái",
+    "altitude": "2.979m",
+    "trekDistance": "Khoảng 16 km",
+    "difficultyLevel": 3,
+    "difficultyText": "Trung bình - Thử thách",
+    "isFeatured": false,
+    "reviews": 142,
+    "shortSummary": "Chinh phục đỉnh Tà Chì Nhù 2.979m – ngọn núi của gió, mây và đồi hoa tím Chi Pâu bạt ngàn.",
+    "routeMap": "Từ Hà Nội đi thị xã Nghĩa Lộ rồi vào Mỏ Chì (huyện Trạm Tấu, Yên Bái). Tuyến trek dốc liên tục nhưng thoáng đãng, mở ra tầm nhìn đại dương mây cuồn cuộn và đồi hoa Chi Pâu tím biếc.",
+    "routeSteps": [
+      "Hà Nội",
+      "Nghĩa Lộ",
+      "Mỏ Chì Trạm Tấu",
+      "Lán 2.400m",
+      "Đỉnh Tà Chì Nhù (2.979m)"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Trạm Tấu – Lán nghỉ 2.400m', desc: 'Khởi hành từ Hà Nội lúc 05:30. 11:30 đến Mỏ Chì (Xà Hồ), bắt đầu vượt dốc Ba Tầng. 16:30 đến lán nghỉ ngắm hoàng hôn tím ngắt.' },
-      { day: 'Ngày 2', title: 'Đón bình minh đỉnh 2.979m – Về Hà Nội', desc: '05:00 trekking lên chóp đỉnh đón mặt trời ló rạng trên biển mây. Trưa xuống núi tắm suối khoáng nóng Trạm Tấu trước khi về Hà Nội.' }
+    "historyStory": "Tà Chì Nhù (còn gọi là Phu Song Sung) cao 2.979m, là đỉnh núi cao thứ 7 tại Việt Nam. Nơi đây được ví như 'vương quốc mây và hoa' nhờ không gian lộng gió và những triền đồi hoa Chi Pâu tím ngắt nở rộ vào mùa thu đông.",
+    "description": "Chiêm ngưỡng đồi hoa tím Chi Pâu nở bạt ngàn khắp các sườn núi và đón hoàng hôn biển mây ngoạn mục bậc nhất miền Bắc.",
+    "departureDates": [
+      "22/11/2026",
+      "29/11/2026",
+      "06/12/2026",
+      "13/12/2026"
     ],
-    included: ['Xe Limousine / Giường nằm chất lượng cao', 'Vé tắm khoáng nóng thư giãn Trạm Tấu', 'Porter bản địa gùi hành lý và nấu ăn', 'Toàn bộ bữa ăn chính và đồ ăn nhẹ', 'Bảo hiểm du lịch mạo hiểm 100.000.000đ'],
-    preparation: ['Giày trekking bám đất tốt chống trơn trượt dốc', 'Áo khoác gió & áo ấm giữ nhiệt', 'Mũ rộng vành & kem chống nắng']
+    "highlights": [
+      "Đắm chìm giữa thảo nguyên hoa tím Chi Pâu nở rực khắp các triền đồi.",
+      "Ngắm hoàng hôn và bình minh biển mây 360 độ từ đỉnh chóp inox 2.979m.",
+      "Trải nghiệm tắm khoáng nóng tự nhiên Trạm Tấu sau khi xuống núi."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Trạm Tấu",
+        "desc": "19:00 xe đón tại Hà Nội đi Nghĩa Lộ. Nghỉ đêm tại Trạm Tấu."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Mỏ Chì – Lán 2.400m",
+        "desc": "Trekking men theo sườn núi dốc ngắm mây và hoa Chi Pâu. 16:30 đến lán nghỉ ngắm hoàng hôn, ăn lẩu nóng."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh 2.979m – Tắm khoáng nóng",
+        "desc": "05:00 chạm đỉnh Tà Chì Nhù đón bình minh. Xuống núi tắm suối khoáng nóng Trạm Tấu thư giãn, về lại Hà Nội."
+      }
+    ],
+    "included": [
+      "Xe ô tô giường nằm khứ hồi Hà Nội – Trạm Tấu",
+      "Vé tắm khoáng nóng tự nhiên Trạm Tấu",
+      "Lán nghỉ trên núi, túi ngủ và chăn ấm",
+      "Porter bản địa & Leader nhiều kinh nghiệm",
+      "Huy chương gỗ Tà Chì Nhù độc quyền",
+      "Bảo hiểm du lịch trọn gói 100.000.000đ"
+    ],
+    "preparation": [
+      "Giày trekking bám tốt",
+      "Áo gió chống gió mạnh",
+      "Mũ tai bèo, kính râm",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 6: HÀNH HƯƠNG TAM CHÚC ---
   {
-    id: 6,
-    title: 'Hành hương Tam Chúc – Ba Sao An Nhiên',
-    category: 'spiritual',
-    subCategory: 'near_hanoi',
-    categoryName: 'Tâm linh',
-    duration: '1 ngày',
-    location: 'Hà Nội – Hà Nam',
-    price: '950.000đ/người',
-    priceNum: 950000,
-    rating: 4.9,
-    reviews: 88,
-    image: 'assets/images/tour-tam-chuc.jpg',
-    badge: 'Tâm linh',
-    altitudeBadge: '🪷 An yên',
-    altitude: '250m',
-    trekDistance: '6 km',
-    difficultyLevel: 1,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Du thuyền hồ Lục Nhạc, chiêm bái ngôi chùa lớn nhất thế giới giữa cảnh sắc sơn thủy hữu tình.',
-    routeMap: 'Khởi hành từ trung tâm Hà Nội theo cao tốc Pháp Vân – Cầu Giẽ đến thị trấn Ba Sao (huyện Kim Bảng, tỉnh Hà Nam). Đoàn lên thuyền du ngoạn lòng hồ Lục Nhạc, ghé thăm đình Tam Chúc cổ kính, vãng cảnh Điện Tam Thế, Điện Pháp Chủ, Điện Quan Âm và leo bộ lên Chùa Ngọc trên đỉnh núi Thất Tinh.',
-    routeSteps: ['Hà Nội', 'Thị trấn Ba Sao (Hà Nam)', 'Du thuyền Hồ Lục Nhạc', 'Đình Tam Chúc', 'Điện Tam Thế & Điện Pháp Chủ', 'Chùa Ngọc (Núi Thất Tinh)'],
-    historyStory: 'Khu danh thắng Tam Chúc gắn liền với huyền tích "Tiền Lục Nhạc – Hậu Thất Tinh", kể về 6 quả núi nổi lên giữa lòng hồ tượng trưng cho 6 chiếc chuông nhà trời và 7 ngọn núi phía sau tỏa sáng tựa 7 ngôi sao. Chùa Tam Chúc cổ được xây dựng từ thời nhà Đinh cách đây hơn 1.000 năm. Quần thể chùa mới hiện nay lưu giữ bức tường đá phù điêu khổng lồ bằng đá dung nham núi lửa do các nghệ nhân Hồi giáo Indonesia tạc thủ công và cây Bồ Đề quý được chiết từ Cây Bồ Đề Vĩ Đại 2.250 tuổi tại Sri Lanka.',
-    description: 'Chuyến hành hương tìm về cõi Phật thanh tịnh giữa non nước Ninh Bình - Hà Nam, du thuyền trên hồ Lục Nhạc và viếng chùa Tam Chúc linh thiêng.',
-    departureDates: ['01/11/2026', '15/11/2026', '29/11/2026'],
-    highlights: [
-      'Đi thuyền du ngoạn ngắm cảnh non nước hữu tình trên hồ Lục Nhạc.',
-      'Chiêm bái Điện Tam Thế, Điện Pháp Chủ và Điện Quan Âm nguy nga thanh tịnh.',
-      'Thưởng thức bữa cơm chay thanh lọc thân tâm trong không gian an lạc.'
+    "id": 6,
+    "code": "LT01",
+    "title": "Lảo Thần – Nóc nhà Y Tý (2.860m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Săn mây Y Tý",
+    "altitudeBadge": "Đỉnh 2.860m",
+    "image": "assets/images/tour-y-ty.jpg",
+    "price": "3.000.000đ/người",
+    "priceNum": 3000000,
+    "agencyPrice": "2.700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Bát Xát, Lào Cai",
+    "altitude": "2.860m",
+    "trekDistance": "Khoảng 16 km",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ - Trung bình (Rất dễ đi)",
+    "isFeatured": false,
+    "reviews": 110,
+    "shortSummary": "Cung leo núi 'quốc dân' cực chill, ngắm bình minh trên biển mây bồng bềnh và check-in mỏm đá câu cá Y Tý.",
+    "routeMap": "Từ Hà Nội đi thị trấn Sapa rồi di chuyển lên xã vùng cao Y Tý (Bát Xát). Tuyến leo thoai thoải qua đồi cây cháy, lán người Mông và sống núi thoai thoải lên chóp inox 2.860m.",
+    "routeSteps": [
+      "Hà Nội",
+      "Sapa",
+      "Y Tý",
+      "Lán nghỉ A Hờ",
+      "Mỏm đá Câu Cá",
+      "Đỉnh Lảo Thần (2.860m)"
     ],
-    itinerary: [
-      { day: '07:00', title: 'Khởi hành Hà Nội – Hà Nam', desc: 'Xe đón tại điểm hẹn, phổ biến ý nghĩa tâm linh của chuyến đi.' },
-      { day: '09:00', title: 'Du thuyền hồ Lục Nhạc & Chùa Tam Chúc', desc: 'Đi thuyền vãng cảnh, dâng hương chiêm bái các pho tượng đồng khổng lồ.' },
-      { day: '12:30', title: 'Thực dưỡng cơm chay thanh tịnh', desc: 'Dùng bữa cơm chay bổ dưỡng, tĩnh tâm nghe chuông chùa ngân vang.' },
-      { day: '16:30', title: 'Khởi hành về Hà Nội', desc: 'Ghé thăm làng nghề truyền thống mua quà cho gia đình, về đến Hà Nội lúc 18:30.' }
+    "historyStory": "Lảo Thần cao 2.860m được xem là 'nóc nhà của vùng đất sương mù Y Tý'. Địa hình cung này thoai thoải, đường mòn rõ ràng nên là lựa chọn số 1 cho người mới bắt đầu bước chân vào bộ môn trekking leo núi.",
+    "description": "Cung trekking nhẹ nhàng, lãng mạn với biển mây tràn thung lũng, hoàng hôn rực rỡ và sao trời ngút ngàn đêm trên núi.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe đưa đón chất lượng cao', 'Vé du thuyền hồ Tam Chúc', 'Bữa trưa thực dưỡng chay thịnh soạn', 'Hướng dẫn viên am hiểu Phật pháp', 'Bảo hiểm du lịch', 'Nước uống & khăn lạnh'],
-    preparation: ['Trang phục lịch sự kín đáo', 'Giày bệt hoặc giày thể thao êm chân', 'Tâm thái an yên nhẹ nhàng']
+    "highlights": [
+      "Check-in Mỏm đá Câu cá và Cây cầu gỗ vươn ra biển mây huyền ảo.",
+      "Ngắm biển mây lúc hoàng hôn và bình minh đẹp nhất vùng rẻo cao Y Tý.",
+      "Thưởng thức gà nướng xôi ngũ sắc bên bếp lửa bập bùng cùng đồng bào Mông."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Sapa – Y Tý",
+        "desc": "21:30 đón tại Hà Nội đi Lào Cai trên xe giường nằm êm ái."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Y Tý – Lán A Hờ (Trek 8km)",
+        "desc": "Ăn sáng tại Y Tý, bắt đầu trek qua rừng thảo quả lên lán. Chiều săn mây hoàng hôn đỏ rực."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh Lảo Thần 2.860m – Hà Nội",
+        "desc": "05:00 đón bình minh trên đỉnh chóp inox. Xuống núi tắm lá thuốc Dao đỏ Sapa, lên xe về Hà Nội."
+      }
+    ],
+    "included": [
+      "Xe giường nằm khứ hồi Hà Nội – Sapa – Y Tý",
+      "Lán gỗ ngủ trên núi đầy đủ chăn ấm",
+      "Leader Đi Cùng Gió & Porter bản địa tận tâm",
+      "Huy chương gỗ lưu niệm độc quyền",
+      "Bảo hiểm du lịch 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Giày thể thao êm chân",
+      "Áo ấm, khăn quàng",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 7: CHÙA HƯƠNG ---
   {
-    id: 7,
-    title: 'Chiêm bái Chùa Hương – Suối Yến Mùa Hoa Súng',
-    category: 'spiritual',
-    subCategory: 'near_hanoi',
-    categoryName: 'Tâm linh',
-    duration: '1 ngày',
-    location: 'Hà Nội – Mỹ Đức',
-    price: '890.000đ/người',
-    priceNum: 890000,
-    rating: 4.8,
-    reviews: 64,
-    image: 'assets/images/tour-chua-huong.jpg',
-    badge: 'Tâm linh',
-    altitudeBadge: '🌸 Thanh tịnh',
-    altitude: '390m',
-    trekDistance: '8 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ - Vừa',
-    isFeatured: false,
-    shortSummary: 'Xuôi dòng Suối Yến ngắm hoa súng nở rộ, leo núi vãng cảnh Động Hương Tích – Nam Thiên Đệ Nhất Động.',
-    routeMap: 'Từ trung tâm Hà Nội di chuyển 60km về bến Đục (huyện Mỹ Đức). Đoàn ngồi thuyền nan truyền thống xuôi dòng suối Yến thơ mộng rợp sắc hoa súng, cập bến đền Trình, chiêm bái chùa Thiên Trù và leo bộ qua các bậc đá rêu phong chinh phục Động Hương Tích.',
-    routeSteps: ['Hà Nội', 'Bến Đục (Mỹ Đức)', 'Thuyền nan Suối Yến', 'Đền Trình & Chùa Thiên Trù', 'Bậc đá núi Hương Sơn', 'Động Hương Tích'],
-    historyStory: 'Chùa Hương (Hương Sơn) là trung tâm Phật giáo linh thiêng bậc nhất xứ Đàng Ngoài từ thế kỷ 15. Tương truyền, đây là nơi Bồ Tát Quán Thế Âm đã ứng hiện tu hành đắc đạo cứu độ chúng sinh. Năm 1770, chúa Tĩnh Đô Vương Trịnh Sâm khi tuần du vãng cảnh đã tự tay đề 5 chữ vàng "Nam Thiên Đệ Nhất Động" (Động đẹp nhất trời Nam) lên cửa động Hương Tích hình hàm rồng uy nghiêm.',
-    description: 'Xuôi dòng suối Yến thơ mộng ngắm hoa súng rực rỡ, leo các bậc đá cổ kính lên Động Hương Tích linh thiêng cầu bình an cho gia đạo.',
-    departureDates: ['08/11/2026', '22/11/2026', '06/12/2026'],
-    highlights: [
-      'Ngồi thuyền nan trôi nhẹ giữa dòng Suối Yến ngắm hoa súng nở hồng rực rỡ.',
-      'Chiêm bái chùa Thiên Trù cổ kính và động Hương Tích linh thiêng.',
-      'Leo bộ rèn luyện sức khỏe qua các bậc đá núi Hương Sơn phủ bóng mát.'
+    "id": 7,
+    "code": "LC01",
+    "title": "Lùng Cúng – Cung đường đỗ quyên Tú Lệ (2.913m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Đỉnh 2.913m",
+    "altitudeBadge": "Đỉnh 2.913m",
+    "image": "assets/images/tour-lung-cung.jpg",
+    "price": "2.800.000đ/người",
+    "priceNum": 2800000,
+    "agencyPrice": "2.500.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 2 đêm",
+    "location": "Mù Cang Chải, Yên Bái",
+    "altitude": "2.913m",
+    "trekDistance": "Khoảng 18 km",
+    "difficultyLevel": 3,
+    "difficultyText": "Trung bình",
+    "isFeatured": false,
+    "reviews": 88,
+    "shortSummary": "Chinh phục ngọn núi bí ẩn của người Thái bản Tu San, đón gió trên bãi cỏ bạt ngàn tại đỉnh Lùng Cúng 2.913m.",
+    "routeMap": "Từ Hà Nội đi thị trấn Tú Lệ, rẽ vào bản Tu San (Mù Cang Chải). Tuyến trek xuyên qua những cánh rừng hạt dẻ cổ thụ, rừng trúc xanh ngút ngàn và triền đồi hoa đỗ quyên rực rỡ.",
+    "routeSteps": [
+      "Hà Nội",
+      "Tú Lệ",
+      "Bản Tu San",
+      "Rừng trúc cổ",
+      "Lán nghỉ",
+      "Đỉnh Lùng Cúng (2.913m)"
     ],
-    itinerary: [
-      { day: '06:30', title: 'Hà Nội – Bến Đục', desc: 'Khởi hành từ Hà Nội, đến bến Đục lên thuyền nan xuôi dòng suối Yến.' },
-      { day: '09:00', title: 'Xuôi dòng Suối Yến', desc: 'Thưởng ngoạn cảnh sắc mộng mơ suối Yến mùa hoa súng nở rộ.' },
-      { day: '11:00', title: 'Chùa Thiên Trù – Động Hương Tích', desc: 'Dâng hương lễ Phật, chiêm ngưỡng bầu nhũ đá kỳ ảo trong động.' },
-      { day: '16:30', title: 'Về lại Hà Nội', desc: 'Thuyền đưa đoàn về bến Đục, lên xe trở về trung tâm Hà Nội lúc 18:30.' }
+    "historyStory": "Lùng Cúng được đặt tên theo bản làng hẻo lánh dưới chân núi. Đỉnh núi cao 2.913m với thảo nguyên cỏ bằng phẳng trên đỉnh, mang lại tầm nhìn bao quát toàn bộ thung lũng Mù Cang Chải và ruộng bậc thang kỳ vĩ.",
+    "description": "Hành trình hoang sơ chạm vào trái tim đại ngàn Mù Cang Chải, thưởng thức xôi nếp nương Tú Lệ thơm dẻo.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe du lịch đời mới máy lạnh', 'Thuyền nan khứ hồi suối Yến', 'Vé thắng cảnh danh lam Chùa Hương', 'Bữa trưa đặc sản rau sắng chùa Hương', 'Hướng dẫn viên suốt tuyến'],
-    preparation: ['Trang phục kín đáo khi vào chùa', 'Giày đi bộ êm chân', 'Mũ nón che nắng']
+    "highlights": [
+      "Đứng trên thảo nguyên cỏ bao la lộng gió tại đỉnh chóp 2.913m.",
+      "Băng qua khu rừng trúc thẳng tắp huyền ảo như phim kiếm hiệp.",
+      "Thưởng thức đặc sản nếp nương Tú Lệ và lợn bản nướng thơm phức."
+    ],
+    "itinerary": [
+      {
+        "day": "Đêm 0",
+        "title": "Hà Nội – Tú Lệ",
+        "desc": "19:00 xuất phát từ 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Tú Lệ. Nghỉ đêm homestay."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Bản Tu San – Lán nghỉ 2.400m",
+        "desc": "Trek qua rừng trúc, rừng thảo quả và suối trong. Chiều đến lán nghỉ ngắm hoàng hôn mây bồng bềnh."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh Lùng Cúng 2.913m – Hà Nội",
+        "desc": "Sáng sớm chạm đỉnh ngắm bình minh 360 độ. Xuống núi về Tú Lệ, ăn trưa và lên xe về Hà Nội."
+      }
+    ],
+    "included": [
+      "Xe ô tô giường nằm khứ hồi Hà Nội – Tú Lệ",
+      "Lán nghỉ trên núi, túi ngủ ấm",
+      "Porter bản địa & Leader theo sát chăm sóc",
+      "Huy chương gỗ Lùng Cúng độc quyền",
+      "Bảo hiểm du lịch 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Giày leo núi có gai",
+      "Áo gió giữ ấm",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 8: BÁI ĐÍNH – TRÀNG AN ---
   {
-    id: 8,
-    title: 'Hành hương Bái Đính – Non nước Tràng An',
-    category: 'spiritual',
-    subCategory: 'near_hanoi',
-    categoryName: 'Tâm linh',
-    duration: '1 ngày',
-    location: 'Hà Nội – Ninh Bình',
-    price: '990.000đ/người',
-    priceNum: 990000,
-    rating: 4.9,
-    reviews: 110,
-    image: 'assets/images/tour-bai-dinh.jpg',
-    badge: 'Tâm linh',
-    altitudeBadge: '🏯 Di sản',
-    altitude: '200m',
-    trekDistance: '7 km',
-    difficultyLevel: 1,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Chiêm bái đại tự Bái Đính giữ nhiều kỷ lục châu Á, ngồi thuyền khám phá Di sản Thế giới Tràng An.',
-    routeMap: 'Khởi hành từ Hà Nội theo Quốc lộ 1A về cố đô Hoa Lư (Ninh Bình). Buổi sáng tham quan quần thể chùa Bái Đính, đi dọc hành lang La Hán dài nhất châu Á, viếng Bảo Tháp và Điện Tam Thế. Buổi chiều xuôi thuyền chèo tay qua hệ thống hang động karst ngập nước kỳ ảo tại Tràng An.',
-    routeSteps: ['Hà Nội', 'Ninh Bình (Cố đô Hoa Lư)', 'Chùa Bái Đính', 'Hành lang 500 vị La Hán', 'Bảo Tháp & Điện Tam Thế', 'Quần thể hang động Tràng An'],
-    historyStory: 'Chùa Bái Đính cổ nằm trên sườn núi Đính có lịch sử nghìn năm từ thời Lý, là nơi thiền sư Nguyễn Minh Không lập am bốc thuốc cứu dân. Quần thể Bái Đính mới hiện nay là trung tâm Phật giáo nắm giữ hàng loạt kỷ lục châu Á: tượng Phật bằng đồng dát vàng lớn nhất, hành lang La Hán dài nhất và đại hồng chung nặng 36 tấn. Kết hợp cùng Quần thể danh thắng Tràng An – Di sản Văn hóa và Thiên nhiên Thế giới kép duy nhất tại Đông Nam Á.',
-    description: 'Hành trình kết hợp tâm linh và khám phá Di sản Thiên nhiên Thế giới Tràng An với hàng trăm hang động đá vôi kỳ vĩ.',
-    departureDates: ['26/10/2026', '09/11/2026', '23/11/2026'],
-    highlights: [
-      'Chiêm ngưỡng hành lang La Hán dài nhất châu Á với 500 pho tượng đá nguyên khối.',
-      'Du thuyền xuyên qua các hang động karst tự nhiên kỳ ảo tại Tràng An.',
-      'Thưởng thức đặc sản cơm cháy, dê núi Ninh Bình nức tiếng.'
+    "id": 8,
+    "code": "NCS01",
+    "title": "Nhìu Cồ San – Thác Ong Chúa (2.965m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Đỉnh 2.965m",
+    "altitudeBadge": "Đỉnh 2.965m",
+    "image": "assets/images/tour-nhiu-co-san.jpg",
+    "price": "2.800.000đ/người",
+    "priceNum": 2800000,
+    "agencyPrice": "2.700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 2 đêm",
+    "location": "Bát Xát, Lào Cai",
+    "altitude": "2.965m",
+    "trekDistance": "Khoảng 16 km",
+    "difficultyLevel": 3,
+    "difficultyText": "Trung bình",
+    "isFeatured": false,
+    "reviews": 76,
+    "shortSummary": "Chinh phục đỉnh núi Sừng Trâu hoang dã, chiêm ngưỡng Thác Ong Chúa tuyệt mỹ và rừng thảo quả ngát hương.",
+    "routeMap": "Từ Hà Nội qua Sapa đến bản Nhìu Cồ San (Bát Xát). Cung đường đưa bạn qua Thác Ong Chúa kỳ vĩ tung bọt trắng xóa, xuyên rừng đỗ quyên và rừng trúc lên chóp inox 2.965m.",
+    "routeSteps": [
+      "Hà Nội",
+      "Sapa",
+      "Bản Nhìu Cồ San",
+      "Thác Ong Chúa",
+      "Lán nghỉ",
+      "Đỉnh Nhìu Cồ San (2.965m)"
     ],
-    itinerary: [
-      { day: '07:30', title: 'Hà Nội – Ninh Bình', desc: 'Xe đón đoàn khởi hành theo cao tốc Hà Nội – Ninh Bình.' },
-      { day: '09:30', title: 'Vãn cảnh Đại Bi Tự Bái Đính', desc: 'Viếng Bảo Tháp, Điện Tam Thế, giếng Ngọc nghìn năm.' },
-      { day: '12:30', title: 'Ăn trưa đặc sản dê núi', desc: 'Dùng bữa tại nhà hàng địa phương với các món ẩm thực Ninh Bình.' },
-      { day: '14:00', title: 'Du ngoạn Tràng An', desc: 'Ngồi thuyền nan len lỏi qua hang Sáng, hang Tối, hang Ba Giọt.' },
-      { day: '17:30', title: 'Về lại Hà Nội', desc: 'Khởi hành về đến thủ đô khoảng 19:30.' }
+    "historyStory": "Nhìu Cồ San theo tiếng người H’Mông có nghĩa là 'núi ba sừng trâu'. Với độ cao 2.965m (top 9 ngọn núi cao nhất Việt Nam), nơi đây còn lưu giữ con đường đá cổ Pavi thời Pháp thuộc chạy xuyên qua đại ngàn.",
+    "description": "Cung leo núi giàu trải nghiệm thiên nhiên với thác nước tuyệt đẹp, khu rừng nguyên sinh rêu phong và đỉnh cao lộng gió.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe du lịch cao cấp', 'Vé thuyền Tràng An', 'Xe điện Bái Đính khứ hồi', 'Bữa trưa đặc sản địa phương', 'Hướng dẫn viên nhiệt tình'],
-    preparation: ['Giày thể thao', 'Ô/dù che nắng mưa', 'Trang phục trang nhã']
+    "highlights": [
+      "Chiêm ngưỡng Thác Ong Chúa hùng vĩ tuôn dòng nước mát lạnh giữa vách đá dựng đứng.",
+      "Check-in chóp inox 2.965m ngắm trọn vẹn dải Hoàng Liên Sơn mờ ảo trong mây.",
+      "Tắm lá thuốc người Dao đỏ tại Sapa hồi phục sức khỏe sau chuyến đi."
+    ],
+    "itinerary": [
+      {
+        "day": "Đêm 0",
+        "title": "Hà Nội – Sapa – Bát Xát",
+        "desc": "21:30 xe giường nằm đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Lào Cai."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Bản Nhìu Cồ San – Thác Ong Chúa – Lán",
+        "desc": "Check-in Thác Ong Chúa tráng lệ, vượt rừng rêu và đỗ quyên lên lán nghỉ ngơi."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh 2.965m – Tắm lá thuốc – Hà Nội",
+        "desc": "Đón bình minh trên đỉnh núi, xuống chân núi tắm lá thuốc Dao đỏ Sapa, lên xe về Hà Nội lúc 21:00."
+      }
+    ],
+    "included": [
+      "Xe giường nằm khứ hồi Hà Nội – Lào Cai",
+      "Lán ngủ trên núi có túi ngủ ấm",
+      "Porter bản địa & Leader chu đáo",
+      "Tắm lá thuốc người Dao đỏ",
+      "Huy chương gỗ Nhìu Cồ San kỷ niệm",
+      "Bảo hiểm du lịch 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Giày trekking chống trơn",
+      "Áo ấm, tất dài",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 9: SĂN MÂY Y TÝ ---
   {
-    id: 9,
-    title: 'Săn mây Y Tý – Thảo nguyên Choản Thèn',
-    category: 'experience',
-    subCategory: 'experience',
-    categoryName: 'Trải nghiệm',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Bát Xát (Lào Cai)',
-    price: '1.950.000đ/người',
-    priceNum: 1950000,
-    rating: 5.0,
-    reviews: 43,
-    image: 'assets/images/tour-y-ty.jpg',
-    badge: 'Trải nghiệm',
-    altitudeBadge: '☁️ 2.000m',
-    altitude: '2.000m',
-    trekDistance: '12 km',
-    difficultyLevel: 3,
-    difficultyText: 'Trung bình',
-    isFeatured: false,
-    shortSummary: 'Khám phá vùng đất mây mù biên viễn, check-in công viên Choản Thèn và ngắm nhà Trình Tường người Hà Nhì.',
-    routeMap: 'Di chuyển từ Hà Nội lên thành phố Lào Cai, tiếp tục men theo cung đường đèo hiểm trở qua thung lũng Mường Hum lên xã vùng cao Y Tý (huyện Bát Xát). Khám phá bản cổ Choản Thèn, ngắm hoàng hôn Ngải Thầu Thượng và trekking săn biển mây dâng ngập thung lũng.',
-    routeSteps: ['Hà Nội', 'Thành phố Lào Cai', 'Thung lũng Mường Hum', 'Xã Y Tý', 'Bản cổ Choản Thèn & Nhà Trình Tường', 'Đỉnh Ngải Thầu Thượng (2.100m)'],
-    historyStory: 'Y Tý nằm ở độ cao trên 2.000m sát đường biên giới Việt – Trung, quanh năm chìm trong biển mây sương. Đây là địa bàn sinh sống của người Hà Nhì đen với kiến trúc nhà Trình Tường đất nện dày 40-50cm hình nấm độc đáo, ấm vào mùa đông và mát vào mùa hè. Bản cổ Choản Thèn có lịch sử hơn 300 năm vẫn giữ trọn phong tục lễ hội "Khô Già Già" tôn vinh mẹ thiên nhiên và thần rừng.',
-    description: 'Hành trình đưa bạn đến vùng đất cổ tích Y Tý ngắm những ngôi nhà Trình Tường hình nấm độc đáo của người Hà Nhì giữa biển mây bồng bềnh.',
-    departureDates: ['08/11/2026', '22/11/2026', '06/12/2026'],
-    highlights: [
-      'Đón biển mây tràn qua các thung lũng tại Ngải Thầu Thượng – điểm cao nhất Bát Xát.',
-      'Check-in hai cây phong cô đơn tại công viên Choản Thèn lúc hoàng hôn buông xuống.',
-      'Thưởng thức thịt lợn cắp nách nướng than và rượu Sim San thơm nồng.'
+    "id": 9,
+    "code": "FSP",
+    "title": "Fansipan – Chinh phục Nóc nhà Đông Dương (3.143m)",
+    "category": "trekking",
+    "subCategory": "trekking",
+    "badge": "Nóc nhà Đông Dương",
+    "altitudeBadge": "Đỉnh 3.143m",
+    "image": "assets/images/tour-fansipan.jpg",
+    "price": "3.000.000đ/người",
+    "priceNum": 3000000,
+    "agencyPrice": "2.700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Sapa, Lào Cai",
+    "altitude": "3.143m",
+    "trekDistance": "Khoảng 24 km",
+    "difficultyLevel": 4,
+    "difficultyText": "Thử thách thể lực",
+    "isFeatured": false,
+    "reviews": 160,
+    "shortSummary": "Hành trình tự thân leo bộ chinh phục đỉnh Fansipan 3.143m kiêu hãnh – cột mốc lịch sử của mọi trekker Việt Nam.",
+    "routeMap": "Từ Hà Nội lên thị xã Sapa. Xuất phát từ Trạm Tôn (1.900m), men theo rừng trúc và khe suối lên lán 2.800m nghỉ đêm, sáng sớm vượt dốc đá dựng đứng chạm chóp inox 3.143m.",
+    "routeSteps": [
+      "Hà Nội",
+      "Sapa",
+      "Trạm Tôn (1.900m)",
+      "Lán 2.800m",
+      "Đỉnh Fansipan (3.143m)"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Lào Cai – Y Tý', desc: '06:00 khởi hành qua cao tốc Nội Bài – Lào Cai, vượt đèo Mường Hum lên Y Tý. Chiều khám phá bản Choản Thèn, ngắm hoàng hôn Ngải Thầu.' },
-      { day: 'Ngày 2', title: 'Săn mây thung lũng Thề Pả – Hà Nội', desc: '05:30 đón bình minh biển mây thung lũng Thề Pả. Thăm chợ phiên vùng cao trước khi quay về Hà Nội lúc 20:00.' }
+    "historyStory": "Fansipan cao 3.143m là ngọn núi cao nhất ba nước Việt Nam – Lào – Campuchia, được xưng tụng là 'Nóc nhà Đông Dương'. Chinh phục Fansipan bằng chính đôi chân mình trên cung đường Trạm Tôn là niềm tự hào của hàng ngàn bạn trẻ đam mê phiêu lưu.",
+    "description": "Cung trekking kinh điển vượt qua giới hạn bản thân, chiêm ngưỡng quần thể tâm linh kỳ vĩ trên đỉnh mây ngàn.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe giường nằm hoặc limousine', 'Homestay nhà trình tường view mây', 'Các bữa ăn vùng cao', 'Hướng dẫn viên am hiểu phong tục bản địa', 'Bảo hiểm du lịch'],
-    preparation: ['Áo khoác ấm nhiều lớp', 'Giày đi bộ', 'Thuốc men cá nhân']
+    "highlights": [
+      "Tự hào chạm tay vào chóp inox 3.143m – Nóc nhà Đông Dương bằng chính sức lực của mình.",
+      "Chiêm ngưỡng biển mây bao la và Đại tượng Phật A Di Đà sừng sững giữa trời xanh.",
+      "Nhận giấy chứng nhận và huy chương chinh phục Fansipan độc quyền từ Đi Cùng Gió."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 0",
+        "title": "Hà Nội – Sapa",
+        "desc": "21:30 xe giường nằm chất lượng cao đón tại Hà Nội đi Sapa."
+      },
+      {
+        "day": "Ngày 1",
+        "title": "Trạm Tôn – Lán 2.800m",
+        "desc": "Khởi hành từ Trạm Tôn, băng qua rừng trúc và suối đá. Đến lán 2.800m nghỉ đêm, ngắm bầu trời sao rực rỡ."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Chạm đỉnh Fansipan 3.143m – Hà Nội",
+        "desc": "06:00 đón bình minh trên Nóc nhà Đông Dương. Xuống núi Trạm Tôn, tắm lá thuốc Dao đỏ và về Hà Nội."
+      }
+    ],
+    "included": [
+      "Xe giường nằm khứ hồi Hà Nội – Sapa",
+      "Giấy phép leo núi Fansipan của Vườn Quốc Gia Hoàng Liên",
+      "Lán ngủ 2.800m có chăn ấm, túi ngủ",
+      "Leader & Porter bản địa dày dạn kinh nghiệm",
+      "Huy chương gỗ độc quyền Đi Cùng Gió",
+      "Bảo hiểm du lịch 100.000.000đ/người"
+    ],
+    "preparation": [
+      "Giày trekking chuyên dụng bám dốc",
+      "Áo gió chống mưa tuyết",
+      "Găng tay, tất dài",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 10: MÙ CANG CHẢI ---
   {
-    id: 10,
-    title: 'Mù Cang Chải – Mùa Vàng Ruộng Bậc Thang',
-    category: 'experience',
-    subCategory: 'experience',
-    categoryName: 'Trải nghiệm',
-    duration: '3 ngày 2 đêm',
-    location: 'Hà Nội – Yên Bái',
-    price: '2.150.000đ/người',
-    priceNum: 2150000,
-    rating: 5.0,
-    reviews: 78,
-    image: 'assets/images/tour-mu-cang-chai.jpg',
-    badge: 'Trải nghiệm',
-    altitudeBadge: '🌾 Mùa vàng',
-    altitude: '1.200m',
-    trekDistance: '15 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ - Vừa',
-    isFeatured: false,
-    shortSummary: 'Chiêm ngưỡng kiệt tác ruộng bậc thang Mâm Xôi, Móng Ngựa và vượt đèo Khau Phạ hùng vĩ bậc nhất Tây Bắc.',
-    routeMap: 'Khởi hành từ Hà Nội qua thị xã Nghĩa Lộ, vượt đèo Khau Phạ (tứ đại đỉnh đèo Tây Bắc) vào huyện Mù Cang Chải. Trekking qua đồi Mâm Xôi La Pán Tẩn, Mâm Xôi Lớn, Móng Ngựa Sáng Nhù và bản làng người Mông Lìm Mông dưới chân đèo.',
-    routeSteps: ['Hà Nội', 'Nghĩa Lộ', 'Đèo Khau Phạ (Tứ đại đỉnh đèo)', 'Đồi Mâm Xôi La Pán Tẩn', 'Vành Móng Ngựa Sáng Nhù', 'Bản Lìm Mông – Lìm Thái'],
-    historyStory: 'Ruộng bậc thang Mù Cang Chải là Di tích Quốc gia Đặc biệt, được vinh danh là một trong những kiệt tác cảnh quan nhân tạo đẹp nhất hành tinh. Qua hàng trăm năm khai phá, đồng bào dân tộc Mông nơi đây đã biến những triền đồi dốc đứng thành các bậc thang uốn lượn kỳ vĩ để giữ nước gieo cấy lúa, thể hiện trí tuệ và sự hòa hợp tuyệt đối giữa con người với thiên nhiên đại ngàn.',
-    description: 'Hành trình ngắm mùa lúa chín vàng óng ánh trên những nấc thang lên thiên đường tại La Pán Tẩn, Chế Cu Nha và đèo Khau Phạ.',
-    departureDates: ['26/10/2026', '09/11/2026', '23/11/2026'],
-    highlights: [
-      'Ngắm trọn vẹn kiệt tác đồi Mâm Xôi và đồi Móng Ngựa rực vàng mùa lúa chín.',
-      'Chinh phục đèo Khau Phạ – một trong tứ đại đỉnh đèo hùng vĩ của Việt Nam.',
-      'Giao lưu văn hóa múa khèn và thưởng thức xôi nếp Tú Lệ dẻo thơm.'
+    "id": 10,
+    "code": "NV01",
+    "title": "Ngọa Vân – Thánh địa Trúc Lâm Yên Tử",
+    "category": "spiritual",
+    "subCategory": "trekking",
+    "badge": "Tâm linh Trúc Lâm",
+    "altitudeBadge": "Độ cao 800m",
+    "image": "assets/images/tour-ngoa-van.jpg",
+    "price": "650.000đ/người",
+    "priceNum": 650000,
+    "agencyPrice": "600.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Đông Triều, Quảng Ninh",
+    "altitude": "800m",
+    "trekDistance": "Khoảng 8 km",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 65,
+    "shortSummary": "Hành hương về am thiêng Ngọa Vân – nơi Phật hoàng Trần Nhân Tông hóa Phật và nhập Niết bàn.",
+    "routeMap": "Từ Hà Nội theo QL18 đi thị xã Đông Triều (Quảng Ninh). Tuyến trekking men theo rừng thông và suối xanh, qua chùa Trại Cấp, dốc Đô Kiệu và viếng Am Ngọa Vân thanh tịnh trên đỉnh mây.",
+    "routeSteps": [
+      "Hà Nội",
+      "Đông Triều",
+      "Chùa Trại Cấp",
+      "Dốc Đô Kiệu",
+      "Am Ngọa Vân"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Nghĩa Lộ – Khau Phạ', desc: 'Khởi hành qua đồi chè Thanh Sơn, thị xã Nghĩa Lộ. Vượt đèo Khau Phạ ngắm thung lũng Lìm Mông.' },
-      { day: 'Ngày 2', title: 'Đồi Mâm Xôi – Vành Móng Ngựa', desc: 'Trekking qua những cung ruộng bậc thang vàng óng La Pán Tẩn, đón hoàng hôn Móng Ngựa.' },
-      { day: 'Ngày 3', title: 'Tú Lệ – Suối Giàng – Hà Nội', desc: 'Mua nếp cốm Tú Lệ, thưởng thức trà San Tuyết cổ thụ Suối Giàng trước khi về thủ đô.' }
+    "historyStory": "Am Ngọa Vân nằm trên ngọn núi Bảo Đài thuộc dãy cánh cung Đông Triều. Đây là thánh địa tối thượng của Phật giáo Trúc Lâm, nơi Phật hoàng Trần Nhân Tông tu hành những năm tháng cuối đời và viên tịch hóa Phật vào ngày 1 tháng 11 năm Mậu Thân (1308).",
+    "description": "Cung hành hương thanh tịnh giữa rừng thông ngát hương, lắng nghe tiếng chuông chùa thanh thản giữa non thiêng.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe du lịch tiện nghi', 'Homestay người Thái sạch sẽ', 'Ăn uống đặc sản Tây Bắc', 'Bảo hiểm du lịch', 'Áo cờ đỏ sao vàng'],
-    preparation: ['Trang phục chụp ảnh rực rỡ', 'Giày đi bộ thoải mái', 'Pin dự phòng máy ảnh']
+    "highlights": [
+      "Chiêm bái Am tháp Ngọa Vân nơi Phật hoàng Trần Nhân Tông nhập Niết bàn.",
+      "Dạo bước trên cung đường bậc đá rợp bóng rừng thông ngàn năm tuổi.",
+      "Thưởng thức cơm chay thanh đạm và cảm nhận sự thanh thản trong tâm hồn."
+    ],
+    "itinerary": [
+      {
+        "day": "06:00",
+        "title": "Hà Nội – Đông Triều",
+        "desc": "Xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Đông Triều (Quảng Ninh)."
+      },
+      {
+        "day": "08:30",
+        "title": "Trekking Am Ngọa Vân",
+        "desc": "Trekking qua dốc Đô Kiệu, rừng trúc và đồi thông xanh ngát."
+      },
+      {
+        "day": "12:00",
+        "title": "Chiêm bái & Ăn trưa",
+        "desc": "Dâng hương tại Am Ngọa Vân trên đỉnh núi, dùng bữa trưa picnic thanh tịnh."
+      },
+      {
+        "day": "15:30",
+        "title": "Xuống núi về Hà Nội",
+        "desc": "Xuống chân núi, lên xe trở về Hà Nội lúc 18:30."
+      }
+    ],
+    "included": [
+      "Xe ô tô đưa đón khứ hồi từ Hà Nội",
+      "Hướng dẫn viên theo sát lịch trình",
+      "Nước uống tinh khiết 500ml",
+      "Huy chương gỗ độc quyền kỷ niệm",
+      "Bảo hiểm du lịch trọn gói 20.000.000đ"
+    ],
+    "preparation": [
+      "Trang phục lịch sự kín đáo",
+      "Giày thể thao bám tốt",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 11: CAO NGUYÊN ĐÁ HÀ GIANG ---
   {
-    id: 11,
-    title: 'Cao nguyên đá Đồng Văn – Hẻm Tu Sản',
-    category: 'experience',
-    subCategory: 'experience',
-    categoryName: 'Trải nghiệm',
-    duration: '3 ngày 2 đêm',
-    location: 'Hà Nội – Hà Giang',
-    price: '2.450.000đ/người',
-    priceNum: 2450000,
-    rating: 5.0,
-    reviews: 115,
-    image: 'assets/images/tour-ha-giang.jpg',
-    badge: 'Trải nghiệm',
-    altitudeBadge: '⛰️ Công viên đá',
-    altitude: '1.600m',
-    trekDistance: '18 km',
-    difficultyLevel: 3,
-    difficultyText: 'Trung bình',
-    isFeatured: false,
-    shortSummary: 'Chinh phục Mã Pí Lèng, đi thuyền ngắm vực Tu Sản sâu nhất Đông Nam Á trên dòng Nho Quế xanh ngọc.',
-    routeMap: 'Khởi hành từ Hà Nội lên thành phố Hà Giang, qua Cổng trời Quản Bạ, dốc Thẩm Mã, dinh thự họ Vương tại Sà Phìn, cột cờ Quốc gia Lũng Cú, vượt đèo Mã Pí Lèng và chèo thuyền sông Nho Quế.',
-    routeSteps: ['Hà Nội', 'Cổng trời Quản Bạ', 'Dinh Thự Vua Mèo', 'Cột cờ Lũng Cú (Cực Bắc)', 'Đèo Mã Pí Lèng', 'Hẻm vực Tu Sản (Sông Nho Quế)'],
-    historyStory: 'Công viên Địa chất Toàn cầu UNESCO Cao nguyên đá Đồng Văn mang niên đại địa chất hàng trăm triệu năm với những dãy núi đá vôi xám tai mèo trùng điệp. Nơi đây là mảnh đất thiêng liêng địa đầu Tổ quốc gắn với con đường Hạnh Phúc huyền thoại được hàng vạn thanh niên xung phong đục đá mở đường trong những năm 1959-1965 để mang ánh sáng về cho đồng bào vùng biên.',
-    description: 'Hành trình chạm đến địa đầu cực Bắc Tổ quốc, đứng trên đỉnh đèo Mã Pí Lèng ngắm dòng sông Nho Quế màu ngọc bích huyền thoại.',
-    departureDates: ['01/11/2026', '15/11/2026', '29/11/2026'],
-    highlights: [
-      'Chạm tay vào lá cờ đỏ sao vàng 54m² tung bay kiêu hãnh trên đỉnh Lũng Cú.',
-      'Đi thuyền ngắm hẻm vực Tu Sản sâu nhất Đông Nam Á trên sông Nho Quế.',
-      'Khám phá kiến trúc dinh thự Vua Mèo Vương Chính Đức trăm năm tuổi.'
+    "id": 11,
+    "code": "TĐ01",
+    "title": "Núi Thanh Đằng – Ba Vàng An Nhiên",
+    "category": "spiritual",
+    "subCategory": "near_hanoi",
+    "badge": "Hành hương an lạc",
+    "altitudeBadge": "Độ cao 450m",
+    "image": "assets/images/tour-tam-chuc.jpg",
+    "price": "500.000đ/người",
+    "priceNum": 500000,
+    "agencyPrice": "450.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Uông Bí, Quảng Ninh",
+    "altitude": "450m",
+    "trekDistance": "Khoảng 6 km",
+    "difficultyLevel": 1,
+    "difficultyText": "Rất nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 52,
+    "shortSummary": "Hành hương leo núi Thanh Đằng, chiêm bái đại bảo tháp chùa Ba Vàng và ngắm toàn cảnh sông núi Uông Bí.",
+    "routeMap": "Từ Hà Nội đi Uông Bí, trekking theo sườn đồi thông núi Thanh Đằng thoai thoải, viếng thăm chùa Ba Vàng và dạo bước an lạc giữa thiên nhiên.",
+    "routeSteps": [
+      "Hà Nội",
+      "Uông Bí",
+      "Chân núi Thanh Đằng",
+      "Chùa Ba Vàng",
+      "Đỉnh đồi thông"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Quản Bạ – Yên Minh', desc: 'Vượt dốc Bắc Sum, check-in Cổng trời Quản Bạ, ngắm Núi Đôi cô tiên.' },
-      { day: 'Ngày 2', title: 'Dinh Vua Mèo – Lũng Cú – Đồng Văn', desc: 'Viếng Dinh họ Vương, chạm mốc cực Bắc Lũng Cú, tối dạo phố cổ Đồng Văn.' },
-      { day: 'Ngày 3', title: 'Mã Pí Lèng – Sông Nho Quế – Hà Nội', desc: 'Chinh phục Mã Pí Lèng, đi thuyền hẻm Tu Sản trước khi lên xe về Hà Nội.' }
+    "historyStory": "Núi Thanh Đằng tọa lạc tại vị trí phong thủy đắc địa 'tiền hữu ngoạn thủy, hậu hữu ỷ sơn'. Đây là vùng đất tâm linh thanh bình nằm kề bên quần thể di tích danh thắng Yên Tử.",
+    "description": "Chuyến đi trong ngày nhẹ nhàng phù hợp mọi lứa tuổi, kết hợp rèn luyện sức khỏe và hành hương thanh tịnh.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe giường nằm hoặc limousine', 'Khách sạn/homestay trung tâm', 'Vé thuyền sông Nho Quế', 'Các bữa ăn bản địa', 'Bảo hiểm du lịch'],
-    preparation: ['Áo ấm', 'Giấy tờ tùy thân bắt buộc', 'Máy ảnh & thẻ nhớ']
+    "highlights": [
+      "Chiêm bái ngôi chùa có tòa Chính điện trên núi lớn nhất Việt Nam.",
+      "Dạo bước giữa rừng thông thơ mộng ngắm thành phố Uông Bí từ trên cao.",
+      "Thưởng thức các món chay thanh lọc cơ thể và tâm trí."
+    ],
+    "itinerary": [
+      {
+        "day": "06:30",
+        "title": "Hà Nội – Uông Bí",
+        "desc": "Đón khách tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt khởi hành đi Uông Bí."
+      },
+      {
+        "day": "09:00",
+        "title": "Trekking núi Thanh Đằng",
+        "desc": "Băng qua đồi thông xanh ngát, hít thở không khí thanh trong."
+      },
+      {
+        "day": "12:00",
+        "title": "Chiêm bái & Nghỉ trưa",
+        "desc": "Dâng hương lễ Phật tại chùa Ba Vàng, dùng bữa cơm trưa thanh tịnh."
+      },
+      {
+        "day": "15:00",
+        "title": "Về lại Hà Nội",
+        "desc": "Lên xe khởi hành về Hà Nội, kết thúc chuyến đi lúc 18:00."
+      }
+    ],
+    "included": [
+      "Xe đưa đón khứ hồi",
+      "HDV theo sát",
+      "Nước uống & Bữa trưa chay",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Trang phục trang nhã",
+      "Giày êm",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 12: THIỆN NGUYỆN VÙNG CAO ---
   {
-    id: 12,
-    title: 'Áo ấm cho em – Thiện nguyện Mù Cang Chải',
-    category: 'charity',
-    subCategory: 'charity',
-    categoryName: 'Thiện nguyện',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Yên Bái',
-    price: '1.250.000đ/người',
-    priceNum: 1250000,
-    rating: 5.0,
-    reviews: 47,
-    image: 'assets/images/tour-thien-nguyen.jpg',
-    badge: 'Thiện nguyện',
-    altitudeBadge: '❤️ Yêu thương',
-    altitude: '1.400m',
-    trekDistance: '10 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Trao áo ấm, học bổng và nấu bữa cơm dinh dưỡng cho các em nhỏ điểm trường vùng cao xa xôi.',
-    routeMap: 'Đoàn xuất phát từ Hà Nội lên điểm trường mầm non và tiểu học vùng khó khăn tại xã Chế Tạo hoặc Lao Chải (Mù Cang Chải). Trekking nhẹ mang quà vào bản, tổ chức chương trình giao lưu, nấu ăn và trao tặng đồ dùng học tập.',
-    routeSteps: ['Hà Nội', 'Nghĩa Lộ', 'Thị trấn Mù Cang Chải', 'Trekking vào bản Chế Tạo', 'Điểm trường tiểu học vùng cao', 'Trao quà & Nấu cơm có thịt'],
-    historyStory: 'Chương trình "Áo ấm cho em" do Trekking Đi Cùng Gió khởi xướng từ năm 2021 với mong muốn mỗi bước chân lữ hành đều gắn liền với trách nhiệm xã hội. Mùa đông trên non cao Tây Bắc nhiệt độ thường xuyên xuống dưới 5°C, những chiếc áo ấm và cuốn sách nhỏ trao tận tay các em là ngọn lửa sưởi ấm ước mơ đến trường của thế hệ mầm non vùng biên cương.',
-    description: 'Hành trình kết nối yêu thương, mang chăn ấm, áo khoác mùa đông và tổ chức bữa cơm có thịt cho học sinh mầm non và tiểu học vùng cao.',
-    departureDates: ['15/11/2026', '06/12/2026', '20/12/2026'],
-    highlights: [
-      'Trao tận tay 150 bộ áo ấm mùa đông và đồ dùng học tập cho học trò bản nghèo.',
-      'Cùng các thành viên tự tay nấu bữa cơm dinh dưỡng "Có thịt" ấm áp cho các em nhỏ.',
-      'Trekking nhẹ ngắm cảnh bản làng nguyên sơ và đồi thông xanh ngắt.'
+    "id": 12,
+    "code": "TĐPH",
+    "title": "Thành Đẳng + Đồi Cỏ Cháy Phượng Hoàng",
+    "category": "spiritual",
+    "subCategory": "experience",
+    "badge": "Tâm linh & Cỏ cháy",
+    "altitudeBadge": "Độ cao 500m",
+    "image": "assets/images/tour-chua-huong.jpg",
+    "price": "750.000đ/người",
+    "priceNum": 750000,
+    "agencyPrice": "700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Uông Bí, Quảng Ninh",
+    "altitude": "500m",
+    "trekDistance": "Khoảng 8 km",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 48,
+    "shortSummary": "Hành trình kết hợp chiêm bái tâm linh Thành Đẳng và check-in đồi cỏ cháy Phượng Hoàng đẹp như thảo nguyên Mông Cổ.",
+    "routeMap": "Từ Hà Nội đi Uông Bí, hành hương chiêm bái Thành Đẳng buổi sáng, buổi chiều trekking chinh phục Đồi Phượng Hoàng với thảo nguyên cỏ vàng óng ánh.",
+    "routeSteps": [
+      "Hà Nội",
+      "Uông Bí",
+      "Thành Đẳng",
+      "Đồi Phượng Hoàng",
+      "Thảo nguyên cỏ cháy"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Điểm trường Mù Cang Chải', desc: 'Di chuyển sớm lên điểm trường, cùng thầy cô dọn dẹp, chuẩn bị nguyên liệu nấu ăn tối cho học sinh nội trú.' },
-      { day: 'Ngày 2', title: 'Trao quà thiện nguyện – Trở về Hà Nội', desc: '08:00 tổ chức ngày hội thiếu nhi, trao quà áo ấm, giao lưu trò chơi dân gian. Chiều đoàn khởi hành về lại Hà Nội lúc 21:00.' }
+    "historyStory": "Đồi Phượng Hoàng được mệnh danh là 'thảo nguyên Đà Lạt thu nhỏ' của Quảng Ninh. Mùa thu đông, những triền cỏ chuyển sang màu vàng cháy thơ mộng tạo nên khung cảnh lãng mạn vô cùng cuốn hút.",
+    "description": "Chuyến trekking check-in sống ảo cực đẹp kết hợp viếng cảnh chùa thanh tịnh trong một ngày cuối tuần.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe đưa đón tình nguyện viên', 'Chi phí ăn ở cùng bà con bản làng', 'Áo đồng phục tình nguyện viên', 'Bảo hiểm du lịch trọn gói'],
-    preparation: ['Trái tim nhiệt huyết sẻ chia', 'Quần áo ấm cá nhân', 'Đồ dùng ủng hộ sạch đẹp']
+    "highlights": [
+      "Check-in đồi cỏ cháy Phượng Hoàng ngút ngàn đẹp ngỡ ngàng.",
+      "Hành hương chiêm bái cầu bình an, may mắn cho gia đình.",
+      "Chụp những bức ảnh kỷ niệm tuyệt đẹp giữa thảo nguyên mộng mơ."
+    ],
+    "itinerary": [
+      {
+        "day": "06:00",
+        "title": "Hà Nội – Uông Bí",
+        "desc": "Xuất phát từ Hà Nội đi Uông Bí."
+      },
+      {
+        "day": "09:00",
+        "title": "Chiêm bái Thành Đẳng",
+        "desc": "Hành hương lễ Phật cầu bình an giữa không gian thanh tịnh."
+      },
+      {
+        "day": "13:30",
+        "title": "Trekking Đồi Phượng Hoàng",
+        "desc": "Chinh phục đỉnh đồi, ngắm toàn cảnh thung lũng cỏ cháy vàng rực lúc hoàng hôn."
+      },
+      {
+        "day": "16:30",
+        "title": "Về Hà Nội",
+        "desc": "Lên xe về lại thủ đô lúc 19:30."
+      }
+    ],
+    "included": [
+      "Xe đưa đón khứ hồi",
+      "Leader Đi Cùng Gió",
+      "Nước uống, đồ y tế",
+      "Huy chương gỗ độc quyền",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Trang phục màu nổi bật chụp ảnh",
+      "Giày thể thao",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 13: XÂY TỦ SÁCH VÙNG CAO ---
   {
-    id: 13,
-    title: 'Xây tủ sách vùng cao – Nậm Có Yên Bái',
-    category: 'charity',
-    subCategory: 'charity',
-    categoryName: 'Thiện nguyện',
-    duration: '2 ngày 1 đêm',
-    location: 'Hà Nội – Nậm Có',
-    price: '1.200.000đ/người',
-    priceNum: 1200000,
-    rating: 4.9,
-    reviews: 35,
-    image: 'assets/images/tour-thien-nguyen.jpg',
-    badge: 'Thiện nguyện',
-    altitudeBadge: '📚 Tri thức',
-    altitude: '1.100m',
-    trekDistance: '8 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Xây dựng thư viện xanh, tặng sách truyện và tổ chức lớp học kỹ năng sống cho trẻ em H’Mông.',
-    routeMap: 'Từ Hà Nội lên huyện Mù Cang Chải, rẽ vào cung đường đồi đất hiểm trở xã Nậm Có. Đoàn cùng người dân sơn sửa phòng học, đóng kệ sách gỗ và sắp xếp 1.000 đầu sách cho các em nhỏ.',
-    routeSteps: ['Hà Nội', 'Đèo Khau Phạ', 'Xã Nậm Có', 'Điểm trường bản Làng Nhì', 'Khánh thành Tủ sách xanh', 'Giao lưu cộng đồng bản H’Mông'],
-    historyStory: 'Xã Nậm Có là một trong những xã vùng sâu vùng xa nhất của huyện Mù Cang Chải với 98% là đồng bào H’Mông. Dự án "Tủ sách vùng cao" ra đời nhằm đưa tri thức, sách truyện song ngữ và kỹ năng đọc đến với các em học sinh nghèo, mở ra cánh cửa nhìn ra thế giới rộng lớn.',
-    description: 'Chung tay xây dựng không gian thư viện mở, trang bị hàng ngàn đầu sách truyện bổ ích cho các em nhỏ bản nghèo Nậm Có.',
-    departureDates: ['22/11/2026', '13/12/2026'],
-    highlights: [
-      'Xây dựng thành công 02 tủ sách xanh với hơn 1.000 cuốn sách bổ ích.',
-      'Tổ chức lớp vẽ tranh và kể chuyện tiếng Việt tương tác cùng học sinh.',
-      'Trải nghiệm lối sống sinh hoạt mộc mạc bên gia đình người Mông.'
+    "id": 13,
+    "code": "DG01",
+    "title": "Đà Giang Hòa Bình – Vịnh Ngòi Hoa & Hồ Mắt Ngọc",
+    "category": "experience",
+    "subCategory": "experience",
+    "badge": "Hồ Mắt Ngọc",
+    "altitudeBadge": "Lòng hồ Đà Giang",
+    "image": "assets/images/tour-da-giang.jpg",
+    "price": "790.000đ/người",
+    "priceNum": 790000,
+    "agencyPrice": "700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Tân Lạc, Hòa Bình",
+    "altitude": "Mặt hồ sông Đà",
+    "trekDistance": "Khoảng 6 km trek + Chèo thuyền",
+    "difficultyLevel": 1,
+    "difficultyText": "Nhẹ nhàng - Trải nghiệm nước",
+    "isFeatured": false,
+    "reviews": 79,
+    "shortSummary": "Du ngoạn vịnh Ngòi Hoa trên hồ Hòa Bình xanh biếc, khám phá Hồ Mắt Ngọc bí ẩn và hang động thạch nhũ kỳ vĩ.",
+    "routeMap": "Từ Hà Nội đi cảng Ngòi Hoa (Tân Lạc, Hòa Bình). Lên thuyền du ngoạn ngắm các đảo đá vôi xanh ngọc, trekking nhẹ vào bản người Mường và khám phá Hồ Mắt Ngọc tuyệt đẹp.",
+    "routeSteps": [
+      "Hà Nội",
+      "TP Hòa Bình",
+      "Cảng Ngòi Hoa",
+      "Du thuyền lòng hồ",
+      "Hồ Mắt Ngọc & Hang thạch nhũ"
     ],
-    itinerary: [
-      { day: 'Ngày 1', title: 'Hà Nội – Nậm Có', desc: 'Vận chuyển sách vở lên điểm trường, lắp ráp tủ sách, trang trí thư viện cùng thầy cô.' },
-      { day: 'Ngày 2', title: 'Khánh thành thư viện – Hà Nội', desc: 'Bàn giao tủ sách, hướng dẫn kỹ năng đọc sách, khởi hành về lại Hà Nội.' }
+    "historyStory": "Lòng hồ sông Đà được ví như 'Vịnh Hạ Long trên cạn của miền Tây Bắc'. Nơi đây nổi tiếng với phong cảnh sơn thủy hữu tình, dòng nước trong xanh như ngọc bích và bản sắc văn hóa Mường đặc sắc.",
+    "description": "Một ngày trốn khói bụi thủ đô, hòa mình vào làn nước mát lành và thiên nhiên non xanh nước biếc của dòng sông Đà huyền thoại.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe di chuyển khứ hồi', 'Ăn uống theo đoàn thiện nguyện', 'Bảo hiểm du lịch', 'Huy hiệu tình nguyện viên'],
-    preparation: ['Sách truyện cũ còn dùng tốt', 'Bút màu & đồ dùng học tập quyên góp']
+    "highlights": [
+      "Du thuyền lướt trên mặt hồ xanh ngắt giữa trập trùng đảo đá vôi hoang sơ.",
+      "Khám phá Hồ Mắt Ngọc nước trong nhìn thấu đáy và hang thạch nhũ kỳ ảo.",
+      "Thưởng thức cá nướng sông Đà và gà đồi thơm lừng tại nhà bè nổi."
+    ],
+    "itinerary": [
+      {
+        "day": "05:00",
+        "title": "Hà Nội – TP Hòa Bình – Cảng Ngòi Hoa",
+        "desc": "Xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Hòa Bình. Ăn sáng tại TP Hòa Bình."
+      },
+      {
+        "day": "08:30",
+        "title": "Du thuyền vịnh Ngòi Hoa",
+        "desc": "Lên thuyền ngắm vịnh Ngòi Hoa, chèo SUP trên mặt nước xanh ngọc."
+      },
+      {
+        "day": "11:30",
+        "title": "Ăn trưa cá sông Đà & Khám phá Hồ Mắt Ngọc",
+        "desc": "Ăn trưa đặc sản vùng hồ. Buổi chiều trekking khám phá hang động thạch nhũ và Hồ Mắt Ngọc."
+      },
+      {
+        "day": "16:00",
+        "title": "Về lại Hà Nội",
+        "desc": "Lên xe về lại thủ đô, kết thúc hành trình lúc 19:00."
+      }
+    ],
+    "included": [
+      "Xe ô tô du lịch đời mới khứ hồi",
+      "Thuyền tham quan chuyên dụng trên hồ Hòa Bình",
+      "Bữa ăn trưa đặc sản cá sông Đà tươi ngon",
+      "Leader & Áo phao an toàn tuyệt đối",
+      "Huy chương gỗ kỷ niệm độc quyền",
+      "Bảo hiểm du lịch 20.000.000đ"
+    ],
+    "preparation": [
+      "Quần áo dự phòng thay khi tắm hồ",
+      "Kem chống nắng",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 14: BA VÌ ---
   {
-    id: 14,
-    title: 'Trekking Rừng Quốc Gia Ba Vì',
-    category: 'near_hanoi',
-    subCategory: 'trekking',
-    categoryName: 'Gần Hà Nội',
-    duration: '1 ngày',
-    location: 'Hà Nội – Ba Vì',
-    price: '650.000đ/người',
-    priceNum: 650000,
-    rating: 4.8,
-    reviews: 92,
-    image: 'assets/images/tour-ba-vi.jpg',
-    badge: 'Gần Hà Nội',
-    altitudeBadge: '🌲 1.296m',
-    altitude: '1.296m',
-    trekDistance: '12 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ - Trung bình',
-    isFeatured: false,
-    shortSummary: 'Trốn khói bụi thành phố, trekking rừng nguyên sinh sương mờ và chạm đỉnh Vua – Đền Thượng Ba Vì.',
-    routeMap: 'Từ trung tâm Hà Nội di chuyển 50km về phía Tây đến Vườn Quốc Gia Ba Vì. Trekking xuyên rừng thông, rừng bách xanh cổ thụ, check-in nhà thờ đổ cổ kính thời Pháp và leo 1.300 bậc đá lên Đền Thượng trên đỉnh Vua.',
-    routeSteps: ['Hà Nội', 'Cổng VQG Ba Vì', 'Rừng Thông Cốt 400', 'Nhà Thờ Đổ Cổ Kính', 'Rừng Bách Xanh Cổ Thụ', 'Đền Thượng Đỉnh Vua (1.296m)'],
-    historyStory: 'Dãy núi Ba Vì (còn gọi là Tản Viên Sơn) là ngọn núi thiêng bậc nhất trong tâm thức người Việt, gắn liền với huyền tích Sơn Tinh – Thủy Tinh thời vua Hùng dựng nước. Vua Thánh Tản Viên là vị đệ nhất trong Tứ Bất Tử Việt Nam. Nơi đây từng là khu nghỉ dưỡng cao cấp thời Pháp thuộc với các tàn tích dinh thự và nhà thờ cổ phủ đầy rêu phong ẩn hiện giữa sương mù.',
-    description: 'Tour leo núi trong ngày lý tưởng gần Hà Nội, hít thở không khí rừng thông trong lành, khám phá nhà thờ đổ cổ kính và viếng đền thờ Bác Hồ trên đỉnh Vua.',
-    departureDates: ['26/10/2026', '01/11/2026', '08/11/2026', '15/11/2026'],
-    highlights: [
-      'Trekking rèn luyện thể lực qua những tán rừng bách xanh nghìn năm tuổi.',
-      'Check-in nhà thờ đá cổ rêu phong ma mị huyền ảo trong màn sương mù.',
-      'Viếng Đền Thượng thờ Đức Thánh Tản Viên và Đền thờ Bác Hồ trên đỉnh núi.'
+    "id": 14,
+    "code": "CT01",
+    "title": "Trekking Suối Cửa Tử – Thái Nguyên (Khứ Hồi Hà Nội)",
+    "category": "experience",
+    "subCategory": "near_hanoi",
+    "badge": "Vượt thác suối",
+    "altitudeBadge": "Khu bảo tồn Đại Từ",
+    "image": "assets/images/tour-cua-tu.jpg",
+    "price": "850.000đ/người",
+    "priceNum": 850000,
+    "agencyPrice": "800.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Đại Từ, Thái Nguyên",
+    "altitude": "Chân núi Tam Đảo",
+    "trekDistance": "Khoảng 8 – 10 km lội suối",
+    "difficultyLevel": 2,
+    "difficultyText": "Trung bình - Lội nước thú vị",
+    "isFeatured": false,
+    "reviews": 103,
+    "shortSummary": "Lội suối băng rừng nguyên sinh Đại Từ, trượt máng đá tự nhiên và nhảy thác mát lạnh tại suối Cửa Tử.",
+    "routeMap": "Từ Hà Nội theo cao tốc Hà Nội – Thái Nguyên đến chân suối Cửa Tử (xã Hoàng Nông, Đại Từ). Tuyến trekking lội dọc dòng suối đá trong vắt, vượt Cửa 1, Cửa 2 và Cửa 3 với những thác nước tuyệt mỹ.",
+    "routeSteps": [
+      "Hà Nội",
+      "Đại Từ (Thái Nguyên)",
+      "Cửa 1 (Máng trượt đá)",
+      "Cửa 2 (Bể bơi tự nhiên)",
+      "Cửa 3 (Thác nước đại ngàn)"
     ],
-    itinerary: [
-      { day: '06:30', title: 'Hà Nội – Ba Vì', desc: 'Xe đón đoàn tại trung tâm thủ đô, khởi hành đi Vườn Quốc Gia Ba Vì.' },
-      { day: '08:00', title: 'Trekking rừng thông & Nhà thờ cổ', desc: 'Bắt đầu cung đường leo núi xuyên rừng, chụp ảnh tại phế tích nhà thờ Pháp.' },
-      { day: '11:30', title: 'Chinh phục Đỉnh Vua 1.296m', desc: 'Vượt dốc đá lên Đền Thượng, ăn trưa picnic giữa thiên nhiên mây ngàn.' },
-      { day: '16:00', title: 'Trở về Hà Nội', desc: 'Xuống chân núi, ghé mua sữa tươi Ba Vì đặc sản, về tới Hà Nội lúc 18:00.' }
+    "historyStory": "Suối Cửa Tử bắt nguồn từ sườn Đông dãy Tam Đảo chảy xuống thung lũng Hoàng Nông. Dòng nước mát lạnh quanh năm chảy len lỏi qua những khối đá cuội khổng lồ và rừng cây cổ thụ nhiệt đới xanh rì.",
+    "description": "Trải nghiệm vượt suối tắm thác cực sảng khoái và xua tan mọi căng thẳng oi bức của mùa hè miền Bắc.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe đưa đón đời mới', 'Vé tham quan VQG Ba Vì', 'Bữa trưa picnic chất lượng', 'Gậy trekking & nước uống', 'Leader hướng dẫn nhiệt tình'],
-    preparation: ['Giày thể thao bám tốt', 'Áo khoác nhẹ', 'Bình nước cá nhân']
+    "highlights": [
+      "Trượt máng đá tự nhiên dài hàng chục mét trút thẳng xuống làn nước trong vắt.",
+      "Bơi lội thỏa thích giữa các hồ nước tự nhiên xanh biếc như ngọc bích.",
+      "Thưởng thức gà nướng lá móc mật và chè búp Tân Cương Thái Nguyên thơm lừng."
+    ],
+    "itinerary": [
+      {
+        "day": "05:30",
+        "title": "Hà Nội – Đại Từ Thái Nguyên",
+        "desc": "Đón đoàn tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Thái Nguyên."
+      },
+      {
+        "day": "08:30",
+        "title": "Bắt đầu trek lội suối Cửa Tử",
+        "desc": "Trang bị áo phao, khởi động và bắt đầu lội dọc con suối đá hoang sơ."
+      },
+      {
+        "day": "12:00",
+        "title": "Ăn trưa picnic bên bờ suối",
+        "desc": "Ăn trưa thịt nướng, xôi nếp nóng hổi bên bờ thác róc rách."
+      },
+      {
+        "day": "14:00",
+        "title": "Trượt máng đá Cửa 2 & Nhảy thác",
+        "desc": "Trải nghiệm trượt máng đá tự nhiên cảm giác mạnh cực vui."
+      },
+      {
+        "day": "16:30",
+        "title": "Về lại Hà Nội",
+        "desc": "Tắm tráng nước ngọt, lên xe về lại thủ đô lúc 19:00."
+      }
+    ],
+    "included": [
+      "Xe đưa đón khứ hồi Hà Nội – Cửa Tử",
+      "Áo phao an toàn cá nhân & Túi chống nước",
+      "Porter bản địa & Leader nhiều kinh nghiệm suối",
+      "Bữa ăn trưa nóng sốt bên bờ thác",
+      "Huy chương gỗ độc quyền của Đi Cùng Gió",
+      "Bảo hiểm du lịch trọn gói 20.000.000đ"
+    ],
+    "preparation": [
+      "Giày lội suối hoặc quai hậu bám đá",
+      "2 bộ quần áo khô thay",
+      "Túi chống nước điện thoại",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 15: HÀM LỢN ---
   {
-    id: 15,
-    title: 'Chinh phục Đỉnh Hàm Lợn – Rừng Thông & Hồ Suối Bàu',
-    category: 'near_hanoi',
-    subCategory: 'trekking',
-    categoryName: 'Gần Hà Nội',
-    duration: '1 ngày',
-    location: 'Hà Nội – Sóc Sơn',
-    price: '490.000đ/người',
-    priceNum: 490000,
-    rating: 4.8,
-    reviews: 84,
-    image: 'assets/images/tour-ham-lon.jpg',
-    badge: 'Gần Hà Nội',
-    altitudeBadge: '🏕️ 462m',
-    altitude: '462m',
-    trekDistance: '10 km',
-    difficultyLevel: 2,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Leo "nóc nhà Thủ đô", vượt suối đá và cắm trại chill bên hồ nước thơ mộng cách trung tâm 40km.',
-    routeMap: 'Từ nội thành Hà Nội vượt cầu Nhật Tân đi Sóc Sơn (40km). Trekking men theo suối đá Núi Bàu hoặc leo dốc rừng thông lên đỉnh Hàm Lợn (462m). Buổi trưa hạ trại ăn thịt nướng bên bờ hồ Suối Bàu.',
-    routeSteps: ['Hà Nội', 'Sóc Sơn', 'Hồ Suối Bàu', 'Cung đường suối đá Núi Bàu', 'Đỉnh Hàm Lợn (462m)', 'Cắm trại BBQ bờ hồ'],
-    historyStory: 'Đỉnh Hàm Lợn (cao 462m) thuộc dãy núi Độc Tôn (Sóc Sơn), được giới leo núi mệnh danh là "Nóc nhà của Thủ đô Hà Nội". Nơi đây từ lâu là điểm rèn luyện thể lực và test thể lực chuẩn bị cho các cung trekking lớn Tây Bắc như Fansipan hay Kỳ Quan San của cộng đồng phượt thủ miền Bắc.',
-    description: 'Cung leo núi dã ngoại cuối tuần cực vui vẻ, băng qua suối đá, rừng thông bạt ngàn và cắm trại thư giãn bên hồ Suối Bàu thơ mộng.',
-    departureDates: ['26/10/2026', '02/11/2026', '09/11/2026', '16/11/2026'],
-    highlights: [
-      'Chinh phục nóc nhà thủ đô Hàm Lợn qua cung suối đá thử thách kỹ năng.',
-      'Cắm trại picnic, nướng BBQ và thưởng thức cà phê chill bên bờ hồ Suối Bàu.',
-      'Check-in rừng thông bạt ngàn ngỡ như Đà Lạt thu nhỏ giữa lòng Hà Nội.'
+    "id": 15,
+    "code": "CP01",
+    "title": "Vườn Quốc Gia Cúc Phương – Mùa Bướm Rực Rỡ",
+    "category": "experience",
+    "subCategory": "near_hanoi",
+    "badge": "Mùa bướm rừng già",
+    "altitudeBadge": "Rừng quốc gia Cúc Phương",
+    "image": "assets/images/tour-cuc-phuong.jpg",
+    "price": "550.000đ/người",
+    "priceNum": 550000,
+    "agencyPrice": "500.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Nho Quan, Ninh Bình",
+    "altitude": "Rừng nhiệt đới",
+    "trekDistance": "Khoảng 7 km",
+    "difficultyLevel": 1,
+    "difficultyText": "Rất nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 89,
+    "shortSummary": "Lạc bước giữa hàng vạn cánh bướm rợp trời, chiêm bái Cây Chò ngàn năm tuổi giữa rừng già Cúc Phương.",
+    "routeMap": "Từ Hà Nội theo QL1A đi Nho Quan (Ninh Bình). Tuyến trekking xuyên qua lối mòn rừng già rợp bóng cây cổ thụ, viếng Động Người Xưa và Cây Chò chỉ ngàn năm tuổi.",
+    "routeSteps": [
+      "Hà Nội",
+      "Cổng Vườn Cúc Phương",
+      "Động Người Xưa",
+      "Rừng nguyên sinh mùa bướm",
+      "Cây Chò ngàn năm"
     ],
-    itinerary: [
-      { day: '07:00', title: 'Hà Nội – Sóc Sơn', desc: 'Tập trung tại điểm hẹn, di chuyển xe máy hoặc ô tô lên chân núi Hàm Lợn.' },
-      { day: '08:30', title: 'Trekking cung suối đá', desc: 'Bắt đầu leo dốc suối đá gồ ghề, hỗ trợ nhau vượt qua các chướng ngại vật.' },
-      { day: '11:00', title: 'Chạm đỉnh Hàm Lợn – Hồ Suối Bàu', desc: 'Check-in chóp đỉnh 462m, xuống hồ cắm trại ăn tiệc nướng BBQ.' },
-      { day: '16:00', title: 'Dọn trại – Về Hà Nội', desc: 'Thu gom rác bảo vệ môi trường, khởi hành về lại trung tâm Hà Nội lúc 17:30.' }
+    "historyStory": "Cúc Phương là vườn quốc gia đầu tiên tại Việt Nam, thành lập năm 1962. Nơi đây bảo tồn hệ động thực vật nhiệt đới vô cùng phong phú và nổi tiếng thế giới với mùa bướm hàng triệu con bay rợp trời vào mỗi độ đầu hạ.",
+    "description": "Chuyến dã ngoại rừng già trong lành, khám phá thiên nhiên hoang dã kỳ thú phù hợp cả gia đình và trẻ nhỏ.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Lều trại dã ngoại xịn xò', 'Bữa tiệc BBQ thịt nướng thơm lừng', 'Đồ uống & than nướng', 'Leader hướng dẫn kỹ năng trekking an toàn'],
-    preparation: ['Quần áo thể thao nhanh khô', 'Giày trekking lội suối bám đá', 'Kem chống muỗi']
+    "highlights": [
+      "Ngắm nhìn hàng triệu cánh bướm trắng, vàng bay rợp các con đường mòn xuyên rừng.",
+      "Ôm thân Cây Chò ngàn năm tuổi sừng sững giữa lõi rừng nguyên sinh.",
+      "Tham quan Trung tâm Cứu hộ Linh trưởng Quý hiếm hàng đầu Đông Nam Á."
+    ],
+    "itinerary": [
+      {
+        "day": "06:00",
+        "title": "Hà Nội – Ninh Bình",
+        "desc": "Xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi VQG Cúc Phương."
+      },
+      {
+        "day": "08:30",
+        "title": "Trekking xuyên rừng & Săn bướm",
+        "desc": "Check-in ngắm hàng đàn bướm bay rực rỡ, viếng Động Người Xưa."
+      },
+      {
+        "day": "12:00",
+        "title": "Ăn trưa đặc sản Ninh Bình",
+        "desc": "Ăn trưa cơm cháy, dê núi tại nhà hàng trong rừng."
+      },
+      {
+        "day": "14:00",
+        "title": "Chinh phục Cây Chò ngàn năm",
+        "desc": "Trekking 3km đường mòn ngắm Cây Chò đại thụ."
+      },
+      {
+        "day": "16:00",
+        "title": "Về lại Hà Nội",
+        "desc": "Lên xe về lại thủ đô lúc 18:30."
+      }
+    ],
+    "included": [
+      "Xe ô tô đưa đón khứ hồi Hà Nội – Cúc Phương",
+      "Vé vào cổng Vườn Quốc Gia Cúc Phương",
+      "Leader hướng dẫn khám phá sinh thái",
+      "Bữa ăn trưa đặc sản Ninh Bình thơm ngon",
+      "Bảo hiểm du lịch trọn gói 20.000.000đ"
+    ],
+    "preparation": [
+      "Trang phục thoải mái, chống muỗi",
+      "Giày thể thao",
+      "CCCD bản gốc"
+    ]
   },
-
-  // --- TOUR 16: NÚI TRẦM ---
   {
-    id: 16,
-    title: 'Trekking Núi Trầm – Cao Nguyên Đá Trắng Hà Nội',
-    category: 'near_hanoi',
-    subCategory: 'trekking',
-    categoryName: 'Gần Hà Nội',
-    duration: '1 ngày',
-    location: 'Hà Nội – Chương Mỹ',
-    price: '450.000đ/người',
-    priceNum: 450000,
-    rating: 4.7,
-    reviews: 58,
-    image: 'assets/images/tour-nui-tram.jpg',
-    badge: 'Gần Hà Nội',
-    altitudeBadge: '🪨 Đá trắng',
-    altitude: '200m',
-    trekDistance: '6 km',
-    difficultyLevel: 1,
-    difficultyText: 'Nhẹ nhàng',
-    isFeatured: false,
-    shortSummary: 'Khám phá mỏm đá trắng tựa Hà Giang thu nhỏ, dâng hương Chùa Trầm cổ kính nghìn năm tuổi.',
-    routeMap: 'Từ Hà Nội theo hướng Hà Đông đi Chương Mỹ (25km). Trekking qua các mỏm núi đá vôi trắng Tử Trầm Sơn, thăm chùa Trầm, chùa Hang và ngắm trọn đồng quê ngoại thành thanh bình.',
-    routeSteps: ['Hà Nội', 'Chương Mỹ', 'Chùa Trầm Cổ Tự', 'Chùa Hang (Động Long Tiên)', 'Mỏm Đá Trắng Tử Trầm Sơn', 'Check-in hoàng hôn đồng bằng'],
-    historyStory: 'Tử Trầm Sơn (Núi Trầm) là một trong bốn ngọn núi danh thắng của xứ Đoài. Năm 1516, vua Lê Chiêu Tông đã cho xây hành cung tại đây. Nơi đây còn có Chùa Hang trong lòng động Long Tiên – nơi Đài Tiếng nói Việt Nam từng đặt trạm phát sóng lời kêu gọi Toàn quốc kháng chiến của Chủ tịch Hồ Chí Minh vào đêm 19/12/1946 lịch sử.',
-    description: 'Chuyến trekking nhẹ nhàng khám phá "cao nguyên đá Hà Giang thu nhỏ" với những mỏm đá vôi trắng xóa nhô lên giữa cánh đồng xanh ngát.',
-    departureDates: ['01/11/2026', '08/11/2026', '15/11/2026'],
-    highlights: [
-      'Leo lên các mỏm đá trắng tuyệt đẹp ngắm hoàng hôn đỏ rực buông xuống đồng lúa.',
-      'Viếng Chùa Trầm cổ kính và chùa Hang linh thiêng mát rượi trong lòng núi.',
-      'Thưởng thức bữa trưa dã ngoại nhẹ nhàng giữa thung lũng đá tĩnh mịch.'
+    "id": 16,
+    "code": "BV01",
+    "title": "Trekking Vườn Quốc Gia Ba Vì – Rừng Thông & Đền Thượng",
+    "category": "near_hanoi",
+    "subCategory": "near_hanoi",
+    "badge": "Trốn phố về rừng",
+    "altitudeBadge": "Độ cao 1.296m",
+    "image": "assets/images/tour-ba-vi.jpg",
+    "price": "750.000đ/người",
+    "priceNum": 750000,
+    "agencyPrice": "700.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Ba Vì, Hà Nội",
+    "altitude": "1.296m",
+    "trekDistance": "Khoảng 8 km",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 112,
+    "shortSummary": "Trekking xuyên rừng thông bạt ngàn, khám phá Nhà Thờ Đổ Pháp cổ kính và chạm đỉnh Vua 1.296m.",
+    "routeMap": "Từ nội thành Hà Nội đi Vườn Quốc Gia Ba Vì (60km). Tuyến trek qua rừng thông cốt 400, viếng Nhà Thờ Đổ rêu phong ma mị và leo bậc đá lên Đền Thượng thờ Tản Viên Sơn Thánh.",
+    "routeSteps": [
+      "Hà Nội",
+      "Cổng VQG Ba Vì",
+      "Rừng thông Cốt 400",
+      "Nhà Thờ Đổ cổ kính",
+      "Đỉnh Vua (1.296m)"
     ],
-    itinerary: [
-      { day: '07:30', title: 'Hà Nội – Chương Mỹ', desc: 'Di chuyển 25km về phía Tây Nam thủ đô đến chân núi Trầm.' },
-      { day: '09:00', title: 'Trekking các mỏm đá trắng Núi Trầm', desc: 'Chinh phục đỉnh núi đá ngắm toàn cảnh đồng quê bình yên.' },
-      { day: '12:00', title: 'Picnic dã ngoại & Chùa Hang', desc: 'Ăn trưa nhẹ, vãn cảnh Chùa Hang với các bài thơ cổ khắc trên vách đá.' },
-      { day: '15:30', title: 'Trở về Hà Nội', desc: 'Kết thúc chuyến đi nửa ngày nhiều niềm vui, về đến Hà Nội lúc 17:00.' }
+    "historyStory": "Dãy núi Ba Vì gắn liền với truyền thuyết Sơn Tinh – Thủy Tinh bất hủ trong tâm thức người Việt. Nơi đây có khí hậu á nhiệt đới mát mẻ quanh năm cùng những công trình kiến trúc Pháp cổ kính phủ đầy rêu phong.",
+    "description": "Cung trekking gần gũi nhất với Hà Nội, không khí trong lành như Đà Lạt, thích hợp nạp lại năng lượng sau tuần làm việc bận rộn.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
     ],
-    included: ['Xe đưa đón', 'Vé tham quan', 'Bữa trưa dã ngoại', 'Nước uống', 'Hướng dẫn viên nhiệt tình'],
-    preparation: ['Giày có độ ma sát tốt', 'Mũ chống nắng', 'Trang phục thoải mái']
+    "highlights": [
+      "Check-in Nhà Thờ Đổ Pháp cổ kính huyền bí giữa rừng già mây phủ.",
+      "Chinh phục Đỉnh Vua cao 1.296m viếng Đền Thượng linh thiêng.",
+      "Thưởng thức gà đồi nướng than hoa và sữa tươi Ba Vì béo ngậy."
+    ],
+    "itinerary": [
+      {
+        "day": "06:30",
+        "title": "Hà Nội – Ba Vì",
+        "desc": "Xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Ba Vì."
+      },
+      {
+        "day": "08:30",
+        "title": "Trekking Rừng thông cốt 400 & Nhà Thờ Đổ",
+        "desc": "Băng qua những cánh rừng thông ngút ngàn, chụp ảnh sống ảo tại Nhà Thờ Đổ."
+      },
+      {
+        "day": "11:30",
+        "title": "Ăn trưa gà đồi nướng",
+        "desc": "Dùng bữa trưa nóng sốt với đặc sản gà đồi Ba Vì."
+      },
+      {
+        "day": "13:30",
+        "title": "Leo Đền Thượng Đỉnh Vua",
+        "desc": "Leo bậc đá lên đỉnh Vua 1.296m ngắm mây trôi lãng đãng."
+      },
+      {
+        "day": "16:00",
+        "title": "Về lại Hà Nội",
+        "desc": "Lên xe về lại nội thành lúc 18:00."
+      }
+    ],
+    "included": [
+      "Xe đưa đón khứ hồi",
+      "Vé cổng VQG Ba Vì",
+      "Bữa trưa đặc sản gà đồi",
+      "Leader theo sát",
+      "Huy chương gỗ độc quyền",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Giày thể thao",
+      "Áo khoác nhẹ",
+      "CCCD bản gốc"
+    ]
+  },
+  {
+    "id": 17,
+    "code": "HL01",
+    "title": "Chinh phục Đỉnh Hàm Lợn – Nóc nhà Thủ Đô (462m)",
+    "category": "near_hanoi",
+    "subCategory": "near_hanoi",
+    "badge": "Nóc nhà Thủ Đô",
+    "altitudeBadge": "Đỉnh 462m",
+    "image": "assets/images/tour-ham-lon.jpg",
+    "price": "300.000đ/người",
+    "priceNum": 300000,
+    "agencyPrice": "250.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "Trong ngày",
+    "location": "Sóc Sơn, Hà Nội",
+    "altitude": "462m",
+    "trekDistance": "Khoảng 6 km",
+    "difficultyLevel": 1,
+    "difficultyText": "Nhẹ nhàng - Tập dượt thể lực",
+    "isFeatured": false,
+    "reviews": 98,
+    "shortSummary": "Cung trekking rèn luyện thể lực cuối tuần cực vui, leo dốc rừng thông và cắm trại chill bên hồ Suối Bàu.",
+    "routeMap": "Từ trung tâm Hà Nội đi Sóc Sơn (40km). Tuyến trek bắt đầu từ chân hồ Suối Bàu, men theo suối đá hoặc leo dốc rừng thông lên đỉnh Hàm Lợn (462m).",
+    "routeSteps": [
+      "Hà Nội",
+      "Sóc Sơn",
+      "Hồ Suối Bàu",
+      "Cung suối đá / Rừng thông",
+      "Đỉnh Hàm Lợn (462m)"
+    ],
+    "historyStory": "Núi Hàm Lợn thuộc dãy Độc Tôn (Sóc Sơn), là đỉnh núi cao nhất Hà Nội (462m). Nơi đây từ lâu là 'thao trường' quen thuộc của cộng đồng phượt thủ miền Bắc tập dượt thể lực trước khi chinh phục các cung lớn như Fansipan hay Kỳ Quan San.",
+    "description": "Chuyến dã ngoại cuối tuần vui vẻ, tiết kiệm, phù hợp nhóm bạn trẻ, sinh viên và các gia đình muốn vận động nhẹ nhàng.",
+    "departureDates": [
+      "26/10/2026",
+      "02/11/2026",
+      "09/11/2026",
+      "16/11/2026"
+    ],
+    "highlights": [
+      "Chạm đỉnh 'Nóc nhà Thủ đô' Hàm Lợn và ngắm trọn hồ Suối Bàu từ trên cao.",
+      "Check-in rừng thông bạt ngàn ngỡ như Đà Lạt thu nhỏ chỉ cách Hà Nội 1 tiếng đi xe.",
+      "Cắm trại picnic, nướng BBQ và thưởng thức cà phê thư giãn bên hồ nước thơ mộng."
+    ],
+    "itinerary": [
+      {
+        "day": "07:00",
+        "title": "Hà Nội – Sóc Sơn",
+        "desc": "Xe đón tại 55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt đi Sóc Sơn."
+      },
+      {
+        "day": "08:30",
+        "title": "Bắt đầu leo đỉnh Hàm Lợn",
+        "desc": "Khởi động và trekking qua rừng thông bạt ngàn lên đỉnh 462m."
+      },
+      {
+        "day": "11:30",
+        "title": "Chạm đỉnh & Xuống hồ Suối Bàu",
+        "desc": "Chụp ảnh tại cột mốc nóc nhà Hà Nội, di chuyển xuống hồ Suối Bàu hạ trại ăn trưa BBQ."
+      },
+      {
+        "day": "15:30",
+        "title": "Về lại Hà Nội",
+        "desc": "Thu dọn rác, lên xe về lại nội thành lúc 17:00."
+      }
+    ],
+    "included": [
+      "Xe ô tô đưa đón khứ hồi",
+      "Leader hướng dẫn & Bữa trưa BBQ picnic bên hồ",
+      "Nước uống tinh khiết & đồ sơ cứu cơ bản",
+      "Huy chương gỗ Hàm Lợn độc quyền",
+      "Bảo hiểm du lịch 20.000.000đ"
+    ],
+    "preparation": [
+      "Giày thể thao êm chân",
+      "Mũ nón chống nắng",
+      "CCCD bản gốc"
+    ]
+  },
+  {
+    "id": 18,
+    "code": "CT02",
+    "title": "Trải Nghiệm Suối Cửa Tử (Đón Tại Cửa Tử Thái Nguyên)",
+    "category": "near_hanoi",
+    "subCategory": "experience",
+    "badge": "Lội suối vượt thác",
+    "altitudeBadge": "Chân suối Cửa Tử",
+    "image": "assets/images/tour-cua-tu.jpg",
+    "price": "399.000đ/người",
+    "priceNum": 399000,
+    "agencyPrice": "350.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Thứ 7 - Chủ Nhật hàng tuần",
+    "pickupPoint": "Chân suối Cửa Tử, Đại Từ, Thái Nguyên",
+    "duration": "Trong ngày",
+    "location": "Đại Từ, Thái Nguyên",
+    "altitude": "Chân thác Cửa Tử",
+    "trekDistance": "Khoảng 6 km",
+    "difficultyLevel": 2,
+    "difficultyText": "Nhẹ - Vui nhộn",
+    "isFeatured": false,
+    "reviews": 45,
+    "shortSummary": "Gói tour dành cho khách tự di chuyển xe riêng đến Thái Nguyên, lội suối Cửa Tử và trượt máng đá an toàn cùng Leader bản địa.",
+    "routeMap": "Đón khách trực tiếp tại chân suối Cửa Tử (Hoàng Nông, Đại Từ, Thái Nguyên). Leader trang bị áo phao và dẫn đoàn lội suối khám phá các máng trượt đá tự nhiên.",
+    "routeSteps": [
+      "Chân suối Cửa Tử",
+      "Cửa 1",
+      "Cửa 2",
+      "Máng trượt tự nhiên"
+    ],
+    "historyStory": "Dành cho các nhóm bạn, gia đình tự lái xe ô tô hoặc xe máy lên Thái Nguyên, cần dịch vụ hướng dẫn an toàn, porter bản địa và trang thiết bị áo phao chuyên nghiệp.",
+    "description": "Trải nghiệm lội suối vượt thác cực chill và an toàn với chi phí tiết kiệm nhất.",
+    "departureDates": [
+      "01/11/2026",
+      "08/11/2026",
+      "15/11/2026",
+      "22/11/2026"
+    ],
+    "highlights": [
+      "Leader địa phương dẫn đường an toàn tuyệt đối.",
+      "Trang bị áo phao chuyên dụng và túi chống nước cho cả đoàn.",
+      "Tự do khám phá trượt máng đá và bơi lội giữa hồ nước trong vắt."
+    ],
+    "itinerary": [
+      {
+        "day": "08:30",
+        "title": "Đón tại chân suối",
+        "desc": "Tập trung tại homestay chân suối Cửa Tử, phổ biến quy tắc an toàn."
+      },
+      {
+        "day": "09:00",
+        "title": "Lội suối vượt thác",
+        "desc": "Trekking lội suối, trượt máng đá Cửa 1 và Cửa 2."
+      },
+      {
+        "day": "12:00",
+        "title": "Ăn trưa bên bờ suối",
+        "desc": "Ăn trưa picnic thơm ngon giữa tiếng suối chảy róc rách."
+      },
+      {
+        "day": "15:00",
+        "title": "Kết thúc tour",
+        "desc": "Trở về chân suối tắm tráng, chia tay đoàn."
+      }
+    ],
+    "included": [
+      "Leader & Porter bản địa",
+      "Áo phao an toàn",
+      "Bữa trưa picnic",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Giày lội suối bám đá",
+      "Quần áo khô thay",
+      "CCCD bản gốc"
+    ]
+  },
+  {
+    "id": 19,
+    "code": "CHARITY-01",
+    "title": "Áo Ấm Cho Em – Thiện Nguyện Mù Cang Chải",
+    "category": "charity",
+    "subCategory": "charity",
+    "badge": "Lan tỏa yêu thương",
+    "altitudeBadge": "Vùng cao Tây Bắc",
+    "image": "assets/images/tour-thien-nguyen.jpg",
+    "price": "1.250.000đ/người",
+    "priceNum": 1250000,
+    "agencyPrice": "1.100.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Tháng 11 & 12",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Mù Cang Chải, Yên Bái",
+    "altitude": "1.500m",
+    "trekDistance": "Khoảng 6 km",
+    "difficultyLevel": 1,
+    "difficultyText": "Nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 56,
+    "shortSummary": "Hành trình mang áo ấm và quà tặng đến với các em nhỏ điểm trường vùng cao khó khăn tại Mù Cang Chải.",
+    "routeMap": "Từ Hà Nội qua đèo Khau Phạ đến các điểm trường mầm non và tiểu học vùng sâu tại Mù Cang Chải (Yên Bái). Trao quà thiện nguyện, giao lưu văn nghệ và trekking nhẹ thăm bản làng người Mông.",
+    "routeSteps": [
+      "Hà Nội",
+      "Đèo Khau Phạ",
+      "Điểm trường vùng cao",
+      "Treo áo ấm & Tặng quà",
+      "Giao lưu bản Mông"
+    ],
+    "historyStory": "Chương trình thường niên của cộng đồng Đi Cùng Gió nhằm kết nối những trái tim nhân ái, trao gửi sự ấm áp đến trẻ em vùng cao trước mùa đông giá buốt.",
+    "description": "Một chuyến đi đong đầy ý nghĩa nhân văn, nơi mỗi bước chân đều mang lại nụ cười và niềm hy vọng cho các em nhỏ vùng cao.",
+    "departureDates": [
+      "15/11/2026",
+      "29/11/2026",
+      "13/12/2026"
+    ],
+    "highlights": [
+      "Trực tiếp trao tận tay những chiếc áo ấm, sách vở và bữa ăn dinh dưỡng cho các em nhỏ khó khăn.",
+      "Giao lưu nhảy sạp, đốt lửa trại ấm áp cùng đồng bào vùng cao.",
+      "Ngắm hoàng hôn đèo Khau Phạ – một trong 'Tứ đại đỉnh đèo' Tây Bắc."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 1",
+        "title": "Hà Nội – Khau Phạ – Điểm trường Mù Cang Chải",
+        "desc": "Xe đón tại Hà Nội. Chiều đến điểm trường trao quà áo ấm, đồ dùng học tập cho các bé."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Giao lưu bản làng – Hà Nội",
+        "desc": "Trekking thăm bản người Mông, thưởng thức đặc sản xôi nếp Tú Lệ. Chiều về lại Hà Nội."
+      }
+    ],
+    "included": [
+      "Xe du lịch khứ hồi",
+      "Homestay bản địa",
+      "Các bữa ăn vùng cao",
+      "Điều phối viên thiện nguyện",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Quần áo ấm",
+      "Tấm lòng nhiệt huyết",
+      "CCCD bản gốc"
+    ]
+  },
+  {
+    "id": 20,
+    "code": "CHARITY-02",
+    "title": "Tủ Sách Vùng Cao – Tiếp Bước Nậm Có Yên Bái",
+    "category": "charity",
+    "subCategory": "charity",
+    "badge": "Gieo mầm tri thức",
+    "altitudeBadge": "Xã Nậm Có",
+    "image": "assets/images/tour-mu-cang-chai.jpg",
+    "price": "1.200.000đ/người",
+    "priceNum": 1200000,
+    "agencyPrice": "1.050.000đ",
+    "minPax": "Từ 5 khách",
+    "departureFrequency": "Tháng 11 & 12",
+    "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
+    "duration": "2 ngày 1 đêm",
+    "location": "Mù Cang Chải, Yên Bái",
+    "altitude": "1.400m",
+    "trekDistance": "Khoảng 6 km",
+    "difficultyLevel": 1,
+    "difficultyText": "Nhẹ nhàng",
+    "isFeatured": false,
+    "reviews": 42,
+    "shortSummary": "Xây dựng tủ sách tri thức, trao học bổng khuyến học và hỗ trợ sửa chữa phòng học cho trẻ em vùng cao Nậm Có.",
+    "routeMap": "Từ Hà Nội di chuyển vào xã đặc biệt khó khăn Nậm Có (huyện Mù Cang Chải, Yên Bái). Lắp đặt tủ sách, sơn sửa lớp học và tổ chức ngày hội đọc sách cùng các em nhỏ.",
+    "routeSteps": [
+      "Hà Nội",
+      "Nghĩa Lộ",
+      "Xã Nậm Có",
+      "Điểm trường",
+      "Ngày hội đọc sách"
+    ],
+    "historyStory": "Dự án phi lợi nhuận hướng tới mục tiêu mang sách truyện hay và nguồn cảm hứng học tập đến với trẻ em các thôn bản xa xôi hẻo lánh vùng Tây Bắc.",
+    "description": "Cùng Đi Cùng Gió gieo mầm tri thức, mang lại tương lai tươi sáng hơn cho thế hệ măng non vùng cao.",
+    "departureDates": [
+      "22/11/2026",
+      "06/12/2026",
+      "20/12/2026"
+    ],
+    "highlights": [
+      "Trực tiếp lắp đặt tủ sách với hơn 500 đầu sách truyện ý nghĩa cho trường học.",
+      "Tổ chức các trò chơi tập thể, kể chuyện và đố vui có thưởng cùng các em.",
+      "Thưởng thức không gian thanh bình và tình cảm nồng ấm của người dân bản địa."
+    ],
+    "itinerary": [
+      {
+        "day": "Ngày 1",
+        "title": "Hà Nội – Xã Nậm Có",
+        "desc": "Khởi hành sớm từ Hà Nội. Chiều lắp đặt tủ sách, sơn sửa bàn ghế lớp học."
+      },
+      {
+        "day": "Ngày 2",
+        "title": "Ngày hội sách & Về Hà Nội",
+        "desc": "Tổ chức ngày hội đọc sách cùng các em học sinh. Chiều lên xe về lại thủ đô lúc 20:00."
+      }
+    ],
+    "included": [
+      "Xe đưa đón khứ hồi",
+      "Homestay bản địa",
+      "Bữa ăn địa phương",
+      "Chi phí điều phối dự án",
+      "Bảo hiểm du lịch"
+    ],
+    "preparation": [
+      "Sách truyện mang theo ủng hộ",
+      "Giày thể thao",
+      "CCCD bản gốc"
+    ]
   }
 ];
 
@@ -693,64 +1629,69 @@ const TOURS_DATA = [
 // ==========================================
 const DEPARTURE_SCHEDULE = [
   {
-    id: 'sch-1',
-    day: '26',
-    month: 'Th10',
-    title: 'Trekking Yên Tử – Chùa Đồng',
-    duration: '1 ngày',
-    price: '1.200.000đ',
-    priceNum: 1200000,
-    dateFull: '26/10/2026',
-    status: 'Còn chỗ',
-    tourId: 1
+    "id": "sch-1",
+    "day": "26",
+    "month": "Th10",
+    "code": "YT01",
+    "title": "Trekking Yên Tử – Chùa Đồng",
+    "duration": "Trong ngày",
+    "price": "550.000đ",
+    "priceNum": 550000,
+    "dateFull": "26/10/2026",
+    "status": "Còn chỗ",
+    "tourId": 1
   },
   {
-    id: 'sch-2',
-    day: '01',
-    month: 'Th11',
-    title: 'Tà Xùa – Săn mây',
-    duration: '2 ngày 1 đêm',
-    price: '1.850.000đ',
-    priceNum: 1850000,
-    dateFull: '01/11/2026',
-    status: 'Còn chỗ',
-    tourId: 2
+    "id": "sch-2",
+    "day": "01",
+    "month": "Th11",
+    "code": "PSP01",
+    "title": "Tà Xùa – Phu Sa Phìn Săn Mây",
+    "duration": "2 ngày 1 đêm",
+    "price": "1.600.000đ",
+    "priceNum": 1600000,
+    "dateFull": "01/11/2026",
+    "status": "Còn chỗ",
+    "tourId": 2
   },
   {
-    id: 'sch-3',
-    day: '08',
-    month: 'Th11',
-    title: 'Phu Sa Phin – Chinh phục đỉnh cao',
-    duration: '2 ngày 1 đêm',
-    price: '1.890.000đ',
-    priceNum: 1890000,
-    dateFull: '08/11/2026',
-    status: 'Còn chỗ',
-    tourId: 3
+    "id": "sch-3",
+    "day": "08",
+    "month": "Th11",
+    "code": "SM01",
+    "title": "Sa Mu – U Bò (Rừng Rêu)",
+    "duration": "2 ngày 1 đêm",
+    "price": "2.800.000đ",
+    "priceNum": 2800000,
+    "dateFull": "08/11/2026",
+    "status": "Còn chỗ",
+    "tourId": 3
   },
   {
-    id: 'sch-4',
-    day: '15',
-    month: 'Th11',
-    title: 'Kỳ Quan San – Đỉnh núi hùng vĩ',
-    duration: '3 ngày 2 đêm',
-    price: '2.650.000đ',
-    priceNum: 2650000,
-    dateFull: '15/11/2026',
-    status: 'Còn chỗ',
-    tourId: 4
+    "id": "sch-4",
+    "day": "15",
+    "month": "Th11",
+    "code": "KQS01",
+    "title": "Kỳ Quan San – Đồi Muối",
+    "duration": "3 ngày 2 đêm",
+    "price": "3.500.000đ",
+    "priceNum": 3500000,
+    "dateFull": "15/11/2026",
+    "status": "Còn chỗ",
+    "tourId": 4
   },
   {
-    id: 'sch-5',
-    day: '22',
-    month: 'Th11',
-    title: 'Tà Chì Nhù – Mùa Hoa Chi Pâu',
-    duration: '2 ngày 1 đêm',
-    price: '1.850.000đ',
-    priceNum: 1850000,
-    dateFull: '22/11/2026',
-    status: 'Còn chỗ',
-    tourId: 5
+    "id": "sch-5",
+    "day": "22",
+    "month": "Th11",
+    "code": "TCN01",
+    "title": "Tà Chì Nhù – Hoa Chi Pâu",
+    "duration": "2 ngày 1 đêm",
+    "price": "2.800.000đ",
+    "priceNum": 2800000,
+    "dateFull": "22/11/2026",
+    "status": "Còn chỗ",
+    "tourId": 5
   }
 ];
 
@@ -761,42 +1702,29 @@ const TESTIMONIALS_DATA = [
   {
     id: 1,
     name: 'Nguyễn Thu Hà',
-    role: 'Trekking Tà Xùa',
+    role: 'Trekking Tà Xùa – Săn mây',
     avatar: 'assets/images/avatar-ha.jpg',
-    comment: '“Cung đường sống lưng khủng long Tà Xùa đẹp nín thở, hướng dẫn viên nhiệt tình, đồ ăn bản địa ngon miệng. Cảm ơn Trekking Đi Cùng Gió đã cho mình một hành trình thật đáng nhớ!”',
-    rating: 5
+    comment: 'Cung đường sống lưng khủng long Tà Xùa đẹp nín thở, hướng dẫn viên nhiệt tình, đồ ăn ngon. Cảm ơn Trekking Đi Cùng Gió đã cho mình một hành trình thật đáng nhớ!',
+    rating: 5,
+    date: '18/10/2026'
   },
   {
     id: 2,
     name: 'Lê Minh Đức',
-    role: 'Trekking Phu Sa Phin',
+    role: 'Trekking Yên Tử – Chùa Đồng',
     avatar: 'assets/images/avatar-duc.jpg',
-    comment: '“Lần đầu đi trekking rừng rêu nguyên sinh Phu Sa Phin mà được trải nghiệm nhiều điều tuyệt vời như vậy. Porter gùi đồ khỏe, nhóm gắn kết. Chắc chắn sẽ quay lại cùng Đi Cùng Gió!”',
-    rating: 5
+    comment: 'Lần đầu leo bộ Yên Tử mà được chạm tay vào Chùa Đồng lúc bình minh mây ngàn. Anh em leader chăm sóc chu đáo, huy chương gỗ độc quyền kỷ niệm rất đẹp.',
+    rating: 5,
+    date: '12/10/2026'
   },
   {
     id: 3,
     name: 'Trần Thị Mai',
-    role: 'Hành hương Yên Tử – Chùa Đồng',
+    role: 'Kỳ Quan San – Bạch Mộc Lương Tử',
     avatar: 'assets/images/avatar-mai.jpg',
-    comment: '“Hành trình Yên Tử leo bộ 100% chạm đỉnh Chùa Đồng rất linh thiêng và ý nghĩa. Vừa rèn luyện thể lực vừa được lắng nghe những câu chuyện lịch sử sâu sắc về vua Trần Nhân Tông.”',
-    rating: 5
-  },
-  {
-    id: 4,
-    name: 'Hoàng Quốc Bảo',
-    role: 'Chinh phục Kỳ Quan San',
-    avatar: 'assets/images/avatar-duc.jpg',
-    comment: '“Đỉnh Kỳ Quan San 3.046m quá hùng vĩ! Biển mây đồi Muối lúc bình minh khiến mình nổi da gà vì quá đẹp. Đội ngũ Leader bọc lót các vách đá hiểm trở vô cùng an toàn và chuyên nghiệp.”',
-    rating: 5
-  },
-  {
-    id: 5,
-    name: 'Đặng Thảo Linh',
-    role: 'Tà Chì Nhù Mùa Hoa Chi Pâu',
-    avatar: 'assets/images/avatar-ha.jpg',
-    comment: '“Được đắm mình trong sắc tím bạt ngàn của hoa Chi Pâu trên thảo nguyên 2.400m Tà Chì Nhù là một trong những trải nghiệm kỳ diệu nhất tuổi thanh xuân của mình!”',
-    rating: 5
+    comment: 'Đỉnh Kỳ Quan San quả thực xứng danh ngọn núi kỳ vĩ. Bình minh Đồi Muối biển mây bạt ngàn vượt xa mọi sự tưởng tượng. Đi Cùng Gió tổ chức cực kỳ chuyên nghiệp!',
+    rating: 5,
+    date: '05/10/2026'
   }
 ];
 
@@ -804,20 +1732,20 @@ const TESTIMONIALS_DATA = [
 // 4. APP STATE
 // ==========================================
 let currentCategory = 'all';
-let currentHeroSlide = 0;
+let heroCurrentIndex = 0;
 let heroSlideTimer = null;
-let currentBookingTour = null;
+let currentBookingTour = TOURS_DATA[0];
 let bookingGuests = 1;
 
-// Wishlist storage
+// Load Wishlist from LocalStorage
 let wishlist = new Set();
 try {
-  const saved = localStorage.getItem('dicunggio_wishlist');
-  if (saved) {
-    wishlist = new Set(JSON.parse(saved));
+  const savedWishlist = localStorage.getItem('dicunggio_wishlist');
+  if (savedWishlist) {
+    wishlist = new Set(JSON.parse(savedWishlist));
   }
 } catch (e) {
-  console.warn('LocalStorage not available', e);
+  console.warn('LocalStorage error:', e);
 }
 
 // ==========================================
@@ -828,27 +1756,23 @@ document.addEventListener('DOMContentLoaded', () => {
   renderTours();
   renderSchedule();
   setupCategoryFilter();
-  updateWishlistBadges();
-  setupBookingModalEvents();
-  setupMobileNav();
-  setupFloatingActions();
-  setupScrollReveal();
   setupScrollSpy();
-  setupNavbarGlass();
-  setupNewsletterForm();
+  setupBookingModalEvents();
+  setupReviewsModalEvents();
+  setupScrollReveal();
+  updateWishlistBadges();
   initLucideIcons();
 });
 
-// Helper to safely re-init Lucide icons
 function initLucideIcons() {
-  if (window.lucide && typeof window.lucide.createIcons === 'function') {
-    window.lucide.createIcons();
+  if (typeof lucide !== 'undefined' && lucide.createIcons) {
+    lucide.createIcons();
   }
 }
 
-// Format number to VND
-function formatCurrency(num) {
-  return new Intl.NumberFormat('vi-VN').format(num) + 'đ';
+// Utility: format number to Vietnamese currency VND
+function formatCurrency(amount) {
+  return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
 }
 
 // ==========================================
@@ -859,11 +1783,9 @@ function initHeroSlider() {
   const dots = document.querySelectorAll('.hero-dot');
   if (!slides.length) return;
 
-  window.setHeroSlide = function(index) {
-    currentHeroSlide = (index + slides.length) % slides.length;
-    
+  function showSlide(index) {
     slides.forEach((slide, i) => {
-      if (i === currentHeroSlide) {
+      if (i === index) {
         slide.classList.add('active');
       } else {
         slide.classList.remove('active');
@@ -871,37 +1793,44 @@ function initHeroSlider() {
     });
 
     dots.forEach((dot, i) => {
-      if (i === currentHeroSlide) {
-        dot.classList.add('w-8', 'bg-white');
-        dot.classList.remove('w-2.5', 'bg-white/50');
+      if (i === index) {
+        dot.classList.add('active');
+        dot.classList.remove('opacity-60');
       } else {
-        dot.classList.remove('w-8', 'bg-white');
-        dot.classList.add('w-2.5', 'bg-white/50');
+        dot.classList.remove('active');
+        dot.classList.add('opacity-60');
       }
     });
+
+    heroCurrentIndex = index;
+  }
+
+  window.prevHeroSlide = function() {
+    let newIndex = heroCurrentIndex - 1;
+    if (newIndex < 0) newIndex = slides.length - 1;
+    showSlide(newIndex);
+    resetHeroTimer();
   };
 
   window.nextHeroSlide = function() {
-    setHeroSlide(currentHeroSlide + 1);
+    let newIndex = (heroCurrentIndex + 1) % slides.length;
+    showSlide(newIndex);
+    resetHeroTimer();
   };
 
-  window.prevHeroSlide = function() {
-    setHeroSlide(currentHeroSlide - 1);
+  window.goToHeroSlide = function(index) {
+    showSlide(index);
+    resetHeroTimer();
   };
 
-  // Autoplay every 6 seconds
-  const startAutoplay = () => {
-    clearInterval(heroSlideTimer);
+  function resetHeroTimer() {
+    if (heroSlideTimer) clearInterval(heroSlideTimer);
     heroSlideTimer = setInterval(() => {
-      nextHeroSlide();
-    }, 6000);
-  };
+      window.nextHeroSlide();
+    }, 6500);
+  }
 
-  startAutoplay();
-
-  const heroSec = document.getElementById('home');
-  heroSec?.addEventListener('mouseenter', () => clearInterval(heroSlideTimer));
-  heroSec?.addEventListener('mouseleave', () => startAutoplay());
+  resetHeroTimer();
 }
 
 // ==========================================
@@ -915,14 +1844,11 @@ function renderTours(filterCategory = currentCategory) {
   let filtered = [];
 
   if (filterCategory === 'all') {
-    // Show 4 primary featured tours by default
     filtered = TOURS_DATA.filter(t => t.isFeatured);
   } else {
-    // Show tours matching the chosen category
     filtered = TOURS_DATA.filter(t => t.category === filterCategory || t.subCategory === filterCategory);
   }
 
-  // Fallback if empty
   if (filtered.length === 0) {
     filtered = TOURS_DATA.slice(0, 4);
   } else if (filtered.length > 4) {
@@ -934,25 +1860,28 @@ function renderTours(filterCategory = currentCategory) {
     return `
       <div class="tour-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
         
-        <!-- Tour Image Container (Zoom on hover + Storytelling overlay) -->
+        <!-- Tour Image Container -->
         <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer" onclick="openTourDetailModal(${tour.id})">
           <img 
             src="${tour.image}" 
             alt="${tour.title}" 
-            loading="lazy"
+            loading="lazy" 
             onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
             class="tour-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
           />
           
-          <!-- Category Badge (Top Left with Glassmorphism) -->
-          <div class="absolute top-3 left-3 z-10">
+          <!-- Category Badge (Top Left) -->
+          <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5">
             <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
               ${tour.badge}
             </span>
+            <span class="backdrop-blur-md bg-black/50 text-emerald-200 text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm">
+              ${tour.code}
+            </span>
           </div>
 
-          <!-- Subtle Altitude Badge (Top Center/Left) -->
-          <div class="absolute top-3 left-24 z-10">
+          <!-- Altitude Badge (Top Center/Left) -->
+          <div class="absolute top-3 left-28 z-10">
             <span class="backdrop-blur-md bg-black/45 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md shadow-sm">
               ${tour.altitudeBadge}
             </span>
@@ -968,18 +1897,18 @@ function renderTours(filterCategory = currentCategory) {
             </div>
           ` : ''}
 
-          <!-- Hover Overlay with Frosted Glass Storytelling Hint -->
+          <!-- Hover Overlay -->
           <div class="absolute inset-0 backdrop-blur-[2px] bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-3 text-center pointer-events-none">
             <span class="px-3.5 py-1.5 rounded-full bg-white text-forest text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-1.5">
               <i data-lucide="compass" class="w-3.5 h-3.5 text-forest"></i>
-              <span>Xem chi tiết</span>
+              <span>Xem chi tiết tour</span>
             </span>
             <p class="text-[11px] text-white/95 font-medium mt-2 drop-shadow-sm px-2 leading-snug">
-              📍 Lộ trình & Lịch sử vùng đất → Bấm để khám phá
+              📍 Lộ trình • Lịch sử • Chính sách hoàn hủy
             </p>
           </div>
 
-          <!-- Wishlist Heart Button (Top Right with Glassmorphism) -->
+          <!-- Wishlist Heart Button -->
           <button 
             type="button" 
             onclick="toggleWishlist(${tour.id}, event)" 
@@ -993,7 +1922,7 @@ function renderTours(filterCategory = currentCategory) {
         <!-- Tour Body Content -->
         <div class="p-4 flex flex-col flex-1 justify-between">
           <div>
-            <!-- Compact Meta Details above title with Book Story Link -->
+            <!-- Meta Details: Location & History Story -->
             <div class="flex items-center justify-between text-[11px] text-gray-500 mb-1.5">
               <span class="flex items-center gap-1">
                 <i data-lucide="map-pin" class="w-3 h-3 text-forest shrink-0"></i>
@@ -1010,7 +1939,7 @@ function renderTours(filterCategory = currentCategory) {
               </button>
             </div>
 
-            <!-- Title: 2 lines with consistent height, fully readable -->
+            <!-- Title -->
             <h3 
               class="font-bold text-gray-900 text-[13.5px] xl:text-[14px] leading-snug line-clamp-2 min-h-[38px] tracking-tight group-hover:text-forest transition-colors cursor-pointer" 
               onclick="openTourDetailModal(${tour.id})" 
@@ -1024,6 +1953,17 @@ function renderTours(filterCategory = currentCategory) {
               ${tour.shortSummary || tour.description}
             </p>
 
+            <!-- Commitment Tag (Từ 5 khách, Lịch chạy) -->
+            <div class="flex items-center gap-1.5 mb-2">
+              <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-forest text-[10px] font-bold border border-emerald-100 flex items-center gap-1">
+                <i data-lucide="check" class="w-3 h-3 text-forest"></i>
+                <span>${tour.minPax}</span>
+              </span>
+              <span class="text-[10px] text-gray-500 font-medium">
+                ${tour.departureFrequency}
+              </span>
+            </div>
+
             <!-- Price & Duration -->
             <div class="flex items-baseline justify-between mt-1">
               <span class="text-[15px] font-black text-forest whitespace-nowrap">${tour.price}</span>
@@ -1031,7 +1971,7 @@ function renderTours(filterCategory = currentCategory) {
             </div>
           </div>
 
-          <!-- Bottom: Rating & Direct Book Button (1 row) -->
+          <!-- Bottom: Rating & Direct Book Button -->
           <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-1">
             <div class="flex items-center gap-1 shrink-0">
               <div class="flex text-amber-400">
@@ -1049,9 +1989,10 @@ function renderTours(filterCategory = currentCategory) {
               onclick="openSmartBookingModal(${tour.id}); event.stopPropagation();"
               class="btn-shine whitespace-nowrap px-3.5 py-1.5 rounded-lg bg-[#1E4D3B] text-white text-xs font-semibold shrink-0 hover:bg-forest/90 active:scale-95 transition-all shadow-sm cursor-pointer"
             >
-              Đăng ký ngay
+              Đăng ký tour
             </button>
           </div>
+
         </div>
 
       </div>
@@ -1082,10 +2023,13 @@ function renderSchedule() {
         </div>
 
         <div class="min-w-0">
-          <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate">
-            ${item.title}
-          </h4>
-          <span class="text-[11px] text-gray-500 font-medium">${item.duration}</span>
+          <div class="flex items-center gap-1.5">
+            <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest">${item.code}</span>
+            <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate">
+              ${item.title}
+            </h4>
+          </div>
+          <span class="text-[11px] text-gray-500 font-medium">${item.duration} • Hà Nội</span>
         </div>
       </div>
 
@@ -1134,17 +2078,31 @@ function filterByCategory(cat) {
     grid.style.opacity = '0';
     grid.style.transform = 'translateY(8px)';
     grid.style.transition = 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)';
-    
     setTimeout(() => {
       renderTours(cat);
       grid.style.opacity = '1';
       grid.style.transform = 'translateY(0)';
-    }, 150);
+    }, 180);
+  }
+
+  // Update Title text
+  const titleEl = document.getElementById('section-tour-title');
+  if (titleEl) {
+    const titles = {
+      all: 'Tour Nổi Bật',
+      trekking: 'Tour Trekking Chinh Phục',
+      spiritual: 'Tour Hành Hương Tâm Linh',
+      experience: 'Tour Trải Nghiệm & Thiên Nhiên',
+      charity: 'Tour Thiện Nguyện Ý Nghĩa',
+      near_hanoi: 'Tour Gần Hà Nội Trong Ngày'
+    };
+    titleEl.textContent = titles[cat] || 'Danh Sách Tour';
   }
 }
+window.filterByCategory = filterByCategory;
 
 // ==========================================
-// 10. PROFESSIONAL STORYTELLING MODAL CONTROLLER
+// 10. PROFESSIONAL STORYTELLING MODAL CONTROLLER (4 TABS)
 // ==========================================
 function openTourDetailModal(tourId, initialTab = 1) {
   const tour = TOURS_DATA.find(t => t.id === tourId) || TOURS_DATA[0];
@@ -1155,7 +2113,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
   if (!modal || !content) return;
 
   const isLiked = wishlist.has(tour.id);
-  const dates = tour.departureDates ? tour.departureDates.join(', ') : 'Thứ 6 hàng tuần';
+  const dates = tour.departureDates ? tour.departureDates.join(', ') : 'Thứ 6 & Thứ 7 hàng tuần';
 
   // Render 1-5 difficulty dots
   let diffDots = '';
@@ -1178,7 +2136,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
         
         <button 
-          type="button"
+          type="button" 
           onclick="closeTourDetailModal()" 
           class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/80 flex items-center justify-center transition-colors backdrop-blur-sm cursor-pointer"
           title="Đóng"
@@ -1192,19 +2150,20 @@ function openTourDetailModal(tourId, initialTab = 1) {
             <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1E4D3B] text-white">${tour.badge}</span>
             <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white">${tour.altitudeBadge}</span>
             <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white">${tour.duration}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-stone-900">${tour.code}</span>
           </div>
           <h2 class="text-xl sm:text-2xl font-black leading-tight drop-shadow-sm">${tour.title}</h2>
           <p class="text-xs sm:text-sm text-emerald-200 mt-1 flex items-center gap-2">
             <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-300"></i>
-            <span>${tour.location}</span>
+            <span>${tour.location} • Điểm đón: ${tour.pickupPoint || '55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt'}</span>
           </p>
         </div>
       </div>
 
-      <!-- Trekking Key Specs Bar -->
+      <!-- Key Specs Bar -->
       <div class="grid grid-cols-4 gap-2 px-5 py-3 bg-[#F6F7F2] border-b border-gray-100 text-center shrink-0">
         <div>
-          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ cao đỉnh</span>
+          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ cao</span>
           <span class="block text-xs sm:text-sm font-extrabold text-forest mt-0.5">${tour.altitude}</span>
         </div>
         <div class="border-l border-gray-200">
@@ -1219,12 +2178,12 @@ function openTourDetailModal(tourId, initialTab = 1) {
         </div>
         <div class="border-l border-gray-200">
           <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Khởi hành</span>
-          <span class="block text-xs sm:text-sm font-extrabold text-gray-900 mt-0.5">Hà Nội</span>
+          <span class="block text-xs sm:text-sm font-extrabold text-gray-900 mt-0.5">${tour.minPax}</span>
         </div>
       </div>
 
-      <!-- Storytelling Tabs Navigation -->
-      <div class="flex items-center gap-6 px-5 sm:px-6 pt-3 border-b border-gray-100 bg-white text-xs sm:text-sm shrink-0">
+      <!-- Storytelling Tabs Navigation (4 TABS) -->
+      <div class="flex items-center gap-4 sm:gap-6 px-5 sm:px-6 pt-3 border-b border-gray-100 bg-white text-xs sm:text-sm shrink-0 overflow-x-auto no-scrollbar whitespace-nowrap">
         <button 
           id="tab-btn-1" 
           onclick="switchDetailTab(1)"
@@ -1249,18 +2208,26 @@ function openTourDetailModal(tourId, initialTab = 1) {
           <i data-lucide="backpack" class="w-3.5 h-3.5"></i>
           <span>3. Lịch trình & Chuẩn bị</span>
         </button>
+        <button 
+          id="tab-btn-4" 
+          onclick="switchDetailTab(4)"
+          class="modal-tab-btn cursor-pointer flex items-center gap-1.5 text-forest"
+        >
+          <i data-lucide="shield-check" class="w-3.5 h-3.5 text-forest"></i>
+          <span>4. Chính sách hoàn hủy & Dịch vụ</span>
+        </button>
       </div>
 
-      <!-- Tab Content Panels (Scrollable) -->
+      <!-- Tab Content Panels -->
       <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
         
-        <!-- PANEL 1: Hành trình đi đâu & Lộ trình địa lý -->
+        <!-- PANEL 1: Hành trình & Lộ trình địa lý -->
         <div id="tab-panel-1" class="space-y-4">
           <!-- Visual Route Steps -->
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
               <i data-lucide="map-pin" class="w-4 h-4 text-forest"></i>
-              <span>Sơ đồ các chặng hành trình (Visual Route Steps)</span>
+              <span>Sơ đồ các chặng hành trình</span>
             </h4>
             <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 p-3 bg-emerald-50/70 rounded-2xl border border-emerald-100">
               ${(tour.routeSteps || []).map((step, idx, arr) => `
@@ -1277,7 +2244,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
           <div class="space-y-1.5">
             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
               <i data-lucide="map" class="w-4 h-4 text-forest"></i>
-              <span>Hành trình đi đâu (Lộ trình địa lý)</span>
+              <span>Lộ trình chi tiết</span>
             </h4>
             <p class="text-xs sm:text-sm text-gray-700 leading-relaxed bg-gray-50 p-3.5 rounded-xl border border-gray-100 font-normal">
               ${tour.routeMap || tour.description}
@@ -1333,7 +2300,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
           <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center justify-between">
             <div>
               <span class="text-xs font-bold text-forest block">Lịch khởi hành sắp tới:</span>
-              <span class="text-xs text-gray-600 font-medium">${dates}</span>
+              <span class="text-xs text-gray-600 font-medium">${dates} (${tour.departureFrequency})</span>
             </div>
             <span class="badge-seat text-xs font-bold">Còn chỗ</span>
           </div>
@@ -1358,59 +2325,169 @@ function openTourDetailModal(tourId, initialTab = 1) {
               <span>Mỗi hành trình của Trekking Đi Cùng Gió không chỉ là thể lực, mà là một trải nghiệm chạm vào chiều sâu văn hóa và lịch sử đất nước.</span>
             </div>
           </div>
-
-          <div class="p-4 bg-emerald-50/50 rounded-2xl border border-emerald-100 space-y-2 text-xs">
-            <h5 class="font-bold text-forest flex items-center gap-1.5">
-              <i data-lucide="info" class="w-4 h-4"></i>
-              <span>Góc nhìn văn hóa bản địa</span>
-            </h5>
-            <p class="text-gray-600 leading-relaxed">
-              Các Porter và Hướng dẫn viên của Trekking Đi Cùng Gió đều là người dân bản địa (H’Mông, Dao, Tày...), am hiểu từng gốc cây ngọn cỏ, dòng suối và những phong tục truyền thống của đại ngàn.
-            </p>
-          </div>
         </div>
 
-        <!-- PANEL 3: Lịch trình chi tiết & Chuẩn bị -->
-        <div id="tab-panel-3" class="hidden space-y-5">
-          <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-forest mb-3">Lịch trình chi tiết từng ngày</h4>
-            <div class="relative border-l-2 border-emerald-600/30 ml-3 pl-5 space-y-5">
-              ${(tour.itinerary || []).map((step, idx) => `
-                <div class="relative">
-                  <span class="absolute -left-[27px] top-0 w-3.5 h-3.5 rounded-full bg-forest ring-4 ring-emerald-100"></span>
-                  <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold bg-[#1E4D3B]/10 text-forest mb-1">${step.day}</span>
-                  <h5 class="text-xs sm:text-sm font-bold text-gray-900">${step.title}</h5>
+        <!-- PANEL 3: Lịch trình & Chuẩn bị -->
+        <div id="tab-panel-3" class="hidden space-y-4">
+          <!-- Day-by-Day Timeline -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+              <i data-lucide="calendar" class="w-4 h-4 text-forest"></i>
+              <span>Lịch trình chi tiết các chặng</span>
+            </h4>
+            <div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-emerald-200">
+              ${(tour.itinerary || []).map(step => `
+                <div class="relative group">
+                  <div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full border-2 border-white bg-forest shadow-xs"></div>
+                  <h5 class="font-bold text-gray-900 text-xs sm:text-sm flex items-center gap-2">
+                    <span class="px-2 py-0.5 rounded-md bg-emerald-100 text-forest text-[11px] font-extrabold">${step.day}</span>
+                    <span>${step.title}</span>
+                  </h5>
                   <p class="text-xs text-gray-600 mt-1 leading-relaxed">${step.desc}</p>
                 </div>
               `).join('')}
             </div>
           </div>
 
-          <div class="pt-2 border-t border-gray-100 space-y-3">
-            <div>
-              <h4 class="text-xs font-bold uppercase tracking-wider text-forest mb-2">Trekking Đi Cùng Gió đã chuẩn bị chu đáo cho bạn</h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600">
+          <!-- Included & Preparation Checklist -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+            <!-- Included -->
+            <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 space-y-2">
+              <h5 class="font-bold text-xs text-forest uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="check" class="w-4 h-4 text-forest"></i>
+                <span>Dịch vụ bao gồm</span>
+              </h5>
+              <ul class="text-xs text-gray-600 space-y-1.5">
                 ${(tour.included || []).map(inc => `
-                  <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-forest"></i> ${inc}</span>
+                  <li class="flex items-start gap-2">
+                    <span class="text-forest font-bold">•</span>
+                    <span>${inc}</span>
+                  </li>
                 `).join('')}
-              </div>
+              </ul>
             </div>
 
-            <div class="pt-3 border-t border-gray-100">
-              <h4 class="text-xs font-bold uppercase tracking-wider text-amber-700 mb-2">Đồ dùng cá nhân bạn cần mang theo</h4>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600">
+            <!-- Preparation -->
+            <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100/70 space-y-2">
+              <h5 class="font-bold text-xs text-forest uppercase tracking-wider flex items-center gap-1.5">
+                <i data-lucide="backpack" class="w-4 h-4 text-forest"></i>
+                <span>Đồ cần chuẩn bị</span>
+              </h5>
+              <ul class="text-xs text-gray-700 space-y-1.5">
                 ${(tour.preparation || []).map(prep => `
-                  <span class="flex items-center gap-1.5"><i data-lucide="arrow-right" class="w-3.5 h-3.5 text-amber-600"></i> ${prep}</span>
+                  <li class="flex items-start gap-2">
+                    <span class="text-amber-600 font-bold">✔</span>
+                    <span>${prep}</span>
+                  </li>
                 `).join('')}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- PANEL 4: CHÍNH SÁCH HOÀN HỦY & DỊCH VỤ -->
+        <div id="tab-panel-4" class="hidden space-y-4">
+          <!-- Timeline visual cards -->
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-4 h-4 text-forest"></i>
+              <span>Quy định hoàn hủy & Bảo lưu tour</span>
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+              <div class="p-3.5 rounded-2xl bg-emerald-50/80 border border-emerald-200 space-y-1">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-emerald-600 text-white">Trước 10 ngày</span>
+                <p class="text-xs sm:text-sm font-black text-emerald-950">Hoàn 100% chi phí</p>
+                <p class="text-[11px] text-emerald-800 leading-tight">Hoàn trả 100% toàn bộ số tiền quý khách đã thanh toán/đặt cọc.</p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-1">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-amber-600 text-white">Từ 5 – 10 ngày</span>
+                <p class="text-xs sm:text-sm font-black text-amber-950">Bảo lưu trong 45 ngày</p>
+                <p class="text-[11px] text-amber-800 leading-tight">Hỗ trợ bảo lưu suất đi sang ngày khởi hành khác trong vòng 45 ngày.</p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-rose-50/80 border border-rose-200 space-y-1">
+                <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-rose-600 text-white">Dưới 5 ngày (1 – 5 ngày)</span>
+                <p class="text-xs sm:text-sm font-black text-rose-950">Không hoàn – Không bảo lưu</p>
+                <p class="text-[11px] text-rose-800 leading-tight">Do toàn bộ chi phí xe, porter, lán nghỉ và thực phẩm đã được thanh toán.</p>
               </div>
             </div>
+            <p class="text-[11px] text-gray-500 italic">
+              * Tour đặc thù mùa vụ (Cúc Phương mùa bướm): Trước 15 ngày hoàn 100%, 5–10 ngày bảo lưu 45 ngày, dưới 5 ngày không hoàn/hủy.
+            </p>
+          </div>
+
+          <!-- Pickup & Commitments Box -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div class="p-3.5 bg-stone-50 rounded-2xl border border-stone-200/80 space-y-2">
+              <h5 class="text-xs font-bold text-gray-900 flex items-center gap-1.5 uppercase tracking-wide">
+                <i data-lucide="map-pin" class="w-3.5 h-3.5 text-forest"></i>
+                <span>2 Điểm đón cố định tại Hà Nội</span>
+              </h5>
+              <ul class="text-xs text-gray-700 space-y-1.5">
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-forest/10 text-forest font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">1</span>
+                  <span><strong>55 Nguyễn Quốc Trị</strong> (Cầu Giấy, Hà Nội)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <span class="w-4 h-4 rounded-full bg-forest/10 text-forest font-bold text-[10px] flex items-center justify-center shrink-0 mt-0.5">2</span>
+                  <span><strong>489 Hoàng Quốc Việt</strong> (Cầu Giấy, Hà Nội)</span>
+                </li>
+              </ul>
+              <p class="text-[11px] text-gray-500 italic pt-1">
+                💬 Nhóm Zalo đoàn được lập trước 2–4 ngày cập nhật số xe, hướng dẫn viên & thời tiết.
+              </p>
+            </div>
+
+            <div class="p-3.5 bg-emerald-50/60 rounded-2xl border border-emerald-100 space-y-2">
+              <h5 class="text-xs font-bold text-forest flex items-center gap-1.5 uppercase tracking-wide">
+                <i data-lucide="badge-check" class="w-3.5 h-3.5 text-forest"></i>
+                <span>Chính sách giá & Trẻ em</span>
+              </h5>
+              <ul class="text-xs text-gray-700 space-y-1.5">
+                <li>• <strong>Cam kết chạy:</strong> Chắc chắn khởi hành chỉ từ <strong>05 khách</strong>.</li>
+                <li>• <strong>Trẻ em 5 – 9 tuổi:</strong> Tính <strong>75%</strong> giá tour người lớn.</li>
+                <li>• <strong>Khách nước ngoài:</strong> Phụ thu <strong>200.000đ/khách</strong> (thủ tục biên phòng/tạm trú).</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Services Included & Excluded -->
+          <div class="space-y-2 pt-1">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+              <i data-lucide="sparkles" class="w-4 h-4 text-forest"></i>
+              <span>Dịch vụ tiêu chuẩn độc quyền của Đi Cùng Gió</span>
+            </h4>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
+              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
+                <i data-lucide="award" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
+                <span><strong>Huy chương gỗ độc quyền:</strong> Khắc kỷ niệm riêng, thân thiện môi trường</span>
+              </div>
+              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
+                <i data-lucide="users" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+                <span><strong>Đội ngũ chuyên nghiệp:</strong> 1 Leader + Porter chu đáo trên mỗi 8-10 khách</span>
+              </div>
+              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
+                <i data-lucide="shield-check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+                <span><strong>Bảo hiểm du lịch:</strong> Trọn gói bồi thường từ 20.000.000đ – 100.000.000đ/vụ</span>
+              </div>
+              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
+                <i data-lucide="compass" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
+                <span><strong>Gậy & Đồ bảo hộ:</strong> Gậy trekking, đèn pin đeo đầu & túi y tế sơ cứu</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Health and Responsibility Note -->
+          <div class="p-3 bg-amber-50/80 border-l-4 border-amber-500 rounded-r-xl text-[11px] text-amber-950 leading-relaxed">
+            <strong>Lưu ý trách nhiệm & Sức khỏe:</strong> Quý khách bắt buộc mang CCCD/Hộ chiếu bản gốc. Tự bảo đảm thể lực và khai báo y tế trung thực. Tuân thủ nghiêm ngặt nguyên tắc bảo vệ thiên nhiên (Không xả rác, mang toàn bộ rác xuống núi).
           </div>
         </div>
 
       </div>
 
-      <!-- Footer Action Bar -->
-      <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50/80 flex items-center justify-between gap-4 shrink-0">
+      <!-- Modal Footer -->
+      <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-4 shrink-0">
         <div>
           <span class="block text-[11px] text-gray-500">Giá tour trọn gói</span>
           <span class="block text-base sm:text-lg font-black text-forest leading-tight">${tour.price}</span>
@@ -1418,7 +2495,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
 
         <div class="flex items-center gap-3">
           <button 
-            type="button"
+            type="button" 
             onclick="toggleWishlist(${tour.id}); openTourDetailModal(${tour.id});" 
             class="p-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:text-red-500 hover:border-red-200 transition-colors shrink-0 shadow-sm cursor-pointer"
             title="Lưu yêu thích"
@@ -1427,7 +2504,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
           </button>
 
           <button 
-            type="button"
+            type="button" 
             onclick="closeTourDetailModal(); openSmartBookingModal(${tour.id});" 
             class="btn-shine py-2.5 px-6 rounded-full bg-forest text-white font-bold text-xs sm:text-sm hover:bg-forest/90 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer"
           >
@@ -1466,20 +2543,45 @@ window.switchModalImage = function(imgUrl) {
   }
 };
 
-// Switch tabs inside detail modal
+// Switch tabs inside detail modal (1 to 4)
 window.switchDetailTab = function(tabIndex) {
-  for (let i = 1; i <= 3; i++) {
+  for (let i = 1; i <= 4; i++) {
     const btn = document.getElementById(`tab-btn-${i}`);
     const panel = document.getElementById(`tab-panel-${i}`);
-    if (i === tabIndex) {
-      btn?.classList.add('active');
-      panel?.classList.remove('hidden');
-    } else {
-      btn?.classList.remove('active');
-      panel?.classList.add('hidden');
+    if (btn && panel) {
+      if (i === tabIndex) {
+        btn.classList.add('active');
+        panel.classList.remove('hidden');
+      } else {
+        btn.classList.remove('active');
+        panel.classList.add('hidden');
+      }
     }
   }
   initLucideIcons();
+};
+
+window.openTourDetailModal = openTourDetailModal;
+window.closeTourDetailModal = closeTourDetailModal;
+
+// ==========================================
+// 10B. GLOBAL POLICY MODAL CONTROLLER
+// ==========================================
+window.openPolicyModal = function() {
+  const modal = document.getElementById('policy-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    initLucideIcons();
+  }
+};
+
+window.closePolicyModal = function() {
+  const modal = document.getElementById('policy-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
 };
 
 // ==========================================
@@ -1501,7 +2603,7 @@ function openSmartBookingModal(tourId = 1, defaultDate = '') {
   if (select) {
     select.innerHTML = TOURS_DATA.map(t => `
       <option value="${t.id}" ${t.id === currentBookingTour.id ? 'selected' : ''}>
-        ${t.title} – ${t.price} (${t.duration})
+        ${t.code ? `[${t.code}] ` : ''}${t.title} – ${t.price} (${t.duration})
       </option>
     `).join('');
     
@@ -1567,7 +2669,7 @@ function updateBookingCalculation() {
   summaryBox.innerHTML = `
     <div class="p-3.5 bg-emerald-50/70 rounded-2xl border border-emerald-100 space-y-2 text-xs">
       <div class="flex justify-between items-center text-gray-600">
-        <span>Đơn giá (${bookingGuests} người):</span>
+        <span>Đơn giá (${bookingGuests} khách):</span>
         <span class="font-bold text-gray-900">${formatCurrency(priceEach)} × ${bookingGuests} = ${formatCurrency(subtotal)}</span>
       </div>
       ${isGroupDiscount ? `
@@ -1584,8 +2686,19 @@ function updateBookingCalculation() {
         <span class="font-bold text-gray-800 text-xs sm:text-sm">Tổng thanh toán dự kiến:</span>
         <span class="font-black text-forest text-base sm:text-lg">${formatCurrency(finalTotal)}</span>
       </div>
+      <!-- Cancellation reassurance link -->
+      <div class="flex items-center justify-between text-[11px] text-forest pt-1 border-t border-emerald-100/60">
+        <span class="flex items-center gap-1 font-semibold">
+          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
+          Cam kết hoàn 100% trước 10 ngày
+        </span>
+        <button type="button" onclick="openPolicyModal()" class="text-emerald-700 underline hover:text-emerald-900 cursor-pointer">
+          Xem chính sách hoàn hủy
+        </button>
+      </div>
     </div>
   `;
+  initLucideIcons();
 }
 
 // Booking Form Submit Event
@@ -1599,26 +2712,22 @@ function setupBookingModalEvents() {
     const phone = document.getElementById('booking-phone')?.value.trim();
     const date = document.getElementById('booking-date-input')?.value.trim();
 
-    // Validation
     if (!name || name.length < 2) {
       showToast('Thông tin chưa hợp lệ', 'Vui lòng nhập họ và tên đầy đủ của bạn.', 'error');
       return;
     }
 
-    // Phone validation regex for Vietnam (10 digits starting with 03, 05, 07, 08, 09)
     const phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
     if (!phoneRegex.test(phone)) {
       showToast('Số điện thoại không hợp lệ', 'Vui lòng nhập số điện thoại Việt Nam gồm 10 chữ số (VD: 0965983302).', 'error');
       return;
     }
 
-    // Generate random booking code e.g. #DCG-202689
     const randomCode = '#DCG-' + Math.floor(100000 + Math.random() * 900000);
     const subtotal = currentBookingTour.priceNum * bookingGuests;
     const isGroupDiscount = bookingGuests >= 4;
     const finalTotal = isGroupDiscount ? subtotal * 0.95 : subtotal;
 
-    // Show Confirmation screen
     const formBox = document.getElementById('booking-form-box');
     const successBox = document.getElementById('booking-success-box');
     
@@ -1627,71 +2736,70 @@ function setupBookingModalEvents() {
       successBox.classList.remove('hidden');
 
       successBox.innerHTML = `
-        <div class="text-center py-4 space-y-4">
-          <div class="w-16 h-16 rounded-full bg-emerald-100 text-forest flex items-center justify-center mx-auto ring-8 ring-emerald-50">
-            <i data-lucide="check" class="w-8 h-8 stroke-[3]"></i>
+        <div class="text-center py-6 space-y-4">
+          <div class="w-16 h-16 rounded-full bg-emerald-100 text-forest mx-auto flex items-center justify-center animate-bounce">
+            <i data-lucide="check-circle" class="w-10 h-10"></i>
           </div>
-
+          
           <div>
-            <span class="inline-block px-3 py-1 rounded-full text-xs font-black bg-[#1E4D3B] text-white tracking-wider">
-              ${randomCode}
-            </span>
-            <h3 class="text-xl font-black text-gray-900 mt-2">Đăng ký tour thành công!</h3>
-            <p class="text-xs text-gray-600 mt-1">Cảm ơn bạn đã lựa chọn đồng hành cùng Trekking Đi Cùng Gió.</p>
+            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block">Đăng ký thành công!</span>
+            <h3 class="text-xl font-black text-gray-900 mt-1">Hẹn gặp bạn trên những đỉnh núi!</h3>
+            <p class="text-xs text-gray-600 mt-1">Mã giữ chỗ tạm thời của bạn: <strong class="text-forest text-sm">${randomCode}</strong></p>
           </div>
 
-          <!-- Receipt card -->
-          <div class="p-4 bg-gray-50 rounded-2xl border border-gray-200 text-left space-y-2 text-xs">
-            <div class="flex justify-between py-1 border-b border-gray-200/60">
-              <span class="text-gray-500">Khách hàng:</span>
-              <span class="font-bold text-gray-900">${name} (${phone})</span>
-            </div>
-            <div class="flex justify-between py-1 border-b border-gray-200/60">
+          <div class="p-4 bg-emerald-50 rounded-2xl text-left text-xs text-gray-700 space-y-1.5 border border-emerald-100">
+            <div class="flex justify-between">
               <span class="text-gray-500">Hành trình:</span>
-              <span class="font-bold text-forest">${currentBookingTour.title}</span>
+              <span class="font-bold text-gray-900 text-right">${currentBookingTour.title}</span>
             </div>
-            <div class="flex justify-between py-1 border-b border-gray-200/60">
-              <span class="text-gray-500">Ngày khởi hành:</span>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Khách hàng:</span>
+              <span class="font-bold text-gray-900">${name}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Số điện thoại:</span>
+              <span class="font-bold text-gray-900">${phone}</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Số lượng khách:</span>
+              <span class="font-bold text-gray-900">${bookingGuests} người</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Dự kiến khởi hành:</span>
               <span class="font-bold text-gray-900">${date}</span>
             </div>
-            <div class="flex justify-between py-1 border-b border-gray-200/60">
-              <span class="text-gray-500">Số lượng khách:</span>
-              <span class="font-bold text-gray-900">${bookingGuests} người ${isGroupDiscount ? '(Đã giảm 5%)' : ''}</span>
+            <div class="flex justify-between">
+              <span class="text-gray-500">Điểm đón Hà Nội:</span>
+              <span class="font-bold text-forest">55 Nguyễn Quốc Trị / 489 HQV</span>
             </div>
-            <div class="flex justify-between pt-1">
-              <span class="text-gray-700 font-bold">Tổng thanh toán dự kiến:</span>
-              <span class="font-black text-sm text-forest">${formatCurrency(finalTotal)}</span>
+            <div class="pt-2 border-t border-emerald-200 flex justify-between items-center">
+              <span class="font-bold text-gray-900">Tổng chi phí:</span>
+              <span class="font-black text-forest text-base">${formatCurrency(finalTotal)}</span>
             </div>
           </div>
 
-          <p class="text-[11px] text-gray-500 leading-relaxed">
-            📞 Tư vấn viên sẽ liên hệ qua hotline <strong>0965 983 302</strong> / Zalo trong vòng <strong>15 phút</strong> để gửi lịch trình chi tiết và hướng dẫn chuẩn bị hành lý.
+          <p class="text-[11px] text-gray-500 italic">
+            Tư vấn viên Đi Cùng Gió sẽ liên hệ qua Zalo/Điện thoại trong vòng 15 phút để xác nhận và gửi checklist chuẩn bị!
           </p>
 
-          <div class="pt-2 flex gap-3">
-            <button 
-              type="button" 
-              onclick="navigator.clipboard.writeText('${randomCode}'); showToast('Đã sao chép', 'Mã booking đã được lưu vào bộ nhớ tạm.', 'success');"
-              class="flex-1 py-3 rounded-full border border-gray-300 text-gray-700 text-xs font-bold hover:bg-gray-100 transition-colors"
-            >
-              Sao chép mã booking
-            </button>
-            <button 
-              type="button" 
-              onclick="closeBookingModal()"
-              class="flex-1 py-3 rounded-full bg-forest text-white text-xs font-bold hover:bg-forest/90 transition-colors"
-            >
-              Hoàn tất
-            </button>
-          </div>
+          <button 
+            type="button" 
+            onclick="closeBookingModal()" 
+            class="w-full py-3 rounded-full bg-forest text-white font-bold text-xs sm:text-sm hover:bg-forest/90 transition-all cursor-pointer shadow-sm"
+          >
+            Hoàn tất & Quay lại trang chủ
+          </button>
         </div>
       `;
 
       initLucideIcons();
-      showToast('Đăng ký thành công', `Mã booking ${randomCode} đã được tạo thành công!`, 'success');
+      showToast('Đăng ký thành công!', `Mã tour ${randomCode} đã được ghi nhận. Chúng tôi sẽ liên hệ bạn ngay!`, 'success');
     }
   });
 }
+
+window.openSmartBookingModal = openSmartBookingModal;
+window.closeBookingModal = closeBookingModal;
 
 // ==========================================
 // 12. WISHLIST & DRAWER SYSTEM
@@ -1747,67 +2855,74 @@ window.closeWishlistDrawer = function() {
   const backdrop = document.getElementById('wishlist-drawer-backdrop');
   if (drawer && backdrop) {
     drawer.classList.add('translate-x-full');
-    backdrop.classList.add('hidden');
-    document.body.style.overflow = '';
+    setTimeout(() => {
+      backdrop.classList.add('hidden');
+      document.body.style.overflow = '';
+    }, 300);
   }
 };
 
 function renderWishlistDrawer() {
-  const list = document.getElementById('wishlist-drawer-items');
-  if (!list) return;
+  const container = document.getElementById('wishlist-items-container');
+  if (!container) return;
 
-  const likedTours = TOURS_DATA.filter(t => wishlist.has(t.id));
+  const savedTours = TOURS_DATA.filter(t => wishlist.has(t.id));
 
-  if (likedTours.length === 0) {
-    list.innerHTML = `
+  if (savedTours.length === 0) {
+    container.innerHTML = `
       <div class="text-center py-12 space-y-3">
-        <div class="w-14 h-14 rounded-full bg-gray-100 flex items-center justify-center mx-auto text-gray-400">
-          <i data-lucide="heart" class="w-6 h-6"></i>
+        <div class="w-12 h-12 rounded-full bg-gray-100 text-gray-400 mx-auto flex items-center justify-center">
+          <i data-lucide="heart-off" class="w-6 h-6"></i>
         </div>
-        <p class="text-xs text-gray-500">Chưa có tour nào trong danh sách quan tâm.</p>
+        <p class="text-xs text-gray-500 font-medium">Bạn chưa lưu tour nào vào danh sách yêu thích.</p>
         <button 
-          type="button" 
-          onclick="closeWishlistDrawer();" 
-          class="text-xs font-bold text-forest hover:underline"
+          onclick="closeWishlistDrawer()"
+          class="px-4 py-2 rounded-full bg-forest text-white text-xs font-bold hover:bg-forest/90 transition-colors cursor-pointer"
         >
-          Khám phá danh sách tour ngay
+          Khám phá tour ngay
         </button>
       </div>
     `;
-  } else {
-    list.innerHTML = likedTours.map(t => `
-      <div class="flex items-center gap-3 p-3 rounded-2xl bg-gray-50 border border-gray-100 hover:border-gray-200 transition-colors">
-        <img 
-          src="${t.image}" 
-          alt="${t.title}" 
-          onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
-          class="w-16 h-16 rounded-xl object-cover shrink-0"
-        />
-        <div class="flex-1 min-w-0">
-          <h4 class="text-xs font-bold text-gray-900 truncate">${t.title}</h4>
-          <span class="text-xs font-extrabold text-forest block mt-0.5">${t.price}</span>
-          <span class="text-[10px] text-gray-500">${t.duration}</span>
-        </div>
-        <div class="flex flex-col gap-1.5 shrink-0">
+    initLucideIcons();
+    return;
+  }
+
+  container.innerHTML = savedTours.map(tour => `
+    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl border border-gray-100">
+      <img 
+        src="${tour.image}" 
+        alt="${tour.title}" 
+        onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
+        class="w-16 h-16 rounded-xl object-cover shrink-0 cursor-pointer"
+        onclick="openTourDetailModal(${tour.id}); closeWishlistDrawer();"
+      />
+      <div class="flex-1 min-w-0">
+        <h4 
+          class="font-bold text-xs text-gray-900 truncate hover:text-forest transition-colors cursor-pointer"
+          onclick="openTourDetailModal(${tour.id}); closeWishlistDrawer();"
+        >
+          ${tour.title}
+        </h4>
+        <p class="text-xs font-black text-forest mt-0.5">${tour.price}</p>
+        <div class="flex items-center gap-2 mt-1">
           <button 
             type="button" 
-            onclick="closeWishlistDrawer(); openSmartBookingModal(${t.id});" 
-            class="px-2.5 py-1 rounded-lg bg-forest text-white text-[11px] font-bold hover:bg-forest/90 cursor-pointer"
+            onclick="closeWishlistDrawer(); openSmartBookingModal(${tour.id});"
+            class="text-[11px] font-bold text-white bg-forest px-2.5 py-0.5 rounded-full hover:bg-forest/90 transition-colors"
           >
-            Đặt
+            Đăng ký
           </button>
           <button 
             type="button" 
-            onclick="toggleWishlist(${t.id});" 
-            class="p-1 text-gray-400 hover:text-red-500 cursor-pointer text-center"
-            title="Xóa"
+            onclick="toggleWishlist(${tour.id})"
+            class="text-[11px] text-gray-400 hover:text-red-500 transition-colors"
           >
-            <i data-lucide="trash-2" class="w-4 h-4 mx-auto"></i>
+            Xóa
           </button>
         </div>
       </div>
-    `).join('');
-  }
+    </div>
+  `).join('');
 
   initLucideIcons();
 }
@@ -1821,8 +2936,12 @@ window.openSearchModal = function() {
   if (modal) {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    setTimeout(() => input?.focus(), 50);
-    handleSearchInput('');
+    if (input) {
+      input.value = '';
+      input.focus();
+      handleSearchInput('');
+    }
+    initLucideIcons();
   }
 };
 
@@ -1835,51 +2954,48 @@ window.closeSearchModal = function() {
 };
 
 window.handleSearchInput = function(query) {
-  const q = (query || '').toLowerCase().trim();
-  const resultsBox = document.getElementById('search-results');
-  if (!resultsBox) return;
+  const container = document.getElementById('search-results-container');
+  if (!container) return;
 
-  const matches = TOURS_DATA.filter(t => 
-    t.title.toLowerCase().includes(q) || 
-    t.location.toLowerCase().includes(q) || 
-    t.categoryName.toLowerCase().includes(q) ||
-    (t.shortSummary && t.shortSummary.toLowerCase().includes(q))
-  );
+  const q = query.trim().toLowerCase();
+  let results = TOURS_DATA;
 
-  if (matches.length === 0) {
-    resultsBox.innerHTML = `
-      <div class="text-center py-8 text-gray-500 text-xs">
-        Không tìm thấy tour phù hợp với từ khóa "<strong>${query}</strong>".
-      </div>
-    `;
-  } else {
-    resultsBox.innerHTML = matches.map(t => `
-      <div 
-        onclick="closeSearchModal(); openTourDetailModal(${t.id});"
-        class="flex items-center gap-3 p-3 rounded-2xl hover:bg-gray-50 border border-transparent hover:border-gray-200 transition-all cursor-pointer group"
-      >
-        <img 
-          src="${t.image}" 
-          alt="${t.title}" 
-          onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
-          class="w-14 h-14 rounded-xl object-cover shrink-0"
-        />
-        <div class="flex-1 min-w-0">
-          <div class="flex items-center gap-2">
-            <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-forest/10 text-forest">${t.badge}</span>
-            <span class="text-[10px] text-gray-400">${t.duration}</span>
-          </div>
-          <h4 class="text-xs sm:text-sm font-bold text-gray-900 group-hover:text-forest transition-colors truncate mt-1">
-            ${t.title}
-          </h4>
-          <span class="text-xs text-gray-500 truncate block">${t.location}</span>
-        </div>
-        <span class="text-xs font-black text-forest shrink-0">${t.price}</span>
-      </div>
-    `).join('');
+  if (q.length > 0) {
+    results = TOURS_DATA.filter(t => 
+      t.title.toLowerCase().includes(q) ||
+      (t.code && t.code.toLowerCase().includes(q)) ||
+      t.location.toLowerCase().includes(q) ||
+      t.description.toLowerCase().includes(q)
+    );
   }
 
-  initLucideIcons();
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="text-center py-8 text-xs text-gray-400">
+        Không tìm thấy hành trình phù hợp với từ khóa "${query}".
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = results.slice(0, 6).map(tour => `
+    <div 
+      onclick="closeSearchModal(); openTourDetailModal(${tour.id});"
+      class="p-2.5 rounded-xl hover:bg-gray-50 flex items-center gap-3 cursor-pointer transition-colors border border-transparent hover:border-gray-100"
+    >
+      <img 
+        src="${tour.image}" 
+        alt="${tour.title}" 
+        onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
+        class="w-12 h-12 rounded-lg object-cover shrink-0"
+      />
+      <div class="flex-1 min-w-0">
+        <h5 class="text-xs font-bold text-gray-900 truncate">${tour.title}</h5>
+        <p class="text-[11px] text-gray-500">${tour.location} • ${tour.duration}</p>
+      </div>
+      <span class="text-xs font-black text-forest shrink-0">${tour.price}</span>
+    </div>
+  `).join('');
 };
 
 // ==========================================
@@ -1887,23 +3003,22 @@ window.handleSearchInput = function(query) {
 // ==========================================
 window.openVideoModal = function() {
   const modal = document.getElementById('video-modal');
-  if (modal) {
+  const frame = document.getElementById('video-frame');
+  if (modal && frame) {
+    frame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
+    initLucideIcons();
   }
 };
 
 window.closeVideoModal = function() {
   const modal = document.getElementById('video-modal');
-  const iframe = document.getElementById('video-iframe');
-  if (modal) {
+  const frame = document.getElementById('video-frame');
+  if (modal && frame) {
+    frame.src = '';
     modal.classList.add('hidden');
     document.body.style.overflow = '';
-    // Pause iframe
-    if (iframe) {
-      const src = iframe.src;
-      iframe.src = src;
-    }
   }
 };
 
@@ -1912,24 +3027,25 @@ window.closeVideoModal = function() {
 // ==========================================
 window.openReviewsModal = function() {
   const modal = document.getElementById('reviews-modal');
-  const list = document.getElementById('reviews-modal-list');
-  if (!modal || !list) return;
+  const container = document.getElementById('reviews-list-container');
+  if (!modal || !container) return;
 
-  list.innerHTML = TESTIMONIALS_DATA.map(r => `
-    <div class="p-4 rounded-2xl bg-gray-50 border border-gray-100 space-y-2">
+  container.innerHTML = TESTIMONIALS_DATA.map(rev => `
+    <div class="p-4 bg-gray-50/80 rounded-2xl border border-gray-100 space-y-2">
       <div class="flex items-center justify-between">
-        <div class="flex items-center gap-3">
-          <img src="${r.avatar}" alt="${r.name}" class="w-10 h-10 rounded-full object-cover border border-emerald-100" />
+        <div class="flex items-center gap-2.5">
+          <img src="${rev.avatar}" alt="${rev.name}" class="w-9 h-9 rounded-full object-cover border border-emerald-100 shadow-2xs" />
           <div>
-            <h4 class="text-xs sm:text-sm font-bold text-gray-900 leading-tight">${r.name}</h4>
-            <span class="text-[11px] text-forest font-semibold">${r.role}</span>
+            <h5 class="font-bold text-xs text-gray-900 leading-tight">${rev.name}</h5>
+            <span class="text-[10px] text-forest font-medium">${rev.role}</span>
           </div>
         </div>
-        <div class="flex text-amber-400 text-xs">
-          ${'★'.repeat(r.rating)}
+        <div class="flex text-amber-400">
+          ${Array(rev.rating).fill('<i data-lucide="star" class="w-3 h-3 fill-amber-400 text-amber-400"></i>').join('')}
         </div>
       </div>
-      <p class="text-xs text-gray-700 italic leading-relaxed">${r.comment}</p>
+      <p class="text-xs text-gray-700 italic leading-relaxed">${rev.comment}</p>
+      <span class="text-[10px] text-gray-400 block text-right">${rev.date}</span>
     </div>
   `).join('');
 
@@ -1946,199 +3062,121 @@ window.closeReviewsModal = function() {
   }
 };
 
-window.submitNewReview = function(e) {
-  e.preventDefault();
-  const name = document.getElementById('review-form-name')?.value.trim();
-  const comment = document.getElementById('review-form-comment')?.value.trim();
-  const tourName = document.getElementById('review-form-tour')?.value || 'Trekking Việt Nam';
+function setupReviewsModalEvents() {
+  const form = document.getElementById('add-review-form');
+  if (!form) return;
 
-  if (!name || !comment) {
-    showToast('Vui lòng điền đủ', 'Hãy nhập họ tên và cảm nhận của bạn.', 'error');
-    return;
-  }
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('review-author-input')?.value.trim();
+    const tour = document.getElementById('review-tour-input')?.value.trim();
+    const text = document.getElementById('review-content-input')?.value.trim();
 
-  TESTIMONIALS_DATA.unshift({
-    id: Date.now(),
-    name: name,
-    role: tourName,
-    avatar: 'assets/images/avatar-ha.jpg',
-    comment: `“${comment}”`,
-    rating: 5
+    if (!name || !text) {
+      showToast('Thiếu thông tin', 'Vui lòng nhập tên và nội dung đánh giá.', 'error');
+      return;
+    }
+
+    TESTIMONIALS_DATA.unshift({
+      id: Date.now(),
+      name: name,
+      role: tour || 'Trekker Đi Cùng Gió',
+      avatar: 'assets/images/avatar-ha.jpg',
+      comment: text,
+      rating: 5,
+      date: 'Vừa xong'
+    });
+
+    form.reset();
+    showToast('Cảm ơn bạn!', 'Đánh giá của bạn đã được gửi thành công!', 'success');
+    openReviewsModal();
   });
-
-  showToast('Cảm ơn bạn!', 'Đánh giá của bạn đã được ghi nhận và hiển thị.', 'success');
-  openReviewsModal();
-};
+}
 
 // ==========================================
 // 16. TOAST NOTIFICATION UTILITY
 // ==========================================
 function showToast(title, message, type = 'info') {
-  const container = document.getElementById('toast-container');
-  if (!container) return;
-
-  const id = 'toast-' + Date.now();
   const toast = document.createElement('div');
-  toast.id = id;
-  toast.className = 'toast-slide-in pointer-events-auto flex items-start gap-3 p-4 rounded-2xl bg-white shadow-xl border border-gray-100 max-w-sm w-full transition-all';
+  toast.className = `fixed bottom-5 right-5 z-50 max-w-sm w-full p-4 rounded-2xl bg-white shadow-2xl border border-gray-100 flex items-start gap-3 transform translate-y-10 opacity-0 transition-all duration-300 pointer-events-auto`;
 
-  let iconName = 'info';
-  let iconColor = 'text-blue-500 bg-blue-50';
+  let iconHtml = '<i data-lucide="info" class="w-5 h-5 text-forest shrink-0 mt-0.5"></i>';
   if (type === 'success') {
-    iconName = 'check-circle-2';
-    iconColor = 'text-forest bg-emerald-50';
+    iconHtml = '<i data-lucide="check-circle-2" class="w-5 h-5 text-emerald-600 shrink-0 mt-0.5"></i>';
   } else if (type === 'error') {
-    iconName = 'alert-triangle';
-    iconColor = 'text-red-500 bg-red-50';
+    iconHtml = '<i data-lucide="alert-circle" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>';
   }
 
   toast.innerHTML = `
-    <div class="w-8 h-8 rounded-xl ${iconColor} flex items-center justify-center shrink-0">
-      <i data-lucide="${iconName}" class="w-4 h-4"></i>
-    </div>
+    ${iconHtml}
     <div class="flex-1 min-w-0">
       <h5 class="text-xs font-bold text-gray-900">${title}</h5>
-      <p class="text-[11px] text-gray-600 mt-0.5 leading-relaxed">${message}</p>
+      <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">${message}</p>
     </div>
-    <button 
-      type="button" 
-      onclick="document.getElementById('${id}')?.remove()" 
-      class="text-gray-400 hover:text-gray-600 p-1"
-    >
+    <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-gray-600 p-1">
       <i data-lucide="x" class="w-3.5 h-3.5"></i>
     </button>
   `;
 
-  container.appendChild(toast);
+  document.body.appendChild(toast);
   initLucideIcons();
 
+  requestAnimationFrame(() => {
+    toast.classList.remove('translate-y-10', 'opacity-0');
+  });
+
   setTimeout(() => {
-    toast.style.opacity = '0';
-    toast.style.transform = 'translateX(60px)';
+    toast.classList.add('translate-y-10', 'opacity-0');
     setTimeout(() => toast.remove(), 300);
-  }, 4500);
+  }, 3500);
 }
+window.showToast = showToast;
 
 // ==========================================
 // 17. SCROLL OBSERVERS & INTERACTIONS
 // ==========================================
 function setupScrollReveal() {
+  const elements = document.querySelectorAll('.reveal-on-scroll');
+  if (!elements.length) return;
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('revealed');
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
       }
     });
   }, { threshold: 0.1 });
 
-  document.querySelectorAll('.reveal-on-scroll').forEach(el => observer.observe(el));
+  elements.forEach(el => observer.observe(el));
 }
 
 function setupScrollSpy() {
-  const sections = document.querySelectorAll('section[id], footer[id]');
+  const sections = document.querySelectorAll('section[id], main[id]');
   const navLinks = document.querySelectorAll('.nav-link');
 
   window.addEventListener('scroll', () => {
     let current = '';
     const scrollPos = window.scrollY + 200;
 
-    sections.forEach(sec => {
-      const top = sec.offsetTop;
-      const height = sec.offsetHeight;
-      if (scrollPos >= top && scrollPos < top + height) {
-        current = sec.getAttribute('id');
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.offsetHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
       }
     });
 
     navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+      const href = link.getAttribute('href');
+      if (href && href.startsWith('#')) {
+        const targetId = href.substring(1);
+        if (targetId === current) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
       }
     });
   });
 }
-
-function setupNavbarGlass() {
-  const backToTop = document.getElementById('back-to-top');
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
-      backToTop?.classList.add('visible');
-    } else {
-      backToTop?.classList.remove('visible');
-    }
-  });
-
-  backToTop?.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  });
-}
-
-function setupFloatingActions() {
-  const zaloBtn = document.getElementById('float-zalo');
-  const phoneBtn = document.getElementById('float-phone');
-  const messengerBtn = document.getElementById('float-messenger');
-
-  zaloBtn?.addEventListener('click', () => {
-    window.open('https://zalo.me/0965983302', '_blank');
-  });
-
-  phoneBtn?.addEventListener('click', () => {
-    window.location.href = 'tel:0965983302';
-  });
-
-  messengerBtn?.addEventListener('click', () => {
-    window.open('https://m.me/dicunggiotrekking', '_blank');
-  });
-}
-
-function setupMobileNav() {
-  const toggleBtn = document.getElementById('mobile-menu-btn');
-  const closeBtn = document.getElementById('mobile-menu-close');
-  const navDrawer = document.getElementById('mobile-nav-drawer');
-  const backdrop = document.getElementById('mobile-nav-backdrop');
-
-  if (!toggleBtn || !navDrawer) return;
-
-  const openNav = () => {
-    navDrawer.classList.remove('-translate-x-full');
-    backdrop?.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-  };
-
-  const closeNav = () => {
-    navDrawer.classList.add('-translate-x-full');
-    backdrop?.classList.add('hidden');
-    document.body.style.overflow = '';
-  };
-
-  toggleBtn.addEventListener('click', openNav);
-  closeBtn?.addEventListener('click', closeNav);
-  backdrop?.addEventListener('click', closeNav);
-
-  navDrawer.querySelectorAll('a').forEach(a => {
-    a.addEventListener('click', closeNav);
-  });
-}
-
-function setupNewsletterForm() {
-  const form = document.getElementById('newsletter-form');
-  if (!form) return;
-
-  form.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const emailInput = document.getElementById('newsletter-email');
-    if (emailInput && emailInput.value) {
-      showToast('Đăng ký nhận tin thành công', 'Cảm ơn bạn! Trekking Đi Cùng Gió sẽ gửi ưu đãi và lịch khởi hành mới nhất tới email của bạn.', 'success');
-      emailInput.value = '';
-    }
-  });
-}
-'''
-
-with open('assets/js/main.js', 'w', encoding='utf-8') as f:
-    f.write(content)
-
-print("assets/js/main.js successfully generated!")
-
