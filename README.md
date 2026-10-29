@@ -54,15 +54,19 @@ Dự án được xây dựng theo kiến trúc **Zero-build Static Web**, chạ
 
 ### 4. Main Content (Bố Cục 7:3 Chuẩn Thiết Kế)
 - **Cột trái (70%): Tour nổi bật**
-  - Lưới thẻ tour hiển thị hình ảnh sắc nét, badge phân loại `Trekking`, nút thả tim yêu thích, thời lượng, cung đường, mức giá nổi bật và đánh giá 5 sao.
+  - Lưới thẻ tour hiển thị hình ảnh 100% cảnh sắc Việt Nam sắc nét, badge phân loại `Trekking`, huy hiệu độ cao (`1.068m`, `2.865m`, `2.868m`, `3.046m`), nút thả tim yêu thích, thời lượng, cung đường, mức giá nổi bật và đánh giá 5 sao.
+  - Mô tả tóm tắt 1 dòng súc tích (`shortSummary`) giới thiệu tinh thần hành trình.
+  - Nút `📖 Câu chuyện` mở nhanh câu chuyện lịch sử và huyền tích của từng đỉnh núi.
+  - Lớp phủ kính mờ khi hover: *"📍 Lộ trình & Lịch sử vùng đất → Bấm để khám phá"*.
   - Các tour chủ lực:
-    - *Trekking Yên Tử – Chùa Đồng* (1 ngày | 1.200.000đ/người)
-    - *Tà Xùa – Săn mây* (2 ngày 1 đêm | 1.850.000đ/người)
-    - *Phu Sa Phin – Chinh phục đỉnh cao* (2 ngày 1 đêm | 1.890.000đ/người)
-    - *Kỳ Quan San – Đỉnh núi hùng vĩ* (3 ngày 2 đêm | 2.650.000đ/người)
+    - *Trekking Yên Tử – Chùa Đồng* (1 ngày | 1.200.000đ/người | 1.068m)
+    - *Tà Xùa – Săn mây* (2 ngày 1 đêm | 1.850.000đ/người | 2.865m)
+    - *Phu Sa Phin – Chinh phục đỉnh cao* (2 ngày 1 đêm | 1.890.000đ/người | 2.868m)
+    - *Kỳ Quan San – Đỉnh núi hùng vĩ* (3 ngày 2 đêm | 2.650.000đ/người | 3.046m)
+    - *Tà Chì Nhù – Mùa Hoa Chi Pâu* (2 ngày 1 đêm | 1.850.000đ/người | 2.979m)
 - **Cột phải (30%): Widget Lịch khởi hành**
   - Khối lịch trình 5 dòng tour sắp khởi hành: Ô ngày tháng riêng biệt, tên tour, thời lượng, giá tour và badge `Còn chỗ` xanh ngọc nhẹ nhàng.
-  - Bấm vào bất kỳ dòng lịch trình nào sẽ tự động mở Popup đăng ký điền sẵn tour và ngày đã chọn.
+  - Bấm vào bất kỳ dòng lịch trình nào sẽ tự động mở Modal chi tiết hành trình và điền sẵn tour.
 
 ### 5. Vì Sao Chọn Chúng Tôi & Về ĐI CÙNG GIÓ (3 Cột Ngang)
 - **Cột 1 (Banner Video):** Ảnh núi non hùng vĩ, chữ viết tay *"Hành trình của những người trẻ và những ước mơ lớn"*, nút play phát video popup có hiệu ứng sóng lan tỏa.
@@ -81,9 +85,15 @@ Dự án được xây dựng theo kiến trúc **Zero-build Static Web**, chạ
   - Trần Thị Mai (*Hành hương Yên Tử*)
 
 ### 7. Các Popup & Modal Tương Tác Sống Động
-- **Modal Đăng Ký Tour:** Điền tự động tên tour khi bấm từ các nút trên web, chọn ngày đi, số người, họ tên, SĐT và gửi yêu cầu.
-- **Toast Notification:** Thông báo xác nhận thành công góc phải màn hình, đóng tự động sau 5-8 giây.
-- **Drawer Tour Yêu Thích:** Bấm vào tim trên thẻ tour để thêm vào giỏ yêu thích, cập nhật số đếm ở Header và mở ngăn kéo xem các tour đã lưu.
+- **Modal Chi Tiết Tour (Professional Storytelling Modal):**
+  - **Header:** Ảnh bìa lớn của đúng đỉnh núi đó + Badge độ cao + Badge độ khó + Tên tour & Giá tiền.
+  - **Khối 1 – 🗺️ Hành trình đi đâu? (Lộ trình địa lý):** Sơ đồ các chặng nối tiếp nhau (Visual Route Steps: `Hà Nội` → `...` → `Đỉnh...`) và lộ trình địa lý chi tiết.
+  - **Khối 2 – 📜 Lịch sử & Câu chuyện vùng đất:** Đặt trong khung nền màu kem ấm (`bg-[#F6F7F2] border-l-4 border-[#1E4D3B]`) trình bày trang trọng lịch sử, nguồn gốc tên gọi và văn hóa bản địa.
+  - **Khối 3 – 🎒 Lịch trình từng ngày & Chuẩn bị:** Lịch trình chi tiết và danh sách đồ dùng cá nhân.
+  - **Footer:** Nút lớn `Đăng ký chinh phục ngay` kết nối thẳng với Form đăng ký.
+- **Modal Đăng Ký Tour Thông Minh:** Bộ tính giá tự động theo số khách, giảm 5% cho nhóm ≥4 người, kiểm tra SĐT Việt Nam 10 chữ số và tạo mã đặt chỗ ngẫu nhiên.
+- **Toast Notification:** Thông báo xác nhận thành công góc phải màn hình, đóng tự động sau 4-5 giây.
+- **Drawer Tour Yêu Thích:** Bấm vào tim trên thẻ tour để thêm vào giỏ yêu thích, lưu `localStorage`.
 - **Modal Video:** Phát video hành trình trekking núi rừng thực tế.
 - **Modal Tìm Kiếm:** Tìm kiếm tour tức thì theo từ khóa địa danh hoặc tên tour.
 

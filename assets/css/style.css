@@ -404,3 +404,14 @@ body {
   transform: translateY(-3px);
   box-shadow: 0 10px 20px -4px rgba(30, 77, 59, 0.4);
 }
+
+/* Visual Route Chips Micro-interaction */
+.modal-enter .route-chip {
+  transition: all 0.2s ease;
+}
+
+.modal-enter .route-chip:hover {
+  transform: translateY(-1px);
+  border-color: #1E4D3B;
+  box-shadow: 0 4px 10px -2px rgba(30, 77, 59, 0.15);
+}
