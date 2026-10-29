@@ -1,0 +1,1028 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ĐI CÙNG GIÓ – Hẹn nhau trên những đỉnh núi | Tour Trekking & Trải Nghiệm</title>
+  <meta name="description" content="ĐI CÙNG GIÓ - Đơn vị tổ chức các tour trekking leo núi, du lịch trải nghiệm bản sắc, hành hương tâm linh và thiện nguyện chuyên nghiệp.">
+  <meta name="theme-color" content="#1E4D3B">
+
+  <!-- Favicon SVG -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%231E4D3B' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='m8 3 4 8 5-5 5 15H2L8 3z'/></svg>">
+
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: {
+              DEFAULT: '#1E4D3B',
+              dark: '#14382B',
+              light: '#2A6A52'
+            },
+            mint: {
+              DEFAULT: '#E6F4EA',
+              border: '#CBEAD2',
+              dark: '#1B4D36',
+              box: '#EBF2EA'
+            },
+            cream: {
+              DEFAULT: '#F6F7F2'
+            }
+          },
+          fontFamily: {
+            handwriting: ['Caveat', 'cursive', 'sans-serif'],
+            script: ['Dancing Script', 'cursive', 'sans-serif'],
+            sans: ['"Plus Jakarta Sans"', 'Montserrat', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="bg-[#F6F7F2] text-gray-800 antialiased font-sans selection:bg-forest selection:text-white">
+
+  <!-- ==================== 1. STICKY HEADER ==================== -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-100 shadow-sm transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        
+        <!-- Left: Brand Logo & Slogan -->
+        <a href="#home" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest group-hover:scale-105 transition-transform">
+            <svg class="w-7 h-7 text-forest" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M4 26L12 10L17 18L21 11L28 26H4Z" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M12 10L14.5 15L17 14L21 11" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+              <circle cx="23" cy="8" r="2.5" fill="currentColor"/>
+            </svg>
+          </div>
+          <div>
+            <span class="block text-xl font-extrabold tracking-wide text-forest leading-tight group-hover:text-forest-dark transition-colors">
+              ĐI CÙNG GIÓ
+            </span>
+            <span class="block text-xs font-medium text-gray-500 font-handwriting tracking-wide">
+              Hẹn nhau trên những đỉnh núi
+            </span>
+          </div>
+        </a>
+
+        <!-- Center: Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-7 text-sm font-semibold text-gray-600">
+          <a href="#home" class="nav-link active hover:text-forest">Trang chủ</a>
+          <a href="#tours-section" class="nav-link hover:text-forest">Tour</a>
+          <a href="#schedule-section" class="nav-link hover:text-forest">Lịch khởi hành</a>
+          <a href="#destinations-section" class="nav-link hover:text-forest">Điểm đến</a>
+          <a href="#about-section" class="nav-link hover:text-forest">Về chúng tôi</a>
+          <a href="#blog-section" class="nav-link hover:text-forest">Blog</a>
+          <a href="#contact-section" class="nav-link hover:text-forest">Liên hệ</a>
+        </nav>
+
+        <!-- Right: Actions & CTA Button -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- Search Button -->
+          <button 
+            type="button" 
+            onclick="openSearchModal()" 
+            class="w-10 h-10 rounded-full flex items-center justify-center text-gray-600 hover:text-forest hover:bg-gray-100 transition-colors"
+            title="Tìm kiếm tour"
+          >
+            <i data-lucide="search" class="w-5 h-5"></i>
+          </button>
+
+          <!-- Cart / Wishlist Button with Badge -->
+          <button 
+            type="button" 
+            onclick="openWishlistDrawer()" 
+            class="relative w-10 h-10 rounded-full flex items-center justify-center text-gray-600 hover:text-forest hover:bg-gray-100 transition-colors"
+            title="Tour đã lưu / Giỏ hàng"
+          >
+            <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+            <span class="wishlist-counter-badge absolute -top-1 -right-1 w-5 h-5 bg-forest text-white text-[11px] font-bold rounded-full flex items-center justify-center shadow-sm">
+              0
+            </span>
+          </button>
+
+          <!-- CTA Đăng Ký Tour Button -->
+          <button 
+            type="button" 
+            onclick="openBookingModal()"
+            class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-full bg-forest text-white text-sm font-bold shadow-sm hover:bg-forest/90 active:scale-95 transition-all"
+          >
+            Đăng ký tour
+          </button>
+
+          <!-- Mobile Hamburger Toggle -->
+          <button 
+            id="mobile-menu-btn" 
+            type="button" 
+            class="md:hidden w-10 h-10 rounded-full flex items-center justify-center text-gray-700 hover:bg-gray-100 transition-colors"
+            title="Mở menu"
+          >
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- ==================== 2. HERO SECTION ==================== -->
+  <section id="home" class="relative w-full min-h-[580px] lg:min-h-[640px] flex items-center justify-center overflow-hidden">
+    <!-- Full-width Mountain Dawn Trekking Background -->
+    <div class="absolute inset-0 z-0">
+      <img 
+        src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2000&q=85" 
+        alt="Đi Cùng Gió - Hẹn nhau trên những đỉnh núi" 
+        class="w-full h-full object-cover object-center transform scale-105 transition-transform duration-1000"
+      />
+      <!-- Gradient overlay matching design -->
+      <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/55 to-black/35"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+    </div>
+
+    <!-- Hero Content Container -->
+    <div class="relative z-10 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 flex flex-col justify-between min-h-[540px]">
+      
+      <!-- Top / Center Row -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center pt-4">
+        
+        <!-- Left Column: Big Artistic Typography & CTAs -->
+        <div class="lg:col-span-8 text-white space-y-6">
+          
+          <!-- Mountain peak stroke outline decoration -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs font-medium text-emerald-200">
+            <i data-lucide="mountain-snow" class="w-4 h-4 text-emerald-300"></i>
+            <span>Chinh phục đỉnh cao – Khám phá bản thân</span>
+          </div>
+
+          <!-- Artistic Title -->
+          <div class="space-y-1">
+            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight text-white hero-brush-title drop-shadow-md">
+              ĐI CÙNG GIÓ
+            </h1>
+            <p class="font-handwriting text-3xl sm:text-4xl lg:text-5xl text-emerald-200 italic font-bold tracking-wide">
+              Hẹn nhau trên những đỉnh núi
+            </p>
+          </div>
+
+          <!-- Description -->
+          <p class="text-base sm:text-lg text-gray-200 max-w-xl font-normal leading-relaxed">
+            Khám phá những cung đường mới, chinh phục giới hạn và kết nối những tâm hồn yêu thiên nhiên.
+          </p>
+
+          <!-- 2 CTA Buttons -->
+          <div class="flex flex-wrap items-center gap-4 pt-2">
+            <a 
+              href="#tours-section" 
+              class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-forest text-white text-sm sm:text-base font-bold shadow-lg hover:bg-forest-light active:scale-95 transition-all"
+            >
+              <i data-lucide="compass" class="w-5 h-5 text-emerald-300"></i>
+              <span>Khám phá tour</span>
+            </a>
+
+            <a 
+              href="#schedule-section" 
+              class="inline-flex items-center gap-2.5 px-6 py-3.5 rounded-full bg-transparent text-white border-2 border-white/80 hover:bg-white hover:text-gray-900 text-sm sm:text-base font-bold backdrop-blur-sm active:scale-95 transition-all"
+            >
+              <i data-lucide="calendar" class="w-5 h-5"></i>
+              <span>Lịch khởi hành</span>
+            </a>
+          </div>
+
+        </div>
+
+        <!-- Right Column / Bottom Quote -->
+        <div class="lg:col-span-4 flex justify-start lg:justify-end">
+          <div class="hero-quote-box p-5 rounded-2xl max-w-sm text-right lg:mt-32">
+            <p class="font-handwriting text-2xl sm:text-3xl text-white italic leading-snug drop-shadow">
+              “Trekking – Không chỉ là đi, mà là trở về với chính mình!”
+            </p>
+            <span class="inline-block mt-2 text-xs text-emerald-200 uppercase tracking-widest font-semibold">
+              #DiCungGio
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Slider indicator dots at bottom center -->
+      <div class="flex items-center justify-center gap-2.5 pt-8">
+        <span class="w-8 h-2 rounded-full bg-white transition-all shadow-sm"></span>
+        <span class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 cursor-pointer transition-all"></span>
+        <span class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 cursor-pointer transition-all"></span>
+        <span class="w-2 h-2 rounded-full bg-white/40 hover:bg-white/80 cursor-pointer transition-all"></span>
+      </div>
+
+    </div>
+
+    <!-- Floating Action Bar (Fixed to right side edge) -->
+    <div class="fixed right-4 bottom-24 z-30 flex flex-col items-center gap-3">
+      <!-- Zalo Button -->
+      <button 
+        id="float-zalo"
+        type="button" 
+        title="Nhắn Zalo tư vấn 24/7"
+        class="w-12 h-12 rounded-full bg-[#0068FF] text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all group relative"
+      >
+        <span class="font-extrabold text-xs tracking-tighter">Zalo</span>
+        <span class="absolute right-14 whitespace-nowrap bg-gray-900 text-white text-xs px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow">
+          Chat Zalo
+        </span>
+      </button>
+
+      <!-- Phone Hotline Button (with gentle pulse glow) -->
+      <button 
+        id="float-phone"
+        type="button" 
+        title="Gọi hotline: 0988 668 899"
+        class="floating-btn-pulse w-12 h-12 rounded-full bg-forest text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all group relative"
+      >
+        <i data-lucide="phone-call" class="w-5 h-5 text-emerald-200"></i>
+        <span class="absolute right-14 whitespace-nowrap bg-gray-900 text-white text-xs px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow">
+          Hotline 0988 668 899
+        </span>
+      </button>
+
+      <!-- Messenger Button -->
+      <button 
+        id="float-messenger"
+        type="button" 
+        title="Nhắn tin qua Messenger"
+        class="w-12 h-12 rounded-full bg-gradient-to-tr from-[#00B2FE] via-[#006AFF] to-[#A033FF] text-white flex items-center justify-center shadow-lg hover:scale-110 active:scale-95 transition-all group relative"
+      >
+        <i data-lucide="message-circle" class="w-5 h-5"></i>
+        <span class="absolute right-14 whitespace-nowrap bg-gray-900 text-white text-xs px-2.5 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none shadow">
+          Messenger
+        </span>
+      </button>
+    </div>
+  </section>
+
+  <!-- ==================== 3. CATEGORY BAR ==================== -->
+  <section class="border-b border-gray-200/70 bg-white py-6 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+        
+        <!-- Left Title & Doodle -->
+        <div class="flex items-center gap-3 shrink-0">
+          <div>
+            <h2 class="font-handwriting text-3xl sm:text-4xl font-bold text-gray-800 leading-none">
+              Khám phá danh mục tour
+            </h2>
+            <div class="doodle-arrow text-forest pl-6 pt-1">
+              <svg width="45" height="15" viewBox="0 0 45 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M2 12C12 4 28 3 42 7M42 7L35 3M42 7L36 13" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right 5 Categories List -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 flex-1 lg:max-w-4xl">
+          
+          <!-- 1. Trekking -->
+          <a 
+            href="#tours-section" 
+            data-category="trekking"
+            class="category-item active group p-2.5 rounded-2xl flex items-center gap-3 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all cursor-pointer"
+          >
+            <div class="category-icon-wrapper w-11 h-11 rounded-full bg-forest text-white flex items-center justify-center shrink-0 transition-transform">
+              <i data-lucide="mountain" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="cat-title block text-sm font-bold text-forest transition-colors truncate">Trekking</span>
+              <span class="block text-[11px] text-gray-500 truncate">Chinh phục thiên nhiên</span>
+            </div>
+          </a>
+
+          <!-- 2. Tâm linh -->
+          <a 
+            href="#tours-section" 
+            data-category="spiritual"
+            class="category-item group p-2.5 rounded-2xl flex items-center gap-3 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all cursor-pointer"
+          >
+            <div class="category-icon-wrapper w-11 h-11 rounded-full bg-gray-100 text-forest flex items-center justify-center shrink-0 transition-transform">
+              <i data-lucide="flower-2" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="cat-title block text-sm font-bold text-gray-800 transition-colors truncate">Tâm linh</span>
+              <span class="block text-[11px] text-gray-500 truncate">Hành hương, an yên</span>
+            </div>
+          </a>
+
+          <!-- 3. Trải nghiệm -->
+          <a 
+            href="#tours-section" 
+            data-category="experience"
+            class="category-item group p-2.5 rounded-2xl flex items-center gap-3 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all cursor-pointer"
+          >
+            <div class="category-icon-wrapper w-11 h-11 rounded-full bg-gray-100 text-forest flex items-center justify-center shrink-0 transition-transform">
+              <i data-lucide="tent" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="cat-title block text-sm font-bold text-gray-800 transition-colors truncate">Trải nghiệm</span>
+              <span class="block text-[11px] text-gray-500 truncate">Văn hóa, bản sắc</span>
+            </div>
+          </a>
+
+          <!-- 4. Thiện nguyện -->
+          <a 
+            href="#tours-section" 
+            data-category="charity"
+            class="category-item group p-2.5 rounded-2xl flex items-center gap-3 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all cursor-pointer"
+          >
+            <div class="category-icon-wrapper w-11 h-11 rounded-full bg-gray-100 text-forest flex items-center justify-center shrink-0 transition-transform">
+              <i data-lucide="heart-handshake" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="cat-title block text-sm font-bold text-gray-800 transition-colors truncate">Thiện nguyện</span>
+              <span class="block text-[11px] text-gray-500 truncate">Lan tỏa yêu thương</span>
+            </div>
+          </a>
+
+          <!-- 5. Tour gần Hà Nội -->
+          <a 
+            href="#tours-section" 
+            data-category="near_hanoi"
+            class="category-item group p-2.5 rounded-2xl flex items-center gap-3 border border-gray-100 hover:border-emerald-200 hover:bg-emerald-50/40 transition-all cursor-pointer"
+          >
+            <div class="category-icon-wrapper w-11 h-11 rounded-full bg-gray-100 text-forest flex items-center justify-center shrink-0 transition-transform">
+              <i data-lucide="map-pin" class="w-5 h-5"></i>
+            </div>
+            <div class="min-w-0">
+              <span class="cat-title block text-sm font-bold text-gray-800 transition-colors truncate">Tour gần Hà Nội</span>
+              <span class="block text-[11px] text-gray-500 truncate">Đi trong ngày</span>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 4. MAIN CONTENT (7:3 RATIO) ==================== -->
+  <main class="py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-10 gap-8 items-start">
+        
+        <!-- LEFT COLUMN (70% = 7 cols on lg): Tour nổi bật -->
+        <section id="tours-section" class="lg:col-span-7 space-y-6">
+          
+          <!-- Section Header -->
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="mountain" class="w-6 h-6"></i>
+              </div>
+              <div>
+                <h2 class="text-2xl font-extrabold text-gray-900 tracking-tight">Tour nổi bật</h2>
+                <p class="text-xs text-gray-500 mt-0.5">Những hành trình được yêu thích nhất</p>
+              </div>
+            </div>
+
+            <!-- View all link -->
+            <button 
+              id="toggle-all-tours-btn"
+              type="button" 
+              onclick="toggleViewAllTours()"
+              class="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-forest hover:text-forest-dark hover:underline transition-colors"
+            >
+              <span>Xem tất cả tour</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <!-- Dynamic Tours Grid (4 cards in responsive grid) -->
+          <div id="tour-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Dynamically populated by renderTours() in main.js -->
+          </div>
+
+        </section>
+
+        <!-- RIGHT COLUMN (30% = 3 cols on lg): Lịch khởi hành Widget -->
+        <aside id="schedule-section" class="lg:col-span-3">
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm space-y-5">
+            
+            <!-- Widget Header -->
+            <div class="flex items-center gap-3 border-b border-gray-100 pb-4">
+              <div class="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="calendar" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <h3 class="text-base font-extrabold text-gray-900">Lịch khởi hành</h3>
+                <p class="text-[11px] text-gray-500">Các tour sắp khởi hành trong tháng</p>
+              </div>
+            </div>
+
+            <!-- Schedule 5 Rows -->
+            <div id="schedule-list-container" class="space-y-2.5">
+              <!-- Dynamically populated by renderSchedule() in main.js -->
+            </div>
+
+            <!-- Bottom Link -->
+            <div class="pt-2 text-center border-t border-gray-100">
+              <a 
+                href="#schedule-section" 
+                onclick="showToast('Lịch khởi hành 2026', 'Tất cả các tour đều khởi hành đúng hẹn vào thứ 6 & thứ 7 hàng tuần!', 'info')"
+                class="inline-flex items-center gap-1.5 text-xs font-bold text-forest hover:text-forest-dark hover:underline transition-colors"
+              >
+                <span>Xem lịch khởi hành đầy đủ</span>
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+              </a>
+            </div>
+
+          </div>
+        </aside>
+
+      </div>
+    </div>
+  </main>
+
+  <!-- ==================== 5. WHY CHOOSE US & ABOUT US (3 COLUMNS) ==================== -->
+  <section id="why-us-section" class="py-12 bg-white border-y border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+        
+        <!-- Column 1 (4 cols): Video Banner -->
+        <div class="lg:col-span-4 relative rounded-2xl overflow-hidden min-h-[320px] flex flex-col justify-end p-6 text-white group shadow-sm">
+          <!-- Background image -->
+          <img 
+            src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1000&q=80" 
+            alt="Hành trình của những người trẻ" 
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/45 to-black/20"></div>
+
+          <!-- Video Play Icon in Center -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <button 
+              type="button" 
+              onclick="openVideoModal()" 
+              class="play-pulse-ring w-16 h-16 rounded-full bg-white/90 text-forest flex items-center justify-center shadow-2xl hover:scale-110 active:scale-95 transition-transform cursor-pointer"
+              title="Phát video hành trình"
+            >
+              <i data-lucide="play" class="w-7 h-7 fill-forest ml-1"></i>
+            </button>
+          </div>
+
+          <!-- Content overlay -->
+          <div class="relative z-10 space-y-3">
+            <p class="font-handwriting text-2xl sm:text-3xl font-bold italic leading-snug text-white drop-shadow">
+              Hành trình của những người trẻ và những ước mơ lớn
+            </p>
+            <button 
+              type="button" 
+              onclick="openVideoModal()" 
+              class="inline-flex items-center gap-1.5 text-xs font-bold text-emerald-200 hover:text-white transition-colors"
+            >
+              <span>Xem video hành trình</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Column 2 (4 cols): Vì sao chọn ĐI CÙNG GIÓ? (2x2 Grid) -->
+        <div class="lg:col-span-4 bg-gray-50/70 rounded-2xl p-6 border border-gray-100 flex flex-col justify-between">
+          <h3 class="text-xl font-extrabold text-gray-900 tracking-tight mb-5">
+            Vì sao chọn ĐI CÙNG GIÓ?
+          </h3>
+
+          <div class="grid grid-cols-2 gap-4 flex-1">
+            <!-- 1. Lịch trình chất lượng -->
+            <div class="space-y-1.5">
+              <div class="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="map" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-sm font-bold text-gray-900">Lịch trình chất lượng</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Trải nghiệm thực tế, an toàn.</p>
+            </div>
+
+            <!-- 2. Đội ngũ chuyên nghiệp -->
+            <div class="space-y-1.5">
+              <div class="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="shield-check" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-sm font-bold text-gray-900">Đội ngũ chuyên nghiệp</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Hướng dẫn viên giàu kinh nghiệm.</p>
+            </div>
+
+            <!-- 3. Cộng đồng tích cực -->
+            <div class="space-y-1.5">
+              <div class="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="users" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-sm font-bold text-gray-900">Cộng đồng tích cực</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Kết nối những người cùng đam mê.</p>
+            </div>
+
+            <!-- 4. Hỗ trợ tận tâm -->
+            <div class="space-y-1.5">
+              <div class="w-9 h-9 rounded-xl bg-forest/10 flex items-center justify-center text-forest">
+                <i data-lucide="headphones" class="w-5 h-5"></i>
+              </div>
+              <h4 class="text-sm font-bold text-gray-900">Hỗ trợ tận tâm</h4>
+              <p class="text-xs text-gray-500 leading-relaxed">Tư vấn 24/7, đồng hành trước – trong – sau tour.</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 (4 cols): Về ĐI CÙNG GIÓ -->
+        <div id="about-section" class="lg:col-span-4 bg-[#EBF2EA] rounded-2xl p-6 border border-secondary-mint-border flex flex-col justify-between">
+          <div class="space-y-4">
+            <!-- Mountain Icon -->
+            <div class="w-12 h-12 rounded-2xl bg-forest text-white flex items-center justify-center shadow-sm">
+              <i data-lucide="mountain-snow" class="w-7 h-7"></i>
+            </div>
+
+            <h3 class="text-xl font-extrabold text-forest">
+              Về ĐI CÙNG GIÓ
+            </h3>
+
+            <p class="text-sm text-gray-700 leading-relaxed font-normal">
+              ĐI CÙNG GIÓ là đơn vị tổ chức các tour trekking, du lịch trải nghiệm và hành hương tâm linh, hướng tới những giá trị bền vững, lan tỏa yêu thương và kết nối cộng đồng yêu thiên nhiên.
+            </p>
+          </div>
+
+          <div class="pt-6">
+            <button 
+              type="button" 
+              onclick="showToast('Về ĐI CÙNG GIÓ', 'Chúng tôi tự hào đã dẫn dắt hơn 5.000 trekker chinh phục các đỉnh núi hùng vĩ khắp Việt Nam an toàn & trọn vẹn cảm xúc.', 'info')"
+              class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-forest text-white text-xs sm:text-sm font-bold hover:bg-forest/90 active:scale-95 transition-all shadow-sm"
+            >
+              <span>Tìm hiểu thêm</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 6. TESTIMONIALS (KHÁCH HÀNG NÓI GÌ VỀ CHÚNG TÔI?) ==================== -->
+  <section id="testimonials-section" class="py-14 bg-[#F6F7F2]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        
+        <!-- Left Column (25% / 3 cols): Title & Description -->
+        <div class="lg:col-span-3 space-y-4">
+          <h2 class="font-handwriting text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 leading-tight">
+            Khách hàng nói gì về chúng tôi?
+          </h2>
+          <p class="text-xs sm:text-sm text-gray-600 leading-relaxed">
+            Những chia sẻ chân thực từ các thành viên đã đồng hành cùng ĐI CÙNG GIÓ
+          </p>
+          <button 
+            type="button" 
+            onclick="showToast('Đánh giá khách hàng', '100% đánh giá được ghi nhận từ thành viên sau mỗi hành trình thực tế.', 'info')"
+            class="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-forest text-white text-xs font-bold hover:bg-forest/90 active:scale-95 transition-all shadow-sm"
+          >
+            <span>Xem thêm đánh giá</span>
+            <i data-lucide="arrow-right" class="w-4 h-4"></i>
+          </button>
+        </div>
+
+        <!-- Right Column (75% / 9 cols): 3 Review Cards in a Row -->
+        <div class="lg:col-span-9 grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          <!-- Review 1: Nguyễn Thu Hà -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+            <p class="text-xs text-gray-700 italic leading-relaxed">
+              “Cung đường đẹp, hướng dẫn viên nhiệt tình, đồ ăn ngon. Cảm ơn ĐI CÙNG GIÓ đã cho mình một hành trình thật đáng nhớ!”
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+              <img 
+                src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80" 
+                alt="Nguyễn Thu Hà" 
+                class="w-10 h-10 rounded-full object-cover border-2 border-forest/20"
+              />
+              <div class="flex-1 min-w-0">
+                <h4 class="text-xs font-bold text-gray-900 truncate">Nguyễn Thu Hà</h4>
+                <p class="text-[11px] text-gray-500 truncate">Trekking Tà Xùa</p>
+                <div class="flex text-amber-400 mt-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 2: Lê Minh Đức -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+            <p class="text-xs text-gray-700 italic leading-relaxed">
+              “Lần đầu đi trekking mà được trải nghiệm nhiều điều tuyệt vời như vậy. Nhóm rất vui, đoàn kết. Sẽ quay lại cùng ĐI CÙNG GIÓ!”
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&q=80" 
+                alt="Lê Minh Đức" 
+                class="w-10 h-10 rounded-full object-cover border-2 border-forest/20"
+              />
+              <div class="flex-1 min-w-0">
+                <h4 class="text-xs font-bold text-gray-900 truncate">Lê Minh Đức</h4>
+                <p class="text-[11px] text-gray-500 truncate">Trekking Phu Sa Phin</p>
+                <div class="flex text-amber-400 mt-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Review 3: Trần Thị Mai -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-100 shadow-sm flex flex-col justify-between space-y-4 hover:shadow-md transition-shadow">
+            <p class="text-xs text-gray-700 italic leading-relaxed">
+              “Hành trình ý nghĩa, vừa được khám phá thiên nhiên vừa học được nhiều điều về Phật pháp. Cảm ơn đội ngũ đã tổ chức chu đáo!”
+            </p>
+            <div class="flex items-center gap-3 pt-3 border-t border-gray-100">
+              <img 
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80" 
+                alt="Trần Thị Mai" 
+                class="w-10 h-10 rounded-full object-cover border-2 border-forest/20"
+              />
+              <div class="flex-1 min-w-0">
+                <h4 class="text-xs font-bold text-gray-900 truncate">Trần Thị Mai</h4>
+                <p class="text-[11px] text-gray-500 truncate">Hành hương Yên Tử</p>
+                <div class="flex text-amber-400 mt-0.5">
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                  <i data-lucide="star" class="w-3 h-3 fill-amber-400"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== FOOTER ==================== -->
+  <footer id="contact-section" class="bg-stone-900 text-stone-300 pt-16 pb-12 border-t border-stone-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-stone-800">
+        
+        <!-- Brand Col (2 cols) -->
+        <div class="lg:col-span-2 space-y-4">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-forest text-emerald-200 flex items-center justify-center">
+              <i data-lucide="mountain" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xl font-extrabold text-white tracking-wider block">ĐI CÙNG GIÓ</span>
+              <span class="text-xs text-emerald-400 font-handwriting">Hẹn nhau trên những đỉnh núi</span>
+            </div>
+          </div>
+          <p class="text-xs text-stone-400 leading-relaxed max-w-sm">
+            Công ty lữ hành chuyên nghiệp tổ chức các hành trình trekking chinh phục đỉnh cao, du lịch trải nghiệm bản sắc văn hóa và thiện nguyện cộng đồng.
+          </p>
+          <div class="space-y-2 text-xs text-stone-300">
+            <p class="flex items-center gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <span>Tầng 5, Tòa nhà Travel Hub, Cầu Giấy, Hà Nội</span>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="phone" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <a href="tel:0988668899" class="hover:text-white transition-colors">Hotline: 0988 668 899</a>
+            </p>
+            <p class="flex items-center gap-2">
+              <i data-lucide="mail" class="w-4 h-4 text-emerald-400 shrink-0"></i>
+              <a href="mailto:contact@dicunggio.vn" class="hover:text-white transition-colors">contact@dicunggio.vn</a>
+            </p>
+          </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Cung Đường Trekking</h4>
+          <ul class="space-y-2 text-xs text-stone-400">
+            <li><a href="#tours-section" class="hover:text-emerald-300 transition-colors">Tà Xùa – Săn Mây</a></li>
+            <li><a href="#tours-section" class="hover:text-emerald-300 transition-colors">Yên Tử – Chùa Đồng</a></li>
+            <li><a href="#tours-section" class="hover:text-emerald-300 transition-colors">Phu Sa Phin</a></li>
+            <li><a href="#tours-section" class="hover:text-emerald-300 transition-colors">Kỳ Quan San</a></li>
+            <li><a href="#tours-section" class="hover:text-emerald-300 transition-colors">Tà Chì Nhù Mùa Hoa Chi Pâu</a></li>
+          </ul>
+        </div>
+
+        <!-- Categories & Experiences -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Khám Phá</h4>
+          <ul class="space-y-2 text-xs text-stone-400">
+            <li><a href="#tours-section" onclick="filterByCategory('spiritual')" class="hover:text-emerald-300 transition-colors">Hành hương tâm linh</a></li>
+            <li><a href="#tours-section" onclick="filterByCategory('experience')" class="hover:text-emerald-300 transition-colors">Du lịch trải nghiệm bản sắc</a></li>
+            <li><a href="#tours-section" onclick="filterByCategory('charity')" class="hover:text-emerald-300 transition-colors">Thiện nguyện vùng cao</a></li>
+            <li><a href="#tours-section" onclick="filterByCategory('near_hanoi')" class="hover:text-emerald-300 transition-colors">Tour ngắn ngày gần Hà Nội</a></li>
+            <li><a href="#why-us-section" class="hover:text-emerald-300 transition-colors">Cẩm nang an toàn trekking</a></li>
+          </ul>
+        </div>
+
+        <!-- Newsletter & Social -->
+        <div class="space-y-3">
+          <h4 class="text-sm font-bold text-white uppercase tracking-wider">Kết Nối Với Chúng Tôi</h4>
+          <p class="text-xs text-stone-400">Đăng ký nhận lịch khởi hành sớm và ưu đãi độc quyền.</p>
+          <form onsubmit="event.preventDefault(); showToast('Đăng ký bản tin', 'Cảm ơn bạn đã đăng ký nhận thông tin từ ĐI CÙNG GIÓ!', 'success'); this.reset();" class="space-y-2">
+            <input 
+              type="email" 
+              placeholder="Email của bạn..." 
+              required
+              class="w-full px-3 py-2 bg-stone-800 border border-stone-700 rounded-lg text-xs text-white focus:outline-none focus:border-emerald-400"
+            />
+            <button 
+              type="submit" 
+              class="w-full py-2 bg-forest text-white rounded-lg text-xs font-bold hover:bg-forest/90 transition-colors"
+            >
+              Đăng ký ngay
+            </button>
+          </form>
+          <div class="flex items-center gap-3 pt-2">
+            <a href="https://facebook.com" target="_blank" class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-forest hover:text-white transition-colors" title="Facebook">
+              <i data-lucide="facebook" class="w-4 h-4"></i>
+            </a>
+            <a href="https://instagram.com" target="_blank" class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-forest hover:text-white transition-colors" title="Instagram">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="https://youtube.com" target="_blank" class="w-8 h-8 rounded-full bg-stone-800 flex items-center justify-center hover:bg-forest hover:text-white transition-colors" title="YouTube">
+              <i data-lucide="youtube" class="w-4 h-4"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500 gap-4">
+        <p>© 2026 ĐI CÙNG GIÓ. Giấy phép kinh doanh lữ hành số 01-1234/2026/TCDL-GP LHQT. All rights reserved.</p>
+        <div class="flex items-center gap-4">
+          <a href="#" class="hover:text-stone-300">Điều khoản dịch vụ</a>
+          <span>•</span>
+          <a href="#" class="hover:text-stone-300">Chính sách bảo mật</a>
+          <span>•</span>
+          <a href="#" class="hover:text-stone-300">Bảo hiểm du lịch</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ==================== MODALS & DRAWERS ==================== -->
+
+  <!-- 1. BOOKING MODAL (ĐĂNG KÝ TOUR) -->
+  <div id="booking-modal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-center justify-center p-4">
+    <div class="relative bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl modal-enter border border-gray-100">
+      
+      <!-- Close Button -->
+      <button 
+        type="button" 
+        onclick="closeBookingModal()" 
+        class="absolute top-5 right-5 text-gray-400 hover:text-gray-700 p-2 rounded-full hover:bg-gray-100 transition-colors"
+      >
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+
+      <!-- Modal Header -->
+      <div class="flex items-center gap-3 pb-4 border-b border-gray-100">
+        <div class="w-11 h-11 rounded-2xl bg-forest/10 flex items-center justify-center text-forest">
+          <i data-lucide="send" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <h3 class="text-xl font-bold text-gray-900">Đăng ký tham gia tour</h3>
+          <p class="text-xs text-gray-500">ĐI CÙNG GIÓ – Hẹn nhau trên những đỉnh núi</p>
+        </div>
+      </div>
+
+      <!-- Booking Form -->
+      <form id="booking-form" class="mt-5 space-y-4">
+        <!-- Tour Selection -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Hành trình lựa chọn</label>
+          <select id="booking-tour-select" class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest bg-gray-50/50" required>
+            <option value="Trekking Yên Tử – Chùa Đồng">Trekking Yên Tử – Chùa Đồng (1 ngày)</option>
+            <option value="Tà Xùa – Săn mây">Tà Xùa – Săn mây (2 ngày 1 đêm)</option>
+            <option value="Phu Sa Phin – Chinh phục đỉnh cao">Phu Sa Phin – Chinh phục đỉnh cao (2 ngày 1 đêm)</option>
+            <option value="Kỳ Quan San – Đỉnh núi hùng vĩ">Kỳ Quan San – Đỉnh núi hùng vĩ (3 ngày 2 đêm)</option>
+            <option value="Tà Chì Nhù">Tà Chì Nhù (2 ngày 1 đêm)</option>
+            <option value="Hành hương Tam Chúc – Ba Sao An Nhiên">Hành hương Tam Chúc – Ba Sao (1 ngày)</option>
+            <option value="Mai Châu – Mộc Châu: Mùa Hoa Cải Trắng">Mai Châu – Mộc Châu (2 ngày 1 đêm)</option>
+            <option value="Áo Ấm Cho Em – Mù Cang Chải">Áo Ấm Cho Em – Thiện nguyện Mù Cang Chải</option>
+            <option value="Trekking Vườn Quốc Gia Ba Vì">Trekking Vườn Quốc Gia Ba Vì (1 ngày)</option>
+          </select>
+        </div>
+
+        <!-- Date & Group size -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Ngày dự kiến</label>
+            <input 
+              type="text" 
+              id="booking-date-input" 
+              placeholder="VD: 26/10/2026" 
+              class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
+              required
+            />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Số lượng người</label>
+            <input 
+              type="number" 
+              id="booking-people" 
+              value="1" 
+              min="1" 
+              max="20"
+              class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
+              required
+            />
+          </div>
+        </div>
+
+        <!-- Customer Full Name -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Họ và tên của bạn</label>
+          <input 
+            type="text" 
+            id="booking-name" 
+            placeholder="Nguyễn Văn A" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
+            required
+          />
+        </div>
+
+        <!-- Phone Number -->
+        <div>
+          <label class="block text-xs font-bold text-gray-700 uppercase tracking-wider mb-1">Số điện thoại / Zalo</label>
+          <input 
+            type="tel" 
+            id="booking-phone" 
+            placeholder="0988xxxxxx" 
+            class="w-full px-3.5 py-2.5 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest"
+            required
+          />
+        </div>
+
+        <!-- Dynamic Price Summary Box -->
+        <div id="booking-summary-box"></div>
+
+        <!-- Submit Button -->
+        <div class="pt-2">
+          <button 
+            type="submit" 
+            class="w-full py-3.5 rounded-full bg-forest text-white font-bold text-sm hover:bg-forest/90 active:scale-95 transition-all shadow-md flex items-center justify-center gap-2"
+          >
+            <i data-lucide="check" class="w-4 h-4"></i>
+            <span>Gửi yêu cầu đặt tour</span>
+          </button>
+          <p class="text-[11px] text-gray-400 text-center mt-2">
+            🔒 Thông tin của bạn được cam kết bảo mật 100%. Tư vấn viên sẽ liên hệ xác nhận chi tiết.
+          </p>
+        </div>
+      </form>
+
+    </div>
+  </div>
+
+  <!-- 2. VIDEO MODAL -->
+  <div id="video-modal" class="hidden fixed inset-0 z-50 overflow-hidden modal-backdrop flex items-center justify-center p-4">
+    <div class="relative bg-black rounded-3xl max-w-4xl w-full overflow-hidden shadow-2xl modal-enter">
+      <button 
+        type="button" 
+        onclick="closeVideoModal()" 
+        class="absolute top-4 right-4 z-10 text-white/70 hover:text-white p-2 rounded-full bg-black/50 hover:bg-black/80 transition-colors"
+      >
+        <i data-lucide="x" class="w-6 h-6"></i>
+      </button>
+      <div class="relative pt-[56.25%] w-full bg-black">
+        <iframe 
+          id="video-frame" 
+          class="absolute inset-0 w-full h-full" 
+          src="" 
+          title="Video Hành Trình Đi Cùng Gió" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+          allowfullscreen
+        ></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3. SEARCH MODAL -->
+  <div id="search-modal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-start justify-center pt-20 p-4">
+    <div class="relative bg-white rounded-3xl max-w-xl w-full p-6 shadow-2xl modal-enter border border-gray-100">
+      <div class="flex items-center justify-between pb-3 border-b border-gray-100">
+        <h3 class="text-base font-bold text-gray-900 flex items-center gap-2">
+          <i data-lucide="search" class="w-4 h-4 text-forest"></i>
+          <span>Tìm kiếm hành trình</span>
+        </h3>
+        <button onclick="closeSearchModal()" class="text-gray-400 hover:text-gray-600">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="mt-4">
+        <input 
+          type="text" 
+          id="search-input" 
+          placeholder="Nhập tên tour, địa danh (Tà Xùa, Yên Tử, Lào Cai...)..." 
+          oninput="handleSearchInput(this.value)"
+          class="w-full px-4 py-3 rounded-2xl border border-gray-200 text-sm focus:outline-none focus:border-forest focus:ring-1 focus:ring-forest bg-gray-50/60"
+        />
+      </div>
+
+      <div id="search-results-container" class="mt-4 max-h-80 overflow-y-auto space-y-2 pr-1">
+        <!-- Rendered dynamically -->
+      </div>
+    </div>
+  </div>
+
+  <!-- 4. WISHLIST / CART DRAWER (SLIDE-OVER) -->
+  <div id="drawer-overlay" onclick="closeWishlistDrawer()" class="hidden fixed inset-0 z-50 bg-black/50 backdrop-blur-sm transition-opacity"></div>
+  <aside id="wishlist-drawer" class="fixed top-0 right-0 z-50 h-full w-full max-w-md bg-white shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <!-- Drawer Header -->
+    <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+      <div class="flex items-center gap-2">
+        <div class="w-8 h-8 rounded-full bg-forest/10 flex items-center justify-center text-forest">
+          <i data-lucide="heart" class="w-4 h-4 fill-forest"></i>
+        </div>
+        <h3 class="font-bold text-gray-900 text-base">Tour đã lưu quan tâm</h3>
+      </div>
+      <button onclick="closeWishlistDrawer()" class="text-gray-400 hover:text-gray-700 p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Content Items -->
+    <div id="wishlist-items-container" class="p-5 overflow-y-auto flex-1 space-y-3">
+      <!-- Populated dynamically -->
+    </div>
+
+    <!-- Drawer Footer -->
+    <div class="p-5 border-t border-gray-100 bg-gray-50">
+      <button 
+        onclick="openBookingModal(); closeWishlistDrawer();"
+        class="w-full py-3 bg-forest text-white rounded-full font-bold text-sm hover:bg-forest/90 active:scale-95 transition-all shadow-sm"
+      >
+        Tư vấn nhanh tất cả tour đã lưu
+      </button>
+    </div>
+  </aside>
+
+  <!-- 5. MOBILE NAVIGATION DRAWER -->
+  <div id="mobile-nav-backdrop" class="hidden fixed inset-0 z-50 bg-black/60 backdrop-blur-sm"></div>
+  <div id="mobile-nav-drawer" class="fixed top-0 left-0 bottom-0 z-50 w-72 bg-white shadow-2xl transform -translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between p-6">
+    <div class="space-y-6">
+      <div class="flex items-center justify-between pb-4 border-b border-gray-100">
+        <div class="flex items-center gap-2">
+          <i data-lucide="mountain" class="w-6 h-6 text-forest"></i>
+          <span class="font-black text-forest tracking-wide">ĐI CÙNG GIÓ</span>
+        </div>
+        <button id="mobile-menu-close" class="text-gray-400 hover:text-gray-700">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <nav class="flex flex-col gap-3 font-semibold text-gray-700 text-sm">
+        <a href="#home" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Trang chủ</a>
+        <a href="#tours-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Tour nổi bật</a>
+        <a href="#schedule-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Lịch khởi hành</a>
+        <a href="#why-us-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Vì sao chọn chúng tôi</a>
+        <a href="#about-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Về ĐI CÙNG GIÓ</a>
+        <a href="#testimonials-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Đánh giá khách hàng</a>
+        <a href="#contact-section" class="py-2 px-3 rounded-lg hover:bg-emerald-50 hover:text-forest">Liên hệ & Đặt chỗ</a>
+      </nav>
+    </div>
+
+    <div class="pt-6 border-t border-gray-100 space-y-3">
+      <button 
+        onclick="openBookingModal(); document.getElementById('mobile-menu-close').click();"
+        class="w-full py-3 bg-forest text-white rounded-full font-bold text-sm shadow-md"
+      >
+        Đăng ký tour ngay
+      </button>
+      <p class="text-[11px] text-gray-400 text-center font-handwriting text-base">
+        Hẹn nhau trên những đỉnh núi
+      </p>
+    </div>
+  </div>
+
+  <!-- 6. TOAST NOTIFICATIONS CONTAINER -->
+  <div id="toast-container" class="fixed top-5 right-5 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+  <!-- Main JavaScript Logic -->
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
