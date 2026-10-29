@@ -1,6 +1,6 @@
 /**
- * ĐI CÙNG GIÓ - Interactive Prototype Engine (Version 3.0)
- * "Hẹn nhau trên những đỉnh núi"
+ * Trekking Đi Cùng Gió - Interactive Prototype Engine (Version 3.1)
+ * "Khám phá thiên nhiên, chinh phục mọi giới hạn"
  */
 
 // ==========================================
@@ -1173,7 +1173,7 @@ function openTourDetailModal(tourId) {
         <!-- PANEL 3: Chuẩn bị & Vật dụng -->
         <div id="tab-panel-3" class="hidden space-y-4">
           <div>
-            <h4 class="text-xs font-bold uppercase tracking-wider text-forest mb-2">Đi Cùng Gió đã chuẩn bị chu đáo cho bạn</h4>
+            <h4 class="text-xs font-bold uppercase tracking-wider text-forest mb-2">Trekking Đi Cùng Gió đã chuẩn bị chu đáo cho bạn</h4>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-600">
               ${(tour.included || []).map(inc => `
                 <span class="flex items-center gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-forest"></i> ${inc}</span>
@@ -1376,7 +1376,7 @@ function setupBookingModalEvents() {
     // Phone validation regex for Vietnam (10 digits starting with 03, 05, 07, 08, 09)
     const phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
     if (!phoneRegex.test(phone)) {
-      showToast('Số điện thoại không hợp lệ', 'Vui lòng nhập số điện thoại Việt Nam gồm 10 chữ số (VD: 0988668899).', 'error');
+      showToast('Số điện thoại không hợp lệ', 'Vui lòng nhập số điện thoại Việt Nam gồm 10 chữ số (VD: 0965983302).', 'error');
       return;
     }
 
@@ -1405,7 +1405,7 @@ function setupBookingModalEvents() {
               ${randomCode}
             </span>
             <h3 class="text-xl font-black text-gray-900 mt-2">Đăng ký tour thành công!</h3>
-            <p class="text-xs text-gray-600 mt-1">Cảm ơn bạn đã lựa chọn đồng hành cùng ĐI CÙNG GIÓ.</p>
+            <p class="text-xs text-gray-600 mt-1">Cảm ơn bạn đã lựa chọn đồng hành cùng Trekking Đi Cùng Gió.</p>
           </div>
 
           <!-- Receipt card -->
@@ -1433,7 +1433,7 @@ function setupBookingModalEvents() {
           </div>
 
           <p class="text-[11px] text-gray-500 leading-relaxed">
-            📞 Tư vấn viên sẽ liên hệ qua điện thoại/Zalo trong vòng <strong>15 phút</strong> để gửi lịch trình chi tiết và hướng dẫn chuẩn bị hành lý.
+            📞 Tư vấn viên sẽ liên hệ qua hotline <strong>0965 983 302</strong> / Zalo trong vòng <strong>15 phút</strong> để gửi lịch trình chi tiết và hướng dẫn chuẩn bị hành lý.
           </p>
 
           <div class="pt-2 flex gap-3">
@@ -1809,11 +1809,11 @@ function setupFloatingActions() {
   const messengerBtn = document.getElementById('float-messenger');
 
   zaloBtn?.addEventListener('click', () => {
-    window.open('https://zalo.me/0988668899', '_blank');
+    window.open('https://zalo.me/0965983302', '_blank');
   });
 
   phoneBtn?.addEventListener('click', () => {
-    window.location.href = 'tel:0988668899';
+    window.location.href = 'tel:0965983302';
   });
 
   messengerBtn?.addEventListener('click', () => {

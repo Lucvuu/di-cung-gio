@@ -1,18 +1,21 @@
-# 🏔️ ĐI CÙNG GIÓ – "Hẹn nhau trên những đỉnh núi"
+# 🏔️ TREKKING ĐI CÙNG GIÓ – "Khám phá thiên nhiên, chinh phục mọi giới hạn"
 > **Web Demo Interactive Prototype** cho công ty du lịch lữ hành chuyên tour trekking, du lịch trải nghiệm, hành hương tâm linh và thiện nguyện.
 
 🔗 **Trang web đang chạy trực tiếp tại:** [https://lucvuu.github.io/di-cung-gio/](https://lucvuu.github.io/di-cung-gio/)
 
 Dự án được xây dựng theo kiến trúc **Zero-build Static Web**, chạy trực tiếp trên trình duyệt và tự động triển khai 100% lên **GitHub Pages** thông qua GitHub Actions.
 
-![ĐI CÙNG GIÓ Banner](13072e44-4f5b-4d30-bedd-4ab70ee2a78f.jpg)
+![TREKKING ĐI CÙNG GIÓ Banner](13072e44-4f5b-4d30-bedd-4ab70ee2a78f.jpg)
 
 ---
 
 ## 🎨 Nhận Diện Thương Hiệu (Brand Identity)
 
-- **Thương hiệu:** ĐI CÙNG GIÓ
-- **Slogan:** *"Hẹn nhau trên những đỉnh núi"*
+- **Thương hiệu:** TREKKING ĐI CÙNG GIÓ
+- **Slogan:** *"Khám phá thiên nhiên, chinh phục mọi giới hạn"*
+- **Thông điệp đồng hành:** *"Hẹn nhau trên những đỉnh núi"*
+- **Địa chỉ:** 126 Trần Tử Bình, Cầu Giấy, Hà Nội
+- **Hotline hỗ trợ:** 0965 983 302
 - **Màu sắc chủ đạo:**
   - **Forest Green (Primary):** `#1E4D3B` (Nút bấm chính, icon danh mục, giá tiền, điểm nhấn thương hiệu)
   - **Mint Soft (Secondary):** `#E6F4EA` / `#EBF2EA` (Badge "Còn chỗ", nền khối Về ĐI CÙNG GIÓ)
@@ -159,5 +162,6 @@ Workflow tự động `.github/workflows/deploy.yml` đã được cấu hình s
 - **GitHub Actions:** CI/CD pipeline tự động hóa triển khai GitHub Pages.
 
 ---
-*ĐI CÙNG GIÓ © 2026 – Hẹn nhau trên những đỉnh núi.*
+*TREKKING ĐI CÙNG GIÓ © 2026 – Khám phá thiên nhiên, chinh phục mọi giới hạn.*
+*Địa chỉ: 126 Trần Tử Bình, Cầu Giấy, Hà Nội | Hotline hỗ trợ: 0965 983 302*
 
