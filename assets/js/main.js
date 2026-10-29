@@ -17,7 +17,7 @@ const TOURS_DATA = [
     priceNum: 1200000,
     rating: 5.0,
     reviews: 128,
-    image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/images/tour-yen-tu.jpg',
     badge: 'Trekking',
     description: 'Hành trình leo núi thiêng Yên Tử, chiêm bái Chùa Đồng trên đỉnh Phù Vân, rèn luyện thể lực và tìm lại an yên trong tâm hồn giữa mây ngàn.',
     departureDates: ['01/11/2026', '08/11/2026', '15/11/2026'],
@@ -36,7 +36,7 @@ const TOURS_DATA = [
     priceNum: 1850000,
     rating: 5.0,
     reviews: 96,
-    image: 'https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/images/tour-ta-xua.jpg',
     badge: 'Trekking',
     description: 'Chinh phục "sống lưng khủng long" huyền thoại, đắm chìm trong biển mây bồng bềnh lúc bình minh và tận hưởng bầu không khí Tây Bắc se lạnh.',
     departureDates: ['26/10/2026', '02/11/2026', '09/11/2026'],
@@ -55,7 +55,7 @@ const TOURS_DATA = [
     priceNum: 1890000,
     rating: 5.0,
     reviews: 74,
-    image: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/images/tour-phu-sa-phin.jpg',
     badge: 'Trekking',
     description: 'Cung đường hoang sơ đầy thách thức với những vách đá hùng vĩ, thảm thực vật đỗ quyên nguyên sinh và tầm nhìn panorama ngoạn mục.',
     departureDates: ['08/11/2026', '22/11/2026'],
@@ -74,7 +74,7 @@ const TOURS_DATA = [
     priceNum: 2650000,
     rating: 5.0,
     reviews: 52,
-    image: 'https://images.unsplash.com/photo-1486870591958-9b9d0d1dda99?auto=format&fit=crop&w=800&q=80',
+    image: 'assets/images/tour-ky-quan-san.jpg',
     badge: 'Trekking',
     description: 'Chinh phục đỉnh núi cao thứ 4 Việt Nam (3.046m), ngắm đồi Muối lung linh dưới ánh sao đêm và biển mây ngút ngàn tầm mắt.',
     departureDates: ['22/11/2026', '06/12/2026'],
@@ -328,7 +328,7 @@ function renderTours(filterCategory = currentCategory) {
         <!-- Tour Body Content -->
         <div class="p-4 flex flex-col flex-1 justify-between">
           <div>
-            <h3 class="font-bold text-gray-900 text-[15px] leading-snug line-clamp-1 group-hover:text-forest transition-colors" title="${tour.title}">
+            <h3 class="font-bold text-gray-900 text-[13.5px] xl:text-[14px] leading-snug line-clamp-2 min-h-[38px] tracking-tight group-hover:text-forest transition-colors" title="${tour.title}">
               ${tour.title}
             </h3>
 
