@@ -3,7 +3,7 @@
    "Hẹn nhau trên những đỉnh núi"
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Dancing+Script:wght@600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Playpen+Sans:wght@500;600;700&family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Montserrat:wght@400;500;600;700;800&display=swap&subset=vietnamese');
 
 :root {
   --color-primary: #1E4D3B;
@@ -29,13 +29,15 @@ body {
   overflow-x: hidden;
 }
 
-/* Handwriting & brush artistic fonts */
+/* Handwriting & brush artistic fonts with full Vietnamese support */
 .font-handwriting {
-  font-family: 'Caveat', cursive, sans-serif;
+  font-family: 'Dancing Script', 'Playpen Sans', cursive, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 .font-script {
-  font-family: 'Dancing Script', cursive, sans-serif;
+  font-family: 'Dancing Script', 'Playpen Sans', cursive, sans-serif;
+  letter-spacing: 0.02em;
 }
 
 /* Custom Scrollbar */
@@ -80,15 +82,8 @@ body {
 
 /* Hero mountain graphic blend & text styling */
 .hero-brush-title {
-  letter-spacing: 2px;
+  letter-spacing: 1.5px;
   text-shadow: 0 4px 18px rgba(0, 0, 0, 0.45);
-}
-
-.hero-quote-box {
-  background: rgba(0, 0, 0, 0.28);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
 }
 
 /* Floating Action Bar pulsing effect */
@@ -153,16 +148,9 @@ body {
 }
 
 .category-item:hover .category-icon-wrapper {
-  background-color: #1E4D3B;
-  color: #FFFFFF;
-  transform: translateY(-3px) scale(1.05);
-  box-shadow: 0 10px 20px -5px rgba(30, 77, 59, 0.35);
-}
-
-.category-item.active .category-icon-wrapper {
-  background-color: #1E4D3B;
-  color: #FFFFFF;
-  box-shadow: 0 10px 20px -5px rgba(30, 77, 59, 0.4);
+  background-color: #15382B;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 16px -4px rgba(30, 77, 59, 0.4);
 }
 
 .category-item.active span.cat-title {
@@ -177,7 +165,7 @@ body {
 
 .schedule-row:hover {
   background-color: #F8FAF8;
-  transform: translateX(4px);
+  transform: translateX(3px);
 }
 
 /* Modals & Backdrop Blur */
@@ -268,6 +256,6 @@ body {
   background-color: #E6F4EA;
   color: #1E4D3B;
   font-weight: 600;
-  border-radius: 9999px;
-  padding: 3px 10px;
+  border-radius: 6px;
+  padding: 3px 8px;
 }
