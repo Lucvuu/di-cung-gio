@@ -1,7 +1,9 @@
 # 🏔️ ĐI CÙNG GIÓ – "Hẹn nhau trên những đỉnh núi"
 > **Web Demo Interactive Prototype** cho công ty du lịch lữ hành chuyên tour trekking, du lịch trải nghiệm, hành hương tâm linh và thiện nguyện.
 
-Dự án được xây dựng theo kiến trúc **Zero-build Static Web**, sẵn sàng chạy ngay trên trình duyệt và tự động triển khai 100% lên **GitHub Pages** thông qua GitHub Actions.
+🔗 **Trang web đang chạy trực tiếp tại:** [https://lucvuu.github.io/di-cung-gio/](https://lucvuu.github.io/di-cung-gio/)
+
+Dự án được xây dựng theo kiến trúc **Zero-build Static Web**, chạy trực tiếp trên trình duyệt và tự động triển khai 100% lên **GitHub Pages** thông qua GitHub Actions.
 
 ![ĐI CÙNG GIÓ Banner](13072e44-4f5b-4d30-bedd-4ab70ee2a78f.jpg)
 
@@ -158,3 +160,4 @@ Workflow tự động `.github/workflows/deploy.yml` đã được cấu hình s
 
 ---
 *ĐI CÙNG GIÓ © 2026 – Hẹn nhau trên những đỉnh núi.*
+
