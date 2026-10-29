@@ -55,3 +55,4 @@ for fname, url in image_urls.items():
             print(f"Successfully saved {fname} (800x600)")
     except Exception as e:
         print(f"Failed to download {fname}: {e}")
+

@@ -1751,7 +1751,7 @@ try {
 // ==========================================
 // 5. INITIALIZATION ON DOM READY
 // ==========================================
-document.addEventListener('DOMContentLoaded', () => {
+function initApp() {
   initHeroSlider();
   renderTours();
   renderSchedule();
@@ -1762,7 +1762,13 @@ document.addEventListener('DOMContentLoaded', () => {
   setupScrollReveal();
   updateWishlistBadges();
   initLucideIcons();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}
 
 function initLucideIcons() {
   if (typeof lucide !== 'undefined' && lucide.createIcons) {
@@ -3139,16 +3145,49 @@ function setupScrollReveal() {
   const elements = document.querySelectorAll('.reveal-on-scroll');
   if (!elements.length) return;
 
+  const reveal = (el) => {
+    if (!el) return;
+    el.classList.add('revealed');
+    el.classList.add('visible');
+  };
+
+  if (!('IntersectionObserver' in window)) {
+    elements.forEach(reveal);
+    return;
+  }
+
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        reveal(entry.target);
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05, rootMargin: '0px 0px 100px 0px' });
 
-  elements.forEach(el => observer.observe(el));
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const hash = window.location.hash ? window.location.hash.substring(1) : '';
+    if (rect.top < window.innerHeight + 150 || (hash && el.id === hash)) {
+      reveal(el);
+    } else {
+      observer.observe(el);
+    }
+  });
+
+  // Guarantee reveal after 500ms
+  setTimeout(() => {
+    elements.forEach(reveal);
+  }, 500);
+
+  // Hash navigation listener
+  window.addEventListener('hashchange', () => {
+    const activeHash = window.location.hash ? window.location.hash.substring(1) : '';
+    if (activeHash) {
+      const target = document.getElementById(activeHash);
+      if (target) reveal(target);
+    }
+  });
 }
 
 function setupScrollSpy() {

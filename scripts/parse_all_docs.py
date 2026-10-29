@@ -85,3 +85,4 @@ with open('scripts/all_docs.json', 'w', encoding='utf-8') as f:
     json.dump({k: {'title': v['title'], 'has_policy': v['has_policy'], 'text': v['text']} for k, v in doc_contents.items()}, f, ensure_ascii=False, indent=2)
 
 print("\nSaved all_docs.json successfully!")
+

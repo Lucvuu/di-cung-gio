@@ -39,3 +39,4 @@ for t_idx, table in enumerate(tables):
                 print(f"Row: {cells} | Links: {links_in_row}")
             else:
                 print(f"Row: {cells}")
+

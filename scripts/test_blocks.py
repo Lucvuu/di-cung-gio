@@ -78,3 +78,4 @@ departure_schedule = [
 schedule_js = json.dumps(departure_schedule, ensure_ascii=False, indent=2)
 
 print("Generated JSON data blocks successfully!")
+

@@ -1539,7 +1539,7 @@ function setupScrollReveal() {{
   const observer = new IntersectionObserver((entries) => {{
     entries.forEach(entry => {{
       if (entry.isIntersecting) {{
-        entry.target.classList.add('visible');
+        entry.target.classList.add('revealed'); entry.target.classList.add('visible');
         observer.unobserve(entry.target);
       }}
     }});
@@ -1583,3 +1583,4 @@ with open('assets/js/main.js', 'w', encoding='utf-8') as f:
     f.write(js_content)
 
 print("assets/js/main.js generated successfully!")
+

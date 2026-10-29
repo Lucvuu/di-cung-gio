@@ -22,3 +22,4 @@ for m in matches:
 print(f"Found {len(clean_docs)} unique Google Docs:")
 for d in clean_docs:
     print(d)
+

@@ -35,3 +35,4 @@ try:
                 print(f"Row {row_idx}: {row}")
 except Exception as e:
     print("Error reading gid=0:", e)
+

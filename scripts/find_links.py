@@ -39,3 +39,4 @@ for kw in keywords:
         print(f"\nKeyword '{kw}' found {len(found)} times. Sample:")
         for s in found[:2]:
             print("   ...", repr(s), "...")
+

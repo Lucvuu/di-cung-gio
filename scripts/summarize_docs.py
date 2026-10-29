@@ -12,3 +12,4 @@ for did, d in docs.items():
     lines = [l.strip() for l in d['text'].split('\n') if l.strip()]
     for l in lines[:10]:
         print("  ", l)
+

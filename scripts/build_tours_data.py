@@ -1004,3 +1004,4 @@ with open('scripts/parsed_tours.json', 'w', encoding='utf-8') as f:
     json.dump(tours, f, ensure_ascii=False, indent=2)
 
 print(f"Generated parsed_tours.json with {len(tours)} comprehensive tours!")
+
