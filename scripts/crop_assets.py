@@ -51,3 +51,4 @@ video.save(os.path.join(OUT_DIR, 'video-banner.jpg'), quality=95)
 print("Saved video-banner.jpg:", video.size)
 
 print("Done cropping all 6 base assets from original design!")
+

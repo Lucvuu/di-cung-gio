@@ -34,6 +34,12 @@ const TOURS_DATA = [
     historyStory: 'Núi Yên Tử (còn gọi là Bạch Vân Sơn – núi mây trắng) là cái nôi của Thiền phái Trúc Lâm Việt Nam. Năm 1299, sau khi lãnh đạo quân dân Đại Việt hai lần đánh bại đế quốc Nguyên – Mông, vua Trần Nhân Tông đã nhường ngôi, từ bỏ hoàng cung để lên núi Yên Tử tu hành, lấy hiệu là Hương Vân Đại Đầu Đà (Phật hoàng Trần Nhân Tông) và hợp nhất các dòng thiền thành Thiền phái Trúc Lâm mang đậm tinh thần nhập thế và bản sắc dân tộc Việt. Chùa Đồng trên đỉnh núi được khởi dựng từ thời Hậu Lê và hiện là ngôi chùa bằng đồng nguyên khối trên đỉnh núi lớn nhất châu Á.',
     description: 'Hành trình leo núi thiêng Yên Tử, chiêm bái Chùa Đồng trên đỉnh Phù Vân, rèn luyện thể lực và tìm lại an yên trong tâm hồn giữa mây ngàn đại ngàn.',
     departureDates: ['26/10/2026', '02/11/2026', '09/11/2026', '16/11/2026'],
+    gallery: [
+      { url: 'assets/images/tour-yen-tu.jpg', caption: 'Chóp Chùa Đồng giữa mây ngàn Yên Tử' },
+      { url: 'assets/images/yen-tu-1.jpg', caption: 'Mái chùa đồng cổ kính linh thiêng trên đỉnh núi đá' },
+      { url: 'assets/images/yen-tu-2.jpg', caption: 'Toàn cảnh non thiêng Yên Tử từ độ cao 1.068m' },
+      { url: 'assets/images/yen-tu-3.jpg', caption: 'Hành hương qua Đường Tùng cổ thụ 700 năm tuổi' }
+    ],
     highlights: [
       'Chạm tay vào Chùa Đồng đúc bằng đồng nguyên khối lớn nhất Châu Á trên đỉnh Phù Vân.',
       'Dạo bước giữa rừng trúc bạt ngàn ngàn năm tuổi và đường Tùng cổ thụ 700 năm.',
@@ -76,6 +82,12 @@ const TOURS_DATA = [
     historyStory: 'Tà Xùa là dãy núi hợp thành từ ba đỉnh núi hùng vĩ thuộc phần kéo dài về phía Nam của dãy Hoàng Liên Sơn, tạo nên ranh giới tự nhiên giữa hai tỉnh Sơn La và Yên Bái. Nhờ địa hình thung lũng lòng chảo được bao bọc bởi các dãy núi cao chắn gió, Tà Xùa giữ được những biển mây dày đặc, lâu tan bậc nhất Việt Nam. Đây cũng là vùng đất sinh sống lâu đời của đồng bào dân tộc Mông với những rừng chè Shan Tuyết cổ thụ hàng trăm năm tuổi mọc tự nhiên trong sương mù.',
     description: 'Chinh phục "sống lưng khủng long" huyền thoại Bản Công, đắm chìm trong biển mây bồng bềnh lúc bình minh và tận hưởng bầu không khí Tây Bắc se lạnh.',
     departureDates: ['01/11/2026', '08/11/2026', '15/11/2026', '22/11/2026'],
+    gallery: [
+      { url: 'assets/images/tour-ta-xua.jpg', caption: 'Biển mây bồng bềnh cuộn trào thung lũng Tà Xùa' },
+      { url: 'assets/images/ta-xua-1.jpg', caption: 'Bình minh rực rỡ trên sống lưng khủng long Háng Đồng' },
+      { url: 'assets/images/ta-xua-2.jpg', caption: 'Trekker check-in mỏm đá ngắm đại ngàn Tây Bắc' },
+      { url: 'assets/images/hero-bg.jpg', caption: 'Toàn cảnh biển mây Tây Bắc lúc rạng đông' }
+    ],
     highlights: [
       'Đi bộ trên Sống Lưng Khủng Long kỳ vĩ với biển mây cuồn cuộn hai bên vực sâu.',
       'Check-in Mỏm Cá Heo, Cây Táo Mèo cô đơn ngắm hoàng hôn đỏ rực thung lũng Bản Công.',
@@ -938,6 +950,16 @@ function renderTours(filterCategory = currentCategory) {
             </span>
           </div>
 
+          <!-- Real Photo indicator if available -->
+          ${tour.gallery && tour.gallery.length > 0 ? `
+            <div class="absolute bottom-2.5 left-2.5 z-10">
+              <span class="backdrop-blur-md bg-black/60 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+                <i data-lucide="camera" class="w-3 h-3 text-emerald-300"></i>
+                <span>${tour.gallery.length} ảnh thực tế</span>
+              </span>
+            </div>
+          ` : ''}
+
           <!-- Hover Overlay with Frosted Glass Storytelling Hint -->
           <div class="absolute inset-0 backdrop-blur-[2px] bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-3 text-center pointer-events-none">
             <span class="px-3.5 py-1.5 rounded-full bg-white text-forest text-xs font-bold shadow-lg transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 flex items-center gap-1.5">
@@ -1139,10 +1161,11 @@ function openTourDetailModal(tourId, initialTab = 1) {
       <!-- Top Image Banner & Close Button -->
       <div class="relative h-60 sm:h-72 w-full shrink-0">
         <img 
+          id="modal-main-image"
           src="${tour.image}" 
           alt="${tour.title}" 
           onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
-          class="w-full h-full object-cover"
+          class="w-full h-full object-cover transition-opacity duration-300"
         />
         <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
         
@@ -1265,6 +1288,39 @@ function openTourDetailModal(tourId, initialTab = 1) {
               `).join('')}
             </ul>
           </div>
+
+          <!-- Real Photos Gallery from Expedition -->
+          ${tour.gallery && tour.gallery.length > 0 ? `
+            <div class="space-y-2.5 pt-2">
+              <div class="flex items-center justify-between">
+                <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
+                  <i data-lucide="camera" class="w-4 h-4 text-forest"></i>
+                  <span>Khoảnh khắc thực tế từ các chuyến đi của Đi Cùng Gió</span>
+                </h4>
+                <span class="text-[10px] text-gray-500 font-medium">Bấm vào ảnh để xem lớn</span>
+              </div>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5">
+                ${tour.gallery.map(g => `
+                  <div 
+                    onclick="switchModalImage('${g.url}')"
+                    class="group/img relative rounded-xl overflow-hidden aspect-[4/3] bg-gray-100 shadow-2xs border border-gray-200 cursor-pointer hover:border-emerald-500 hover:ring-2 hover:ring-emerald-400/40 transition-all"
+                    title="${g.caption} - Bấm để phóng to lên banner"
+                  >
+                    <img 
+                      src="${g.url}" 
+                      alt="${g.caption}" 
+                      loading="lazy"
+                      onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
+                      class="w-full h-full object-cover group-hover/img:scale-108 transition-transform duration-500"
+                    />
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent opacity-0 group-hover/img:opacity-100 transition-opacity duration-200 p-2 flex items-end">
+                      <span class="text-[10px] text-white font-medium leading-tight">${g.caption}</span>
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+          ` : ''}
 
           <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center justify-between">
             <div>
@@ -1389,6 +1445,18 @@ function closeTourDetailModal() {
     document.body.style.overflow = '';
   }
 }
+
+// Switch modal top preview image on thumbnail click
+window.switchModalImage = function(imgUrl) {
+  const img = document.getElementById('modal-main-image');
+  if (img) {
+    img.style.opacity = '0.35';
+    setTimeout(() => {
+      img.src = imgUrl;
+      img.style.opacity = '1';
+    }, 150);
+  }
+};
 
 // Switch tabs inside detail modal
 window.switchDetailTab = function(tabIndex) {
