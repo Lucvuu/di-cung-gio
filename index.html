@@ -446,6 +446,102 @@
             </button>
           </div>
 
+          <!-- SMART TREKKING FILTER BAR (Inspired by Giang Lang Thang) -->
+          <div class="bg-white rounded-2xl p-4 sm:p-5 border border-gray-200/80 shadow-xs space-y-3.5">
+            <!-- Filter Controls Row -->
+            <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
+              <!-- Keyword Search Input -->
+              <div class="relative flex-1">
+                <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                <input 
+                  type="text" 
+                  id="tour-search-input" 
+                  oninput="handleTourFilterChange()" 
+                  placeholder="Tìm đỉnh núi, địa danh (Tà Xùa, Yên Tử, Phu Sa Phìn, Kỳ Quan San...)" 
+                  class="w-full pl-10 pr-9 py-2.5 rounded-xl bg-gray-50/80 border border-gray-200 text-xs sm:text-sm text-gray-800 placeholder-gray-400 focus:outline-none focus:border-forest focus:bg-white focus:ring-2 focus:ring-forest/15 transition-all"
+                />
+                <button 
+                  type="button" 
+                  id="tour-search-clear" 
+                  onclick="clearTourSearch()" 
+                  class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600 p-0.5 cursor-pointer"
+                  title="Xóa tìm kiếm"
+                >
+                  <i data-lucide="x" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+
+              <!-- Filter Select Dropdowns -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <!-- 1. Difficulty / Fitness level -->
+                <div class="relative">
+                  <label for="filter-difficulty" class="sr-only">Cấp độ thể lực</label>
+                  <select 
+                    id="filter-difficulty" 
+                    onchange="handleTourFilterChange()" 
+                    class="w-full appearance-none pl-3 pr-8 py-2.5 rounded-xl bg-gray-50/80 border border-gray-200 text-xs sm:text-sm font-semibold text-gray-700 hover:border-gray-300 focus:outline-none focus:border-forest focus:ring-2 focus:ring-forest/15 transition-all cursor-pointer"
+                  >
+                    <option value="all">⚡ Độ khó: Tất cả</option>
+                    <option value="easy">⚡ Dễ (Người mới)</option>
+                    <option value="medium">⚡ Trung bình</option>
+                    <option value="hard">⚡ Thử thách (Cao)</option>
+                  </select>
+                  <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+
+                <!-- 2. Duration -->
+                <div class="relative">
+                  <label for="filter-duration" class="sr-only">Thời lượng</label>
+                  <select 
+                    id="filter-duration" 
+                    onchange="handleTourFilterChange()" 
+                    class="w-full appearance-none pl-3 pr-8 py-2.5 rounded-xl bg-gray-50/80 border border-gray-200 text-xs sm:text-sm font-semibold text-gray-700 hover:border-gray-300 focus:outline-none focus:border-forest focus:ring-2 focus:ring-forest/15 transition-all cursor-pointer"
+                  >
+                    <option value="all">⏱️ Thời lượng: Tất cả</option>
+                    <option value="day">Trong ngày</option>
+                    <option value="2d1n">2 ngày 1 đêm</option>
+                    <option value="3d2n">3 ngày 2 đêm</option>
+                  </select>
+                  <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+
+                <!-- 3. Sort by -->
+                <div class="relative">
+                  <label for="filter-sort" class="sr-only">Sắp xếp theo</label>
+                  <select 
+                    id="filter-sort" 
+                    onchange="handleTourFilterChange()" 
+                    class="w-full appearance-none pl-3 pr-8 py-2.5 rounded-xl bg-gray-50/80 border border-gray-200 text-xs sm:text-sm font-semibold text-gray-700 hover:border-gray-300 focus:outline-none focus:border-forest focus:ring-2 focus:ring-forest/15 transition-all cursor-pointer"
+                  >
+                    <option value="popular">🔥 Được yêu thích nhất</option>
+                    <option value="price-asc">💰 Giá thấp đến cao</option>
+                    <option value="price-desc">💎 Giá cao đến thấp</option>
+                    <option value="altitude-desc">⛰️ Độ cao đỉnh núi</option>
+                  </select>
+                  <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Filter Status & Quick Reset -->
+            <div id="filter-status-bar" class="flex items-center justify-between text-xs text-gray-500 pt-1 border-t border-gray-100">
+              <div class="flex items-center gap-2">
+                <span id="filter-result-count" class="font-bold text-forest">Hiển thị 4 tour tiêu biểu</span>
+                <span class="text-gray-300">•</span>
+                <span class="text-gray-500">Khởi hành định kỳ từ 5 khách</span>
+              </div>
+              <button 
+                type="button" 
+                id="filter-reset-btn" 
+                onclick="resetTourFilters()" 
+                class="hidden items-center gap-1 text-forest hover:text-forest-dark font-bold hover:underline cursor-pointer"
+              >
+                <i data-lucide="rotate-ccw" class="w-3 h-3"></i>
+                <span>Đặt lại bộ lọc</span>
+              </button>
+            </div>
+          </div>
+
           <!-- Dynamic Tours Grid (4 cards in responsive grid) -->
           <div id="tour-grid-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <!-- Dynamically populated by renderTours() in main.js -->
@@ -666,7 +762,13 @@
                 “Cung đường sống lưng khủng long Tà Xùa đẹp nín thở, hướng dẫn viên nhiệt tình, đồ ăn ngon. Cảm ơn Trekking Đi Cùng Gió đã cho mình một hành trình thật đáng nhớ!”
               </p>
               <h4 class="text-sm font-bold text-gray-900 leading-tight truncate">Nguyễn Thu Hà</h4>
-              <p class="text-xs text-[#1E4D3B] font-medium mt-0.5 truncate">Trekking Tà Xùa</p>
+              <p class="text-xs text-[#1E4D3B] font-medium mt-1 flex items-center gap-1.5 flex-wrap">
+                <span>Trekking Tà Xùa</span>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <i data-lucide="badge-check" class="w-3 h-3 text-emerald-600"></i>
+                  <span>✓ Đã hoàn thành chặng</span>
+                </span>
+              </p>
               <div class="flex text-[#F59E0B] mt-1.5 gap-0.5">
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
@@ -690,7 +792,13 @@
                 “Lần đầu đi trekking rừng rêu nguyên sinh Phu Sa Phin mà được trải nghiệm nhiều điều tuyệt vời như vậy. Nhóm rất vui, đoàn kết. Sẽ quay lại cùng Trekking Đi Cùng Gió!”
               </p>
               <h4 class="text-sm font-bold text-gray-900 leading-tight truncate">Lê Minh Đức</h4>
-              <p class="text-xs text-[#1E4D3B] font-medium mt-0.5 truncate">Trekking Phu Sa Phin</p>
+              <p class="text-xs text-[#1E4D3B] font-medium mt-1 flex items-center gap-1.5 flex-wrap">
+                <span>Trekking Phu Sa Phìn</span>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <i data-lucide="badge-check" class="w-3 h-3 text-emerald-600"></i>
+                  <span>✓ Đã hoàn thành chặng</span>
+                </span>
+              </p>
               <div class="flex text-[#F59E0B] mt-1.5 gap-0.5">
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
@@ -714,7 +822,13 @@
                 “Hành trình Yên Tử leo bộ 100% chạm đỉnh Chùa Đồng rất linh thiêng và ý nghĩa. Vừa rèn luyện thể lực vừa được nghe chuyện về vua Trần Nhân Tông!”
               </p>
               <h4 class="text-sm font-bold text-gray-900 leading-tight truncate">Trần Thị Mai</h4>
-              <p class="text-xs text-[#1E4D3B] font-medium mt-0.5 truncate">Hành hương Yên Tử</p>
+              <p class="text-xs text-[#1E4D3B] font-medium mt-1 flex items-center gap-1.5 flex-wrap">
+                <span>Hành hương Yên Tử</span>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                  <i data-lucide="badge-check" class="w-3 h-3 text-emerald-600"></i>
+                  <span>✓ Đã hoàn thành chặng</span>
+                </span>
+              </p>
               <div class="flex text-[#F59E0B] mt-1.5 gap-0.5">
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
                 <i data-lucide="star" class="w-3.5 h-3.5 fill-[#F59E0B]"></i>
@@ -1011,7 +1125,7 @@
 
   <!-- 2. RICH TOUR DETAIL MODAL (2 COLUMNS & 3 TABS) -->
   <div id="tour-detail-modal" class="hidden fixed inset-0 z-50 overflow-y-auto modal-backdrop flex items-center justify-center p-3 sm:p-4">
-    <div id="tour-detail-content" class="w-full max-w-3xl"></div>
+    <div id="tour-detail-content" class="w-full max-w-4xl"></div>
   </div>
 
   <!-- 3. SEARCH OVERLAY MODAL -->

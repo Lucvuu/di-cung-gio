@@ -1,7 +1,7 @@
 /**
- * TREKKING ĐI CÙNG GIÓ - OFFICIAL APPLICATION SCRIPT
- * Cập nhật bảng giá & chính sách hoàn hủy chính thức theo tài liệu Google Sheets 2026
- * Pure Vanilla JavaScript ES6+ (Zero Build Pipeline)
+ * DI CUNG GIO - Main Interactive Controller
+ * Inspiring modern trekking experience (inspired by gianglangthang.vn)
+ * Zero-build vanilla ES6+ architecture
  */
 
 // ==========================================
@@ -15,7 +15,7 @@ const TOURS_DATA = [
     "category": "spiritual",
     "subCategory": "trekking",
     "badge": "Tâm linh & Non thiêng",
-    "altitudeBadge": "Đỉnh 1.068m",
+    "altitudeBadge": "⛰️ 1.068m",
     "image": "assets/images/tour-yen-tu.jpg",
     "price": "550.000đ/người",
     "priceNum": 550000,
@@ -112,11 +112,11 @@ const TOURS_DATA = [
   {
     "id": 2,
     "code": "PSP01",
-    "title": "Tà Xùa – Phu Sa Phìn Săn Mây",
+    "title": "Tà Xùa – Săn mây",
     "category": "trekking",
     "subCategory": "trekking",
     "badge": "Đại dương mây",
-    "altitudeBadge": "Đỉnh 2.868m",
+    "altitudeBadge": "☁️ 2.865m",
     "image": "assets/images/tour-ta-xua.jpg",
     "price": "1.600.000đ/người",
     "priceNum": 1600000,
@@ -126,13 +126,13 @@ const TOURS_DATA = [
     "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
     "duration": "2 ngày 1 đêm",
     "location": "Bắc Yên, Sơn La",
-    "altitude": "2.868m",
+    "altitude": "2.865m",
     "trekDistance": "Khoảng 12 km",
     "difficultyLevel": 3,
     "difficultyText": "Trung bình",
     "isFeatured": true,
     "reviews": 186,
-    "shortSummary": "Chinh phục 'Sống lưng khủng long' Háng Đồng, đón biển mây bồng bềnh cuộn trào và khám phá đỉnh Phu Sa Phìn.",
+    "shortSummary": "Chinh phục 'Sống lưng khủng long' Háng Đồng, đón biển mây bồng bềnh cuộn trào và đón bình minh rực rỡ Tây Bắc.",
     "routeMap": "Khởi hành từ Hà Nội theo QL32 lên huyện Bắc Yên (Sơn La). Tuyến trekking đưa bạn dọc 'Sống lưng khủng long' tại bản Háng Đồng, check-in Mỏm Cá Heo, Cây Cô Đơn, Đỉnh Gió, thảo nguyên Tà Xùa và rừng nguyên sinh rêu phong huyền ảo.",
     "routeSteps": [
       "Hà Nội",
@@ -208,11 +208,11 @@ const TOURS_DATA = [
   {
     "id": 3,
     "code": "SM01",
-    "title": "Sa Mu – U Bò (2.756m)",
+    "title": "Phu Sa Phin – Chinh phục đỉnh cao",
     "category": "trekking",
     "subCategory": "trekking",
     "badge": "Rừng rêu ma mị",
-    "altitudeBadge": "Đỉnh 2.756m",
+    "altitudeBadge": "🏔️ 2.868m",
     "image": "assets/images/tour-samu.jpg",
     "price": "2.800.000đ/người",
     "priceNum": 2800000,
@@ -222,13 +222,13 @@ const TOURS_DATA = [
     "pickupPoint": "55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt, Hà Nội",
     "duration": "2 ngày 1 đêm",
     "location": "Bắc Yên, Sơn La",
-    "altitude": "2.756m",
+    "altitude": "2.868m",
     "trekDistance": "Khoảng 14 km",
     "difficultyLevel": 3,
     "difficultyText": "Trung bình",
     "isFeatured": true,
     "reviews": 94,
-    "shortSummary": "Chinh phục đỉnh Sa Mu – U Bò (2.756m), ngắm khu rừng rêu cổ thụ ma mị và check-in Cây Thần Kỳ độc nhất vô nhị.",
+    "shortSummary": "Khám phá khu rừng rêu ma mị cổ thụ, vượt sống lưng uốn lượn và chạm đỉnh cao nguyên sinh Phu Sa Phìn (2.868m).",
     "routeMap": "Hành trình từ Hà Nội qua Bắc Yên đến điểm trek Xím Vàng. Tuyến leo xuyên qua thảm thực vật rừng nguyên sinh nguyên sơ với các tầng rêu phủ kín thân cây cổ thụ hàng trăm năm, vượt dốc đá lên lán nghỉ và chạm đỉnh Sa Mu 2.756m.",
     "routeSteps": [
       "Hà Nội",
@@ -285,11 +285,11 @@ const TOURS_DATA = [
   {
     "id": 4,
     "code": "KQS01",
-    "title": "Kỳ Quan San – Bạch Mộc Lương Tử",
+    "title": "Kỳ Quan San – Đỉnh núi hùng vĩ",
     "category": "trekking",
     "subCategory": "trekking",
     "badge": "Top 4 Nóc nhà VN",
-    "altitudeBadge": "Đỉnh 3.046m",
+    "altitudeBadge": "🏔️ 3.046m",
     "image": "assets/images/tour-ky-quan-san.jpg",
     "price": "3.500.000đ/người",
     "priceNum": 3500000,
@@ -305,7 +305,7 @@ const TOURS_DATA = [
     "difficultyText": "Thử thách cao",
     "isFeatured": true,
     "reviews": 115,
-    "shortSummary": "Hành trình chinh phục đỉnh Kỳ Quan San (3.046m), đón bình minh tráng lệ trên sống lưng khủng long Đồi Muối.",
+    "shortSummary": "Hành trình chinh phục đỉnh Kỳ Quan San (3.046m - Top 4 VN), đón bình minh tráng lệ trên sống lưng khủng long Đồi Muối.",
     "routeMap": "Từ Hà Nội đi Bát Xát (Lào Cai). Tuyến trekking xuất phát từ bản Dền Sung, vượt suối, leo rừng thảo quả, chinh phục Đồi Muối (2.100m) và men theo sống núi hiểm trở để chạm chóp inox 3.046m.",
     "routeSteps": [
       "Hà Nội",
@@ -1625,73 +1625,78 @@ const TOURS_DATA = [
 ];
 
 // ==========================================
-// 2. DEPARTURE SCHEDULE DATA (5 KEY TOURS)
+// 2. DEPARTURE SCHEDULE DATA (5 KEY TOURS WITH SCARCITY & URGENCY)
 // ==========================================
 const DEPARTURE_SCHEDULE = [
   {
     "id": "sch-1",
     "day": "26",
     "month": "Th10",
-    "code": "YT01",
-    "title": "Trekking Yên Tử – Chùa Đồng",
-    "duration": "Trong ngày",
-    "price": "550.000đ",
-    "priceNum": 550000,
+    "code": "PSP01",
+    "title": "Tà Xùa – Săn mây",
+    "duration": "2 ngày 1 đêm",
+    "price": "1.600.000đ",
+    "priceNum": 1600000,
     "dateFull": "26/10/2026",
-    "status": "Còn chỗ",
-    "tourId": 1
+    "status": "🔥 Còn 3 chỗ",
+    "statusType": "urgent",
+    "tourId": 2
   },
   {
     "id": "sch-2",
     "day": "01",
     "month": "Th11",
-    "code": "PSP01",
-    "title": "Tà Xùa – Phu Sa Phìn Săn Mây",
-    "duration": "2 ngày 1 đêm",
-    "price": "1.600.000đ",
-    "priceNum": 1600000,
+    "code": "YT01",
+    "title": "Yên Tử – Chùa Đồng",
+    "duration": "Trong ngày",
+    "price": "550.000đ",
+    "priceNum": 550000,
     "dateFull": "01/11/2026",
-    "status": "Còn chỗ",
-    "tourId": 2
+    "status": "Còn 8 chỗ",
+    "statusType": "available",
+    "tourId": 1
   },
   {
     "id": "sch-3",
     "day": "08",
     "month": "Th11",
-    "code": "SM01",
-    "title": "Sa Mu – U Bò (Rừng Rêu)",
+    "code": "PSP02",
+    "title": "Phu Sa Phìn – Chinh phục đỉnh cao",
     "duration": "2 ngày 1 đêm",
     "price": "2.800.000đ",
     "priceNum": 2800000,
     "dateFull": "08/11/2026",
-    "status": "Còn chỗ",
+    "status": "🔥 Còn 2 chỗ",
+    "statusType": "urgent",
     "tourId": 3
   },
   {
     "id": "sch-4",
     "day": "15",
     "month": "Th11",
-    "code": "KQS01",
-    "title": "Kỳ Quan San – Đồi Muối",
-    "duration": "3 ngày 2 đêm",
-    "price": "3.500.000đ",
-    "priceNum": 3500000,
+    "code": "TCN01",
+    "title": "Tà Chì Nhù – Mùa Hoa Chi Pâu",
+    "duration": "2 ngày 1 đêm",
+    "price": "2.800.000đ",
+    "priceNum": 2800000,
     "dateFull": "15/11/2026",
-    "status": "Còn chỗ",
-    "tourId": 4
+    "status": "Còn 6 chỗ",
+    "statusType": "available",
+    "tourId": 5
   },
   {
     "id": "sch-5",
     "day": "22",
     "month": "Th11",
-    "code": "TCN01",
-    "title": "Tà Chì Nhù – Hoa Chi Pâu",
-    "duration": "2 ngày 1 đêm",
-    "price": "2.800.000đ",
-    "priceNum": 2800000,
+    "code": "KQ01",
+    "title": "Kỳ Quan San – Đỉnh núi hùng vĩ",
+    "duration": "3 ngày 2 đêm",
+    "price": "3.500.000đ",
+    "priceNum": 3500000,
     "dateFull": "22/11/2026",
-    "status": "Còn chỗ",
-    "tourId": 5
+    "status": "Mở đăng ký",
+    "statusType": "open",
+    "tourId": 4
   }
 ];
 
@@ -1703,6 +1708,7 @@ const TESTIMONIALS_DATA = [
     id: 1,
     name: 'Nguyễn Thu Hà',
     role: 'Trekking Tà Xùa – Săn mây',
+    verified: true,
     avatar: 'assets/images/avatar-ha.jpg',
     comment: 'Cung đường sống lưng khủng long Tà Xùa đẹp nín thở, hướng dẫn viên nhiệt tình, đồ ăn ngon. Cảm ơn Trekking Đi Cùng Gió đã cho mình một hành trình thật đáng nhớ!',
     rating: 5,
@@ -1712,6 +1718,7 @@ const TESTIMONIALS_DATA = [
     id: 2,
     name: 'Lê Minh Đức',
     role: 'Trekking Yên Tử – Chùa Đồng',
+    verified: true,
     avatar: 'assets/images/avatar-duc.jpg',
     comment: 'Lần đầu leo bộ Yên Tử mà được chạm tay vào Chùa Đồng lúc bình minh mây ngàn. Anh em leader chăm sóc chu đáo, huy chương gỗ độc quyền kỷ niệm rất đẹp.',
     rating: 5,
@@ -1720,7 +1727,8 @@ const TESTIMONIALS_DATA = [
   {
     id: 3,
     name: 'Trần Thị Mai',
-    role: 'Kỳ Quan San – Bạch Mộc Lương Tử',
+    role: 'Kỳ Quan San – Đỉnh núi hùng vĩ',
+    verified: true,
     avatar: 'assets/images/avatar-mai.jpg',
     comment: 'Đỉnh Kỳ Quan San quả thực xứng danh ngọn núi kỳ vĩ. Bình minh Đồi Muối biển mây bạt ngàn vượt xa mọi sự tưởng tượng. Đi Cùng Gió tổ chức cực kỳ chuyên nghiệp!',
     rating: 5,
@@ -1732,10 +1740,17 @@ const TESTIMONIALS_DATA = [
 // 4. APP STATE
 // ==========================================
 let currentCategory = 'all';
+let currentDifficulty = 'all';
+let currentDuration = 'all';
+let currentSort = 'popular';
+let searchKeyword = '';
+let showAllTours = false;
+
 let heroCurrentIndex = 0;
 let heroSlideTimer = null;
 let currentBookingTour = TOURS_DATA[0];
 let bookingGuests = 1;
+let modalBookingPax = 1;
 
 // Load Wishlist from LocalStorage
 let wishlist = new Set();
@@ -1840,30 +1855,119 @@ function initHeroSlider() {
 }
 
 // ==========================================
-// 7. RENDER TOURS (LEFT COLUMN 72%)
+// 7. RENDER TOURS (SMART TREKKING FILTER & CARDS)
 // ==========================================
-function renderTours(filterCategory = currentCategory) {
+function renderTours(category = currentCategory) {
   const container = document.getElementById('tour-grid-container');
   if (!container) return;
 
-  currentCategory = filterCategory;
-  let filtered = [];
+  currentCategory = category;
+  let filtered = [...TOURS_DATA];
 
-  if (filterCategory === 'all') {
-    filtered = TOURS_DATA.filter(t => t.isFeatured);
+  // 1. Category filter
+  if (currentCategory !== 'all') {
+    filtered = filtered.filter(t => t.category === currentCategory || t.subCategory === currentCategory);
+  }
+
+  // 2. Difficulty filter
+  if (currentDifficulty === 'easy') {
+    filtered = filtered.filter(t => (t.difficultyLevel || 2) <= 2);
+  } else if (currentDifficulty === 'medium') {
+    filtered = filtered.filter(t => t.difficultyLevel === 3);
+  } else if (currentDifficulty === 'hard') {
+    filtered = filtered.filter(t => (t.difficultyLevel || 3) >= 4);
+  }
+
+  // 3. Duration filter
+  if (currentDuration === 'day') {
+    filtered = filtered.filter(t => (t.duration || '').toLowerCase().includes('trong ngày'));
+  } else if (currentDuration === '2d1n') {
+    filtered = filtered.filter(t => (t.duration || '').toLowerCase().includes('2 ngày'));
+  } else if (currentDuration === '3d2n') {
+    filtered = filtered.filter(t => (t.duration || '').toLowerCase().includes('3 ngày'));
+  }
+
+  // 4. Keyword search
+  if (searchKeyword) {
+    filtered = filtered.filter(t => {
+      const haystack = (t.title + ' ' + t.location + ' ' + (t.shortSummary || '') + ' ' + (t.code || '') + ' ' + (t.altitude || '')).toLowerCase();
+      return haystack.includes(searchKeyword);
+    });
+  }
+
+  // 5. Sorting
+  if (currentSort === 'price-asc') {
+    filtered.sort((a, b) => (a.priceNum || 0) - (b.priceNum || 0));
+  } else if (currentSort === 'price-desc') {
+    filtered.sort((a, b) => (b.priceNum || 0) - (a.priceNum || 0));
+  } else if (currentSort === 'altitude-desc') {
+    const parseAlt = (s) => parseInt((s || '').replace(/\D/g, '') || '0', 10);
+    filtered.sort((a, b) => parseAlt(b.altitude) - parseAlt(a.altitude));
   } else {
-    filtered = TOURS_DATA.filter(t => t.category === filterCategory || t.subCategory === filterCategory);
+    // popular: featured first, then reviews desc
+    filtered.sort((a, b) => {
+      if (a.isFeatured && !b.isFeatured) return -1;
+      if (!a.isFeatured && b.isFeatured) return 1;
+      return (b.reviews || 0) - (a.reviews || 0);
+    });
   }
 
-  if (filtered.length === 0) {
-    filtered = TOURS_DATA.slice(0, 4);
-  } else if (filtered.length > 4) {
-    filtered = filtered.slice(0, 4);
+  // UI Count & Reset Button
+  const countEl = document.getElementById('filter-result-count');
+  const resetBtn = document.getElementById('filter-reset-btn');
+  const hasActiveFilters = currentCategory !== 'all' || currentDifficulty !== 'all' || currentDuration !== 'all' || currentSort !== 'popular' || searchKeyword !== '';
+
+  if (resetBtn) {
+    if (hasActiveFilters || showAllTours) {
+      resetBtn.classList.remove('hidden');
+      resetBtn.classList.add('inline-flex');
+    } else {
+      resetBtn.classList.add('hidden');
+      resetBtn.classList.remove('inline-flex');
+    }
   }
 
-  container.innerHTML = filtered.map(tour => {
+  // Display limited or full
+  let displayTours = filtered;
+  if (!hasActiveFilters && !showAllTours) {
+    displayTours = filtered.slice(0, 4);
+    if (countEl) countEl.textContent = `Hiển thị 4 tour tiêu biểu (${filtered.length} tour có sẵn)`;
+  } else {
+    if (countEl) countEl.textContent = `Tìm thấy ${filtered.length} hành trình phù hợp`;
+  }
+
+  // Empty state if 0 tours found
+  if (displayTours.length === 0) {
+    container.innerHTML = `
+      <div class="col-span-full py-12 px-6 text-center bg-white rounded-2xl border border-gray-100 space-y-4">
+        <div class="w-16 h-16 mx-auto rounded-full bg-emerald-50 text-forest flex items-center justify-center">
+          <i data-lucide="compass" class="w-8 h-8 text-forest"></i>
+        </div>
+        <h4 class="text-base font-bold text-gray-900">Không tìm thấy cung đường phù hợp</h4>
+        <p class="text-xs text-gray-500 max-w-md mx-auto">
+          Hãy thử nới lỏng bộ lọc hoặc tìm kiếm với từ khóa khác (ví dụ: Tà Xùa, Yên Tử, Fansipan, Kỳ Quan San...).
+        </p>
+        <button 
+          type="button" 
+          onclick="resetTourFilters()" 
+          class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-forest text-white text-xs font-bold hover:bg-forest/90 transition-all cursor-pointer"
+        >
+          <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+          <span>Đặt lại toàn bộ lọc</span>
+        </button>
+      </div>
+    `;
+    initLucideIcons();
+    return;
+  }
+
+  container.innerHTML = displayTours.map(tour => {
     const isLiked = wishlist.has(tour.id);
     const displayPrice = tour.priceNum ? formatCurrency(tour.priceNum) : tour.price.replace('/người', '');
+    
+    // Clean distance string
+    let shortDist = (tour.trekDistance || '12km').replace(/Khoảng\s*/gi, '').split('(')[0].trim();
+    if (shortDist.length > 13) shortDist = shortDist.substring(0, 11) + '...';
 
     return `
       <div class="tour-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full justify-between group">
@@ -1878,13 +1982,13 @@ function renderTours(filterCategory = currentCategory) {
             class="tour-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
           />
           
-          <!-- Category & Code Badge (Top Left Corner) -->
-          <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 max-w-[calc(100%-46px)]">
+          <!-- Category & Altitude Badges (Top Left Corner) -->
+          <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1.5 max-w-[calc(100%-46px)] flex-wrap">
             <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[10.5px] font-bold px-2 py-0.5 rounded-full shadow-sm truncate">
               ${tour.badge}
             </span>
-            <span class="backdrop-blur-md bg-black/60 text-emerald-300 text-[9.5px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
-              ${tour.code}
+            <span class="backdrop-blur-md bg-black/65 text-emerald-200 text-[10px] font-bold px-2 py-0.5 rounded-md shadow-sm shrink-0">
+              ${tour.altitudeBadge || '⛰️ ' + tour.altitude}
             </span>
           </div>
 
@@ -1898,23 +2002,24 @@ function renderTours(filterCategory = currentCategory) {
             <i data-lucide="heart" class="w-3.5 h-3.5 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : ''}"></i>
           </button>
 
-          <!-- Real Photo indicator (Bottom Left Corner) -->
+          <!-- Fast Spec Bar: Difficulty & Distance (Bottom Left Corner) -->
+          <div class="absolute bottom-2.5 left-2.5 z-10">
+            <span class="backdrop-blur-md bg-black/65 text-white text-[10.5px] font-semibold px-2.5 py-1 rounded-md shadow-sm flex items-center gap-1.5">
+              <span class="text-amber-300 font-bold">⚡ Độ khó: ${tour.difficultyLevel || 3}/5</span>
+              <span class="text-white/40">•</span>
+              <span class="text-emerald-300 font-bold">🥾 ${shortDist}</span>
+            </span>
+          </div>
+
+          <!-- Real Photo indicator (Bottom Right Corner) -->
           ${tour.gallery && tour.gallery.length > 0 ? `
-            <div class="absolute bottom-2.5 left-2.5 z-10">
-              <span class="backdrop-blur-md bg-black/65 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+            <div class="absolute bottom-2.5 right-2.5 z-10">
+              <span class="backdrop-blur-md bg-black/65 text-white text-[10px] font-medium px-2 py-0.5 rounded-md shadow-sm flex items-center gap-1">
                 <i data-lucide="camera" class="w-3 h-3 text-emerald-300"></i>
-                <span>${tour.gallery.length} ảnh thực tế</span>
+                <span>${tour.gallery.length} ảnh</span>
               </span>
             </div>
           ` : ''}
-
-          <!-- Altitude Badge (Bottom Right Corner) -->
-          <div class="absolute bottom-2.5 right-2.5 z-10">
-            <span class="backdrop-blur-md bg-black/65 text-emerald-200 text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
-              <i data-lucide="mountain" class="w-2.5 h-2.5 text-emerald-300"></i>
-              <span>${tour.altitudeBadge}</span>
-            </span>
-          </div>
 
           <!-- Hover Overlay -->
           <div class="absolute inset-0 backdrop-blur-[2px] bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-3 text-center pointer-events-none">
@@ -1940,7 +2045,7 @@ function renderTours(filterCategory = currentCategory) {
               <button 
                 type="button" 
                 onclick="openTourDetailModal(${tour.id}, 2); event.stopPropagation();" 
-                class="inline-flex items-center gap-1 text-[10.5px] font-bold text-forest hover:text-forest-dark bg-emerald-50/90 hover:bg-emerald-100/90 px-1.5 py-0.5 rounded transition-colors shrink-0 whitespace-nowrap cursor-pointer"
+                class="inline-flex items-center gap-1 text-[10.5px] font-bold text-forest hover:text-forest-dark bg-emerald-50/90 hover:bg-emerald-100 px-1.5 py-0.5 rounded transition-colors shrink-0 whitespace-nowrap cursor-pointer"
                 title="Xem lịch sử & câu chuyện địa danh"
               >
                 <i data-lucide="book-open" class="w-3 h-3 text-forest shrink-0"></i>
@@ -1957,7 +2062,7 @@ function renderTours(filterCategory = currentCategory) {
               ${tour.title}
             </h3>
 
-            <!-- 1-line / 2-line Description: Locked to h-[36px] -->
+            <!-- 1-line / 2-line Short Summary Description: Locked to h-[36px] -->
             <p class="text-xs text-gray-600 line-clamp-2 mt-1 mb-2 leading-relaxed h-[36px]" title="${tour.shortSummary || tour.description}">
               ${tour.shortSummary || tour.description}
             </p>
@@ -2008,9 +2113,10 @@ function renderTours(filterCategory = currentCategory) {
             <button 
               type="button" 
               onclick="openSmartBookingModal(${tour.id}); event.stopPropagation();"
-              class="btn-shine whitespace-nowrap px-3 py-1.5 rounded-lg bg-[#1E4D3B] text-white text-[11px] font-bold shrink-0 hover:bg-forest/90 active:scale-95 transition-all shadow-sm cursor-pointer"
+              class="btn-shine whitespace-nowrap px-3 py-1.5 rounded-lg bg-[#1E4D3B] text-white text-[11px] font-bold shrink-0 hover:bg-forest/90 hover:scale-102 active:scale-95 transition-all shadow-sm cursor-pointer flex items-center gap-1"
             >
-              Đăng ký tour
+              <span>Đăng ký ngay</span>
+              <i data-lucide="arrow-right" class="w-3 h-3"></i>
             </button>
           </div>
 
@@ -2030,43 +2136,54 @@ function renderSchedule() {
   const container = document.getElementById('schedule-list-container');
   if (!container) return;
 
-  container.innerHTML = DEPARTURE_SCHEDULE.map(item => `
-    <div 
-      onclick="openTourDetailModal(${item.tourId})"
-      class="schedule-row p-2.5 rounded-xl bg-gray-50/70 border border-gray-100/80 flex items-center justify-between gap-2.5 cursor-pointer group hover:bg-emerald-50/50 hover:border-emerald-200/60 transition-all"
-      title="Nhấn để xem lộ trình & đăng ký tour này"
-    >
-      <!-- Date Block -->
-      <div class="flex items-center gap-2.5 min-w-0 flex-1">
-        <div class="w-10 h-10 rounded-xl bg-[#1E4D3B] text-white flex flex-col items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
-          <span class="text-sm font-black leading-none">${item.day}</span>
-          <span class="text-[9px] font-bold uppercase tracking-wider text-emerald-200 mt-0.5">${item.month}</span>
-        </div>
+  container.innerHTML = DEPARTURE_SCHEDULE.map(item => {
+    let badgeClass = 'badge-seat';
+    if (item.statusType === 'urgent') {
+      badgeClass += ' badge-urgent';
+    } else if (item.statusType === 'available') {
+      badgeClass += ' badge-available';
+    } else if (item.statusType === 'open') {
+      badgeClass += ' badge-open';
+    }
 
-        <div class="min-w-0 flex-1">
-          <div class="flex items-center gap-1.5">
-            <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest shrink-0">${item.code}</span>
-            <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate" title="${item.title}">
-              ${item.title}
-            </h4>
+    return `
+      <div 
+        onclick="openTourDetailModal(${item.tourId})"
+        class="schedule-row p-2.5 rounded-xl bg-gray-50/70 border border-gray-100/80 flex items-center justify-between gap-2.5 cursor-pointer group hover:bg-emerald-50/60 hover:border-emerald-200/80 hover:shadow-xs transition-all relative"
+        title="Bấm để giữ chỗ hoặc xem lịch trình chi tiết"
+      >
+        <!-- Date Block -->
+        <div class="flex items-center gap-2.5 min-w-0 flex-1">
+          <div class="w-10 h-10 rounded-xl bg-[#1E4D3B] text-white flex flex-col items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
+            <span class="text-sm font-black leading-none">${item.day}</span>
+            <span class="text-[9px] font-bold uppercase tracking-wider text-emerald-200 mt-0.5">${item.month}</span>
           </div>
-          <span class="text-[10.5px] text-gray-500 font-medium truncate block mt-0.5">${item.duration} • Hà Nội</span>
+
+          <div class="min-w-0 flex-1">
+            <div class="flex items-center gap-1.5">
+              <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest shrink-0">${item.code}</span>
+              <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate" title="${item.title}">
+                ${item.title}
+              </h4>
+            </div>
+            <span class="text-[10.5px] text-gray-500 font-medium truncate block mt-0.5">${item.duration} • Hà Nội</span>
+          </div>
+        </div>
+
+        <!-- Price & Status Badge -->
+        <div class="text-right shrink-0 pl-1.5 min-w-[75px]">
+          <span class="block text-xs font-black text-[#1E4D3B] whitespace-nowrap">${item.price}</span>
+          <span class="${badgeClass} text-[9.5px] inline-block mt-0.5 whitespace-nowrap">${item.status}</span>
         </div>
       </div>
-
-      <!-- Price & Status Badge -->
-      <div class="text-right shrink-0 pl-1.5 min-w-[70px]">
-        <span class="block text-xs font-black text-[#1E4D3B] whitespace-nowrap">${item.price}</span>
-        <span class="badge-seat text-[9.5px] inline-block mt-0.5 whitespace-nowrap">${item.status}</span>
-      </div>
-    </div>
-  `).join('');
+    `;
+  }).join('');
 
   initLucideIcons();
 }
 
 // ==========================================
-// 9. CATEGORY BAR FILTERING CONTROLLER
+// 9. CATEGORY BAR & SMART FILTER CONTROLLERS
 // ==========================================
 function setupCategoryFilter() {
   const items = document.querySelectorAll('.category-item');
@@ -2081,6 +2198,9 @@ function setupCategoryFilter() {
 
 function filterByCategory(cat) {
   currentCategory = cat;
+  if (cat === 'all') {
+    showAllTours = true;
+  }
 
   // Update Category Bar active classes
   const items = document.querySelectorAll('.category-item');
@@ -2110,7 +2230,7 @@ function filterByCategory(cat) {
   const titleEl = document.getElementById('section-tour-title');
   if (titleEl) {
     const titles = {
-      all: 'Tour Nổi Bật',
+      all: 'Tất Cả Tour Chinh Phục',
       trekking: 'Tour Trekking Chinh Phục',
       spiritual: 'Tour Hành Hương Tâm Linh',
       experience: 'Tour Trải Nghiệm & Thiên Nhiên',
@@ -2122,28 +2242,92 @@ function filterByCategory(cat) {
 }
 window.filterByCategory = filterByCategory;
 
+function handleTourFilterChange() {
+  const searchInput = document.getElementById('tour-search-input');
+  const clearBtn = document.getElementById('tour-search-clear');
+  const diffSelect = document.getElementById('filter-difficulty');
+  const durSelect = document.getElementById('filter-duration');
+  const sortSelect = document.getElementById('filter-sort');
+
+  searchKeyword = searchInput ? searchInput.value.trim().toLowerCase() : '';
+  currentDifficulty = diffSelect ? diffSelect.value : 'all';
+  currentDuration = durSelect ? durSelect.value : 'all';
+  currentSort = sortSelect ? sortSelect.value : 'popular';
+
+  if (clearBtn) {
+    if (searchKeyword) {
+      clearBtn.classList.remove('hidden');
+    } else {
+      clearBtn.classList.add('hidden');
+    }
+  }
+
+  renderTours();
+}
+window.handleTourFilterChange = handleTourFilterChange;
+
+function clearTourSearch() {
+  const searchInput = document.getElementById('tour-search-input');
+  if (searchInput) {
+    searchInput.value = '';
+  }
+  handleTourFilterChange();
+}
+window.clearTourSearch = clearTourSearch;
+
+function resetTourFilters() {
+  const searchInput = document.getElementById('tour-search-input');
+  const diffSelect = document.getElementById('filter-difficulty');
+  const durSelect = document.getElementById('filter-duration');
+  const sortSelect = document.getElementById('filter-sort');
+
+  if (searchInput) searchInput.value = '';
+  if (diffSelect) diffSelect.value = 'all';
+  if (durSelect) durSelect.value = 'all';
+  if (sortSelect) sortSelect.value = 'popular';
+
+  searchKeyword = '';
+  currentDifficulty = 'all';
+  currentDuration = 'all';
+  currentSort = 'popular';
+  showAllTours = false;
+
+  const titleEl = document.getElementById('section-tour-title');
+  if (titleEl) titleEl.textContent = 'Tour Nổi Bật';
+
+  filterByCategory('all');
+}
+window.resetTourFilters = resetTourFilters;
+
 // ==========================================
-// 10. PROFESSIONAL STORYTELLING MODAL CONTROLLER (4 TABS)
+// 10. ALL-IN-ONE TREKKING GUIDE MODAL CONTROLLER (Inspired by Giang Lang Thang)
 // ==========================================
 function openTourDetailModal(tourId, initialTab = 1) {
   const tour = TOURS_DATA.find(t => t.id === tourId) || TOURS_DATA[0];
   if (!tour) return;
 
+  modalBookingPax = 1;
   const modal = document.getElementById('tour-detail-modal');
   const content = document.getElementById('tour-detail-content');
   if (!modal || !content) return;
 
   const isLiked = wishlist.has(tour.id);
-  const dates = tour.departureDates ? tour.departureDates.join(', ') : 'Thứ 6 & Thứ 7 hàng tuần';
+  const dates = tour.departureDates && tour.departureDates.length > 0 
+    ? tour.departureDates 
+    : ['26/10/2026', '01/11/2026', '08/11/2026', '15/11/2026', '22/11/2026'];
 
-  // Render 1-5 difficulty dots
-  let diffDots = '';
-  for (let i = 1; i <= 5; i++) {
-    diffDots += `<span class="difficulty-dot ${i <= tour.difficultyLevel ? 'active' : ''}"></span>`;
-  }
+  let cleanDist = (tour.trekDistance || '12km').replace(/Khoảng\s*/gi, '').split('(')[0].trim();
+
+  // Altitude badge text
+  let altSubtitle = 'Đỉnh cao hùng vĩ';
+  if (tour.id === 1) altSubtitle = 'Chùa Đồng linh thiêng';
+  else if (tour.id === 2) altSubtitle = 'Thiên đường săn mây';
+  else if (tour.id === 3) altSubtitle = 'Rừng rêu nguyên sinh';
+  else if (tour.id === 4) altSubtitle = 'Top 4 Nóc nhà VN';
+  else if (tour.id === 9) altSubtitle = 'Nóc nhà Đông Dương';
 
   content.innerHTML = `
-    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl max-w-3xl w-full border border-gray-100 modal-enter max-h-[92vh] flex flex-col">
+    <div class="relative bg-white rounded-3xl overflow-hidden shadow-2xl max-w-4xl w-full border border-gray-100 modal-enter max-h-[92vh] flex flex-col">
       
       <!-- Top Image Banner & Close Button -->
       <div class="relative h-60 sm:h-72 w-full shrink-0">
@@ -2159,7 +2343,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
         <button 
           type="button" 
           onclick="closeTourDetailModal()" 
-          class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/80 flex items-center justify-center transition-colors backdrop-blur-sm cursor-pointer"
+          class="absolute top-4 right-4 z-20 w-9 h-9 rounded-full bg-black/50 text-white hover:bg-black/80 flex items-center justify-center transition-colors backdrop-blur-sm cursor-pointer shadow-md"
           title="Đóng"
         >
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -2168,50 +2352,79 @@ function openTourDetailModal(tourId, initialTab = 1) {
         <!-- Banner Text & Badges -->
         <div class="absolute bottom-4 left-5 right-5 text-white">
           <div class="flex flex-wrap items-center gap-2 mb-2">
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1E4D3B] text-white">${tour.badge}</span>
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white">${tour.altitudeBadge}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-[#1E4D3B] text-white shadow-xs">${tour.badge}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white">${tour.altitudeBadge || '⛰️ ' + tour.altitude}</span>
             <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-white/20 backdrop-blur-sm text-white">${tour.duration}</span>
-            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-stone-900">${tour.code}</span>
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-stone-900 shadow-xs">${tour.code}</span>
           </div>
-          <h2 class="text-xl sm:text-2xl font-black leading-tight drop-shadow-sm">${tour.title}</h2>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-black leading-tight drop-shadow-sm">${tour.title}</h2>
           <p class="text-xs sm:text-sm text-emerald-200 mt-1 flex items-center gap-2">
-            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-300"></i>
+            <i data-lucide="map-pin" class="w-3.5 h-3.5 text-emerald-300 shrink-0"></i>
             <span>${tour.location} • Điểm đón: ${tour.pickupPoint || '55 Nguyễn Quốc Trị & 489 Hoàng Quốc Việt'}</span>
           </p>
         </div>
       </div>
 
-      <!-- Key Specs Bar -->
-      <div class="grid grid-cols-4 gap-2 px-5 py-3 bg-[#F6F7F2] border-b border-gray-100 text-center shrink-0">
-        <div>
-          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ cao</span>
-          <span class="block text-xs sm:text-sm font-extrabold text-forest mt-0.5">${tour.altitude}</span>
-        </div>
-        <div class="border-l border-gray-200">
-          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Quãng đường</span>
-          <span class="block text-xs sm:text-sm font-extrabold text-gray-900 mt-0.5">${tour.trekDistance}</span>
-        </div>
-        <div class="border-l border-gray-200">
-          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ khó (${tour.difficultyLevel}/5)</span>
-          <div class="difficulty-meter mt-1 justify-center">
-            ${diffDots}
+      <!-- 1. TREKKING DASHBOARD (4 METRIC TILES) -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 px-5 py-3.5 bg-[#F6F7F2] border-b border-gray-100 shrink-0">
+        <!-- Tile 1: Altitude -->
+        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-emerald-50 text-forest flex items-center justify-center shrink-0">
+            <i data-lucide="mountain" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ cao đỉnh</span>
+            <span class="block text-xs sm:text-sm font-black text-forest truncate">${tour.altitude}</span>
+            <span class="block text-[9.5px] text-gray-400 truncate">${altSubtitle}</span>
           </div>
         </div>
-        <div class="border-l border-gray-200">
-          <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Khởi hành</span>
-          <span class="block text-xs sm:text-sm font-extrabold text-gray-900 mt-0.5">${tour.minPax}</span>
+
+        <!-- Tile 2: Difficulty -->
+        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+            <i data-lucide="zap" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Độ khó thể lực</span>
+            <span class="block text-xs sm:text-sm font-black text-amber-600">Level ${tour.difficultyLevel || 3}/5</span>
+            <span class="block text-[9.5px] text-gray-500 truncate">${tour.difficultyText || 'Trung bình'}</span>
+          </div>
+        </div>
+
+        <!-- Tile 3: Total Distance -->
+        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+            <i data-lucide="footprints" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Tổng quãng đường</span>
+            <span class="block text-xs sm:text-sm font-black text-gray-900 truncate">${cleanDist}</span>
+            <span class="block text-[9.5px] text-gray-400 truncate">Rừng & sống núi</span>
+          </div>
+        </div>
+
+        <!-- Tile 4: Ratio Leader / Porter -->
+        <div class="bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-forest/10 text-forest flex items-center justify-center shrink-0">
+            <i data-lucide="shield-check" class="w-5 h-5"></i>
+          </div>
+          <div class="min-w-0">
+            <span class="block text-[10px] font-bold uppercase tracking-wider text-gray-500">Tỷ lệ Leader/Porter</span>
+            <span class="block text-xs sm:text-sm font-black text-forest">1 kèm 3</span>
+            <span class="block text-[9.5px] text-emerald-600 font-semibold truncate">An toàn tuyệt đối</span>
+          </div>
         </div>
       </div>
 
-      <!-- Storytelling Tabs Navigation (4 TABS) -->
-      <div class="flex items-center gap-4 sm:gap-6 px-5 sm:px-6 pt-3 border-b border-gray-100 bg-white text-xs sm:text-sm shrink-0 overflow-x-auto no-scrollbar whitespace-nowrap">
+      <!-- STORYTELLING TABS NAVIGATION (5 TABS) -->
+      <div class="flex items-center gap-3 sm:gap-5 px-5 sm:px-6 pt-3 border-b border-gray-100 bg-white text-xs sm:text-sm shrink-0 overflow-x-auto no-scrollbar whitespace-nowrap">
         <button 
           id="tab-btn-1" 
           onclick="switchDetailTab(1)"
           class="modal-tab-btn active cursor-pointer flex items-center gap-1.5"
         >
           <i data-lucide="navigation" class="w-3.5 h-3.5"></i>
-          <span>1. Hành trình & Lộ trình</span>
+          <span>1. Hành trình & Đi đâu</span>
         </button>
         <button 
           id="tab-btn-2" 
@@ -2226,32 +2439,40 @@ function openTourDetailModal(tourId, initialTab = 1) {
           onclick="switchDetailTab(3)"
           class="modal-tab-btn cursor-pointer flex items-center gap-1.5"
         >
-          <i data-lucide="backpack" class="w-3.5 h-3.5"></i>
-          <span>3. Lịch trình & Chuẩn bị</span>
+          <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+          <span>3. Lịch trình chi tiết</span>
         </button>
         <button 
           id="tab-btn-4" 
           onclick="switchDetailTab(4)"
+          class="modal-tab-btn cursor-pointer flex items-center gap-1.5"
+        >
+          <i data-lucide="backpack" class="w-3.5 h-3.5"></i>
+          <span>4. Dịch vụ & Đồ chuẩn bị</span>
+        </button>
+        <button 
+          id="tab-btn-5" 
+          onclick="switchDetailTab(5)"
           class="modal-tab-btn cursor-pointer flex items-center gap-1.5 text-forest"
         >
           <i data-lucide="shield-check" class="w-3.5 h-3.5 text-forest"></i>
-          <span>4. Chính sách hoàn hủy & Dịch vụ</span>
+          <span>5. Chính sách hoàn hủy</span>
         </button>
       </div>
 
-      <!-- Tab Content Panels -->
+      <!-- TAB CONTENT PANELS -->
       <div class="p-5 sm:p-6 overflow-y-auto flex-1 space-y-4 text-xs sm:text-sm text-gray-700 leading-relaxed">
         
-        <!-- PANEL 1: Hành trình & Lộ trình địa lý -->
+        <!-- PANEL 1: Hành trình & Đi đâu -->
         <div id="tab-panel-1" class="space-y-4">
           <!-- Visual Route Steps -->
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
               <i data-lucide="map-pin" class="w-4 h-4 text-forest"></i>
-              <span>Sơ đồ các chặng hành trình</span>
+              <span>Sơ đồ lộ trình các chặng từ Hà Nội</span>
             </h4>
             <div class="flex flex-wrap items-center gap-1.5 sm:gap-2 p-3 bg-emerald-50/70 rounded-2xl border border-emerald-100">
-              ${(tour.routeSteps || []).map((step, idx, arr) => `
+              ${(tour.routeSteps || ['Hà Nội', 'Chân núi', 'Lán nghỉ', 'Đỉnh núi', 'Hạ sơn']).map((step, idx, arr) => `
                 <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white border border-emerald-200 text-forest font-bold text-xs shadow-2xs">
                   <span class="w-4 h-4 rounded-full bg-forest text-white text-[10px] flex items-center justify-center font-extrabold shrink-0">${idx + 1}</span>
                   <span>${step}</span>
@@ -2261,11 +2482,11 @@ function openTourDetailModal(tourId, initialTab = 1) {
             </div>
           </div>
 
-          <!-- Geographic Itinerary Description -->
+          <!-- Geographic Route Description -->
           <div class="space-y-1.5">
             <h4 class="text-xs font-bold uppercase tracking-wider text-gray-800 flex items-center gap-1.5">
               <i data-lucide="map" class="w-4 h-4 text-forest"></i>
-              <span>Lộ trình chi tiết</span>
+              <span>Hành trình đi đâu & Lộ trình địa lý</span>
             </h4>
             <p class="text-xs sm:text-sm text-gray-700 leading-relaxed bg-gray-50 p-3.5 rounded-xl border border-gray-100 font-normal">
               ${tour.routeMap || tour.description}
@@ -2276,7 +2497,11 @@ function openTourDetailModal(tourId, initialTab = 1) {
           <div class="space-y-2.5 pt-1">
             <h4 class="text-xs font-bold uppercase tracking-wider text-forest">Trải nghiệm độc bản không thể bỏ lỡ</h4>
             <ul class="space-y-2">
-              ${(tour.highlights || []).map(hl => `
+              ${(tour.highlights || [
+                'Chinh phục đỉnh cao ngoạn mục vùng cao Tây Bắc',
+                'Đón bình minh và biển mây cuồn cuộn tráng lệ',
+                'Thưởng thức ẩm thực bản địa tươi ngon bên bếp lửa lán rừng'
+              ]).map(hl => `
                 <li class="flex items-start gap-2.5">
                   <i data-lucide="check-circle-2" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
                   <span>${hl}</span>
@@ -2317,14 +2542,6 @@ function openTourDetailModal(tourId, initialTab = 1) {
               </div>
             </div>
           ` : ''}
-
-          <div class="p-3 bg-emerald-50/70 rounded-xl border border-emerald-100 flex items-center justify-between">
-            <div>
-              <span class="text-xs font-bold text-forest block">Lịch khởi hành sắp tới:</span>
-              <span class="text-xs text-gray-600 font-medium">${dates} (${tour.departureFrequency})</span>
-            </div>
-            <span class="badge-seat text-xs font-bold">Còn chỗ</span>
-          </div>
         </div>
 
         <!-- PANEL 2: Lịch sử & Câu chuyện vùng đất -->
@@ -2333,7 +2550,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
             <div class="flex items-center gap-2 text-forest">
               <i data-lucide="landmark" class="w-5 h-5 text-forest"></i>
               <h4 class="font-extrabold text-sm sm:text-base text-gray-900">
-                Lịch sử & Huyền thoại ngọn núi ${tour.title}
+                Lịch sử, Huyền thoại & Câu chuyện văn hóa: ${tour.title}
               </h4>
             </div>
             
@@ -2343,21 +2560,24 @@ function openTourDetailModal(tourId, initialTab = 1) {
 
             <div class="pt-3 text-[11px] text-gray-500 italic border-t border-stone-200/70 flex items-center gap-2">
               <i data-lucide="sparkles" class="w-4 h-4 text-amber-500 shrink-0"></i>
-              <span>Mỗi hành trình của Trekking Đi Cùng Gió không chỉ là thể lực, mà là một trải nghiệm chạm vào chiều sâu văn hóa và lịch sử đất nước.</span>
+              <span>Mỗi hành trình của Trekking Đi Cùng Gió không chỉ là thử thách thể lực, mà là một trải nghiệm chạm vào chiều sâu văn hóa và lịch sử đất nước.</span>
             </div>
           </div>
         </div>
 
-        <!-- PANEL 3: Lịch trình & Chuẩn bị -->
+        <!-- PANEL 3: Lịch trình chi tiết theo ngày -->
         <div id="tab-panel-3" class="hidden space-y-4">
-          <!-- Day-by-Day Timeline -->
           <div class="space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
               <i data-lucide="calendar" class="w-4 h-4 text-forest"></i>
               <span>Lịch trình chi tiết các chặng</span>
             </h4>
             <div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2.5 before:top-2 before:bottom-2 before:w-0.5 before:bg-emerald-200">
-              ${(tour.itinerary || []).map(step => `
+              ${(tour.itinerary || [
+                { day: "Đêm 0", title: "Khởi hành từ Hà Nội", desc: "Xe đón tại 55 Nguyễn Quốc Trị và 489 Hoàng Quốc Việt, di chuyển xuyên đêm lên điểm leo." },
+                { day: "Ngày 1", title: "Bắt đầu trekking & Nghỉ lán", desc: "Ăn sáng, gặp gỡ Porter, bắt đầu hành trình trekking qua rừng, ăn trưa dã ngoại và nghỉ đêm tại lán gỗ." },
+                { day: "Ngày 2", title: "Chạm đỉnh & Hạ sơn", desc: "Thức dậy sớm đón bình minh săn mây, chạm đỉnh nhận huy chương danh dự và di chuyển về Hà Nội." }
+              ]).map(step => `
                 <div class="relative group">
                   <div class="absolute -left-[27px] top-1 w-4 h-4 rounded-full border-2 border-white bg-forest shadow-xs"></div>
                   <h5 class="font-bold text-gray-900 text-xs sm:text-sm flex items-center gap-2">
@@ -2369,17 +2589,27 @@ function openTourDetailModal(tourId, initialTab = 1) {
               `).join('')}
             </div>
           </div>
+        </div>
 
-          <!-- Included & Preparation Checklist -->
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-            <!-- Included -->
-            <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 space-y-2">
+        <!-- PANEL 4: DỊCH VỤ BAO GỒM & ĐỒ CHUẨN BỊ (Included & Packing List) -->
+        <div id="tab-panel-4" class="hidden space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <!-- Cột trái: ĐI CÙNG GIÓ CHUẨN BỊ -->
+            <div class="bg-gray-50 p-4 rounded-2xl border border-gray-100 space-y-2.5">
               <h5 class="font-bold text-xs text-forest uppercase tracking-wider flex items-center gap-1.5">
-                <i data-lucide="check" class="w-4 h-4 text-forest"></i>
-                <span>Dịch vụ bao gồm</span>
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-forest"></i>
+                <span>ĐI CÙNG GIÓ Chuẩn Bị</span>
               </h5>
-              <ul class="text-xs text-gray-600 space-y-1.5">
-                ${(tour.included || []).map(inc => `
+              <ul class="text-xs text-gray-600 space-y-2">
+                ${(tour.included || [
+                  "Xe giường nằm / Limousine đời mới khứ hồi Hà Nội",
+                  "Đội ngũ Leader giàu kinh nghiệm + Porter bản địa gùi đồ",
+                  "Chỗ ngủ lán gỗ / lều cách nhiệt ấm cúng và đầy đủ chăn đệm",
+                  "Tất cả các bữa ăn chính tiêu chuẩn vùng cao ấm cúng",
+                  "Bảo hiểm du lịch trọn gói mức bồi thường tới 100.000.000đ",
+                  "Gậy trekking trợ lực, áo mưa, túi y tế chuyên dụng",
+                  "Huy chương gỗ độc quyền khắc kỷ niệm chinh phục đỉnh núi"
+                ]).map(inc => `
                   <li class="flex items-start gap-2">
                     <span class="text-forest font-bold">•</span>
                     <span>${inc}</span>
@@ -2388,14 +2618,21 @@ function openTourDetailModal(tourId, initialTab = 1) {
               </ul>
             </div>
 
-            <!-- Preparation -->
-            <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100/70 space-y-2">
+            <!-- Cột phải: BẠN CẦN CHUẨN BỊ -->
+            <div class="bg-emerald-50/50 p-4 rounded-2xl border border-emerald-100/70 space-y-2.5">
               <h5 class="font-bold text-xs text-forest uppercase tracking-wider flex items-center gap-1.5">
                 <i data-lucide="backpack" class="w-4 h-4 text-forest"></i>
-                <span>Đồ cần chuẩn bị</span>
+                <span>Bạn Cần Chuẩn Bị</span>
               </h5>
-              <ul class="text-xs text-gray-700 space-y-1.5">
-                ${(tour.preparation || []).map(prep => `
+              <ul class="text-xs text-gray-700 space-y-2">
+                ${(tour.preparation || [
+                  "Giày trekking chuyên dụng có độ bám gai cao, chống trơn trượt",
+                  "Áo khoác gió giữ nhiệt / áo phao ấm cho ban đêm trên lán",
+                  "Balo cá nhân gọn nhẹ 20 – 30L đựng đồ dùng cần thiết",
+                  "Đèn pin đội đầu có pin dự phòng (dùng khi săn mây sớm)",
+                  "Bình nước cá nhân 1 – 1.5L, đồ ăn vặt bổ sung năng lượng",
+                  "Giấy tờ tùy thân (CCCD / Hộ chiếu bản gốc bắt buộc)"
+                ]).map(prep => `
                   <li class="flex items-start gap-2">
                     <span class="text-amber-600 font-bold">✔</span>
                     <span>${prep}</span>
@@ -2406,8 +2643,8 @@ function openTourDetailModal(tourId, initialTab = 1) {
           </div>
         </div>
 
-        <!-- PANEL 4: CHÍNH SÁCH HOÀN HỦY & DỊCH VỤ -->
-        <div id="tab-panel-4" class="hidden space-y-4">
+        <!-- PANEL 5: CHÍNH SÁCH HOÀN HỦY & QUY ĐỊNH -->
+        <div id="tab-panel-5" class="hidden space-y-4">
           <!-- Timeline visual cards -->
           <div class="space-y-2">
             <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
@@ -2434,7 +2671,7 @@ function openTourDetailModal(tourId, initialTab = 1) {
               </div>
             </div>
             <p class="text-[11px] text-gray-500 italic">
-              * Tour đặc thù mùa vụ (Cúc Phương mùa bướm): Trước 15 ngày hoàn 100%, 5–10 ngày bảo lưu 45 ngày, dưới 5 ngày không hoàn/hủy.
+              * Tour đặc thù mùa vụ: Trước 15 ngày hoàn 100%, 5–10 ngày bảo lưu 45 ngày, dưới 5 ngày không hoàn/hủy.
             </p>
           </div>
 
@@ -2472,64 +2709,59 @@ function openTourDetailModal(tourId, initialTab = 1) {
               </ul>
             </div>
           </div>
-
-          <!-- Services Included & Excluded -->
-          <div class="space-y-2 pt-1">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-forest flex items-center gap-1.5">
-              <i data-lucide="sparkles" class="w-4 h-4 text-forest"></i>
-              <span>Dịch vụ tiêu chuẩn độc quyền của Đi Cùng Gió</span>
-            </h4>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-gray-700">
-              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
-                <i data-lucide="award" class="w-4 h-4 text-amber-600 shrink-0 mt-0.5"></i>
-                <span><strong>Huy chương gỗ độc quyền:</strong> Khắc kỷ niệm riêng, thân thiện môi trường</span>
-              </div>
-              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
-                <i data-lucide="users" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
-                <span><strong>Đội ngũ chuyên nghiệp:</strong> 1 Leader + Porter chu đáo trên mỗi 8-10 khách</span>
-              </div>
-              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
-                <i data-lucide="shield-check" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
-                <span><strong>Bảo hiểm du lịch:</strong> Trọn gói bồi thường từ 20.000.000đ – 100.000.000đ/vụ</span>
-              </div>
-              <div class="flex items-start gap-2 bg-white p-2.5 rounded-xl border border-gray-100 shadow-2xs">
-                <i data-lucide="compass" class="w-4 h-4 text-forest shrink-0 mt-0.5"></i>
-                <span><strong>Gậy & Đồ bảo hộ:</strong> Gậy trekking, đèn pin đeo đầu & túi y tế sơ cứu</span>
-              </div>
-            </div>
-          </div>
-
-          <!-- Health and Responsibility Note -->
-          <div class="p-3 bg-amber-50/80 border-l-4 border-amber-500 rounded-r-xl text-[11px] text-amber-950 leading-relaxed">
-            <strong>Lưu ý trách nhiệm & Sức khỏe:</strong> Quý khách bắt buộc mang CCCD/Hộ chiếu bản gốc. Tự bảo đảm thể lực và khai báo y tế trung thực. Tuân thủ nghiêm ngặt nguyên tắc bảo vệ thiên nhiên (Không xả rác, mang toàn bộ rác xuống núi).
-          </div>
         </div>
 
       </div>
 
-      <!-- Modal Footer -->
-      <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-4 shrink-0">
-        <div>
-          <span class="block text-[11px] text-gray-500">Giá tour trọn gói</span>
-          <span class="block text-base sm:text-lg font-black text-forest leading-tight">${tour.price}</span>
+      <!-- 5. STICKY BOTTOM BAR (QUICK BOOKING & LIVE PRICING) -->
+      <div class="p-3.5 sm:p-4 border-t border-gray-100 bg-gray-50/95 flex flex-wrap sm:flex-nowrap items-center justify-between gap-3 shrink-0">
+        <!-- Date Selector -->
+        <div class="flex items-center gap-2">
+          <label for="modal-booking-date" class="sr-only">Ngày khởi hành</label>
+          <div class="relative">
+            <select 
+              id="modal-booking-date" 
+              onchange="updateModalBookingTotal(${tour.id})"
+              class="appearance-none pl-3 pr-7 py-2 rounded-xl bg-white border border-gray-200 text-xs font-bold text-gray-800 focus:outline-none focus:border-forest shadow-2xs cursor-pointer"
+            >
+              ${dates.map(d => `<option value="${d}">📅 ${d}</option>`).join('')}
+            </select>
+            <i data-lucide="chevron-down" class="w-3.5 h-3.5 text-gray-400 absolute right-2 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+          </div>
+
+          <!-- Pax Stepper -->
+          <div class="flex items-center border border-gray-200 rounded-xl bg-white shadow-2xs overflow-hidden">
+            <button 
+              type="button" 
+              onclick="adjustModalPax(-1, ${tour.id})" 
+              class="px-2.5 py-1.5 text-gray-600 hover:bg-gray-100 text-xs font-black cursor-pointer"
+              title="Giảm 1 khách"
+            >-</button>
+            <span id="modal-booking-pax" class="px-2.5 py-1.5 text-xs font-extrabold text-gray-900 min-w-[28px] text-center">1</span>
+            <button 
+              type="button" 
+              onclick="adjustModalPax(1, ${tour.id})" 
+              class="px-2.5 py-1.5 text-gray-600 hover:bg-gray-100 text-xs font-black cursor-pointer"
+              title="Thêm 1 khách"
+            >+</button>
+          </div>
         </div>
 
-        <div class="flex items-center gap-3">
-          <button 
-            type="button" 
-            onclick="toggleWishlist(${tour.id}); openTourDetailModal(${tour.id});" 
-            class="p-2.5 rounded-full border border-gray-200 bg-white text-gray-600 hover:text-red-500 hover:border-red-200 transition-colors shrink-0 shadow-sm cursor-pointer"
-            title="Lưu yêu thích"
-          >
-            <i data-lucide="heart" class="w-5 h-5 ${isLiked ? 'fill-red-500 text-red-500' : ''}"></i>
-          </button>
+        <!-- Price Total & Submit CTA -->
+        <div class="flex items-center gap-3 sm:gap-4 ml-auto">
+          <div class="text-right">
+            <span class="block text-[10px] text-gray-400 uppercase font-bold tracking-wider">Tổng chi phí</span>
+            <span id="modal-booking-total" class="block text-base sm:text-lg font-black text-forest leading-none">
+              ${formatCurrency(tour.priceNum || 550000)}
+            </span>
+          </div>
 
           <button 
             type="button" 
-            onclick="closeTourDetailModal(); openSmartBookingModal(${tour.id});" 
-            class="btn-shine py-2.5 px-6 rounded-full bg-forest text-white font-bold text-xs sm:text-sm hover:bg-forest/90 active:scale-95 transition-all shadow-md flex items-center gap-2 cursor-pointer"
+            onclick="proceedModalBooking(${tour.id})" 
+            class="btn-shine px-5 py-2.5 rounded-full bg-forest text-white text-xs sm:text-sm font-bold hover:bg-forest/90 active:scale-95 transition-all shadow-md flex items-center gap-1.5 shrink-0 cursor-pointer"
           >
-            <span>Đăng ký chinh phục ngay</span>
+            <span>Đăng ký giữ chỗ ngay</span>
             <i data-lucide="arrow-right" class="w-4 h-4"></i>
           </button>
         </div>
@@ -2564,9 +2796,9 @@ window.switchModalImage = function(imgUrl) {
   }
 };
 
-// Switch tabs inside detail modal (1 to 4)
-window.switchDetailTab = function(tabIndex) {
-  for (let i = 1; i <= 4; i++) {
+// Switch tab in detail modal (1 to 5)
+function switchDetailTab(tabIndex) {
+  for (let i = 1; i <= 5; i++) {
     const btn = document.getElementById(`tab-btn-${i}`);
     const panel = document.getElementById(`tab-panel-${i}`);
     if (btn && panel) {
@@ -2580,37 +2812,43 @@ window.switchDetailTab = function(tabIndex) {
     }
   }
   initLucideIcons();
-};
+}
+window.switchDetailTab = switchDetailTab;
 
-window.openTourDetailModal = openTourDetailModal;
-window.closeTourDetailModal = closeTourDetailModal;
-
-// ==========================================
-// 10B. GLOBAL POLICY MODAL CONTROLLER
-// ==========================================
-window.openPolicyModal = function() {
-  const modal = document.getElementById('policy-modal');
-  if (modal) {
-    modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
-    initLucideIcons();
+window.adjustModalPax = function(delta, tourId) {
+  const newPax = modalBookingPax + delta;
+  if (newPax >= 1 && newPax <= 20) {
+    modalBookingPax = newPax;
+    updateModalBookingTotal(tourId);
   }
 };
 
-window.closePolicyModal = function() {
-  const modal = document.getElementById('policy-modal');
-  if (modal) {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
+window.updateModalBookingTotal = function(tourId) {
+  const tour = TOURS_DATA.find(t => t.id === tourId);
+  if (!tour) return;
+  const paxEl = document.getElementById('modal-booking-pax');
+  const totalEl = document.getElementById('modal-booking-total');
+  if (paxEl) paxEl.textContent = modalBookingPax;
+  if (totalEl) {
+    const total = (tour.priceNum || 550000) * modalBookingPax;
+    totalEl.textContent = formatCurrency(total);
   }
+};
+
+window.proceedModalBooking = function(tourId) {
+  const dateSelect = document.getElementById('modal-booking-date');
+  const selectedDate = dateSelect ? dateSelect.value : '';
+  const pax = modalBookingPax || 1;
+  closeTourDetailModal();
+  openSmartBookingModal(tourId, selectedDate, pax);
 };
 
 // ==========================================
 // 11. SMART BOOKING MODAL WITH LIVE CALCULATOR
 // ==========================================
-function openSmartBookingModal(tourId = 1, defaultDate = '') {
+function openSmartBookingModal(tourId = 1, defaultDate = '', defaultGuests = 1) {
   currentBookingTour = TOURS_DATA.find(t => t.id === tourId) || TOURS_DATA[0];
-  bookingGuests = 1;
+  bookingGuests = defaultGuests || 1;
 
   const modal = document.getElementById('booking-modal');
   const select = document.getElementById('booking-tour-select');
@@ -2624,33 +2862,34 @@ function openSmartBookingModal(tourId = 1, defaultDate = '') {
   if (select) {
     select.innerHTML = TOURS_DATA.map(t => `
       <option value="${t.id}" ${t.id === currentBookingTour.id ? 'selected' : ''}>
-        ${t.code ? `[${t.code}] ` : ''}${t.title} – ${t.price} (${t.duration})
+        ${t.code ? `[${t.code}] ` : ''}${t.title} - ${t.price} (${t.duration})
       </option>
     `).join('');
     
     select.onchange = (e) => {
-      const selectedId = parseInt(e.target.value, 10);
-      currentBookingTour = TOURS_DATA.find(t => t.id === selectedId) || TOURS_DATA[0];
+      const chosenId = parseInt(e.target.value, 10);
+      currentBookingTour = TOURS_DATA.find(t => t.id === chosenId) || TOURS_DATA[0];
       updateBookingCalculation();
     };
   }
 
-  // Pre-fill date
+  // Set default date if passed
   if (dateInput) {
     if (defaultDate) {
       dateInput.value = defaultDate;
     } else if (currentBookingTour.departureDates && currentBookingTour.departureDates.length > 0) {
       dateInput.value = currentBookingTour.departureDates[0];
     } else {
-      dateInput.value = 'Thứ 6 tuần tới';
+      dateInput.value = '26/10/2026';
     }
   }
 
-  // Reset form and show
+  // Reset display boxes
   if (formBox) formBox.classList.remove('hidden');
   if (successBox) successBox.classList.add('hidden');
 
   updateBookingCalculation();
+
   modal.classList.remove('hidden');
   document.body.style.overflow = 'hidden';
   initLucideIcons();
@@ -2691,7 +2930,7 @@ function updateBookingCalculation() {
     <div class="p-3.5 bg-emerald-50/70 rounded-2xl border border-emerald-100 space-y-2 text-xs">
       <div class="flex justify-between items-center text-gray-600">
         <span>Đơn giá (${bookingGuests} khách):</span>
-        <span class="font-bold text-gray-900">${formatCurrency(priceEach)} × ${bookingGuests} = ${formatCurrency(subtotal)}</span>
+        <span class="font-bold text-gray-900">${formatCurrency(priceEach)} x ${bookingGuests} = ${formatCurrency(subtotal)}</span>
       </div>
       ${isGroupDiscount ? `
         <div class="flex justify-between items-center text-emerald-700 font-bold">
@@ -2700,47 +2939,32 @@ function updateBookingCalculation() {
         </div>
       ` : `
         <div class="text-[11px] text-gray-500 italic">
-          💡 Đặt từ 4 người trở lên được giảm thêm 5% tổng hoá đơn.
+          💡 Đặt từ 4 người trở lên được giảm thêm 5% tổng hóa đơn.
         </div>
       `}
-      <div class="pt-2 border-t border-emerald-200/80 flex justify-between items-center">
-        <span class="font-bold text-gray-800 text-xs sm:text-sm">Tổng thanh toán dự kiến:</span>
-        <span class="font-black text-forest text-base sm:text-lg">${formatCurrency(finalTotal)}</span>
-      </div>
-      <!-- Cancellation reassurance link -->
-      <div class="flex items-center justify-between text-[11px] text-forest pt-1 border-t border-emerald-100/60">
-        <span class="flex items-center gap-1 font-semibold">
-          <i data-lucide="shield-check" class="w-3.5 h-3.5"></i>
-          Cam kết hoàn 100% trước 10 ngày
-        </span>
-        <button type="button" onclick="openPolicyModal()" class="text-emerald-700 underline hover:text-emerald-900 cursor-pointer">
-          Xem chính sách hoàn hủy
-        </button>
+      <div class="pt-2 border-t border-emerald-200 flex justify-between items-center text-sm font-extrabold text-forest">
+        <span>Tổng tạm tính:</span>
+        <span class="text-base text-[#1E4D3B]">${formatCurrency(finalTotal)}</span>
       </div>
     </div>
   `;
-  initLucideIcons();
 }
 
-// Booking Form Submit Event
 function setupBookingModalEvents() {
-  const form = document.getElementById('booking-form');
+  const form = document.getElementById('smart-booking-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('booking-name')?.value.trim();
-    const phone = document.getElementById('booking-phone')?.value.trim();
-    const date = document.getElementById('booking-date-input')?.value.trim();
 
-    if (!name || name.length < 2) {
-      showToast('Thông tin chưa hợp lệ', 'Vui lòng nhập họ và tên đầy đủ của bạn.', 'error');
-      return;
-    }
+    const name = document.getElementById('booking-name')?.value;
+    const phone = document.getElementById('booking-phone')?.value;
+    const email = document.getElementById('booking-email')?.value || 'Không có';
+    const date = document.getElementById('booking-date-input')?.value;
+    const note = document.getElementById('booking-note')?.value || 'Không có';
 
-    const phoneRegex = /^(0[3|5|7|8|9])[0-9]{8}$/;
-    if (!phoneRegex.test(phone)) {
-      showToast('Số điện thoại không hợp lệ', 'Vui lòng nhập số điện thoại Việt Nam gồm 10 chữ số (VD: 0965983302).', 'error');
+    if (!name || !phone) {
+      showToast('Lỗi thông tin', 'Vui lòng điền Họ tên và Số điện thoại nhận Zalo.', 'error');
       return;
     }
 
@@ -2757,29 +2981,21 @@ function setupBookingModalEvents() {
       successBox.classList.remove('hidden');
 
       successBox.innerHTML = `
-        <div class="text-center py-6 space-y-4">
-          <div class="w-16 h-16 rounded-full bg-emerald-100 text-forest mx-auto flex items-center justify-center animate-bounce">
-            <i data-lucide="check-circle" class="w-10 h-10"></i>
+        <div class="text-center space-y-4 py-4">
+          <div class="w-16 h-16 bg-emerald-100 text-forest rounded-full flex items-center justify-center mx-auto shadow-inner">
+            <i data-lucide="check" class="w-8 h-8"></i>
           </div>
           
-          <div>
-            <span class="text-xs font-bold uppercase tracking-wider text-emerald-600 block">Đăng ký thành công!</span>
-            <h3 class="text-xl font-black text-gray-900 mt-1">Hẹn gặp bạn trên những đỉnh núi!</h3>
-            <p class="text-xs text-gray-600 mt-1">Mã giữ chỗ tạm thời của bạn: <strong class="text-forest text-sm">${randomCode}</strong></p>
-          </div>
+          <h4 class="text-xl font-bold text-gray-900">Giữ Chỗ Thành Công!</h4>
+          <p class="text-xs text-gray-600 max-w-sm mx-auto leading-relaxed">
+            Cảm ơn <strong>${name}</strong> đã đăng ký hành trình cùng <strong>Trekking Đi Cùng Gió</strong>. 
+            Mã đặt chỗ của bạn là <span class="px-2 py-0.5 rounded bg-emerald-100 font-mono font-bold text-forest">${randomCode}</span>.
+          </p>
 
-          <div class="p-4 bg-emerald-50 rounded-2xl text-left text-xs text-gray-700 space-y-1.5 border border-emerald-100">
+          <div class="bg-gray-50 rounded-2xl p-4 text-xs text-left space-y-2 border border-gray-100 font-medium">
             <div class="flex justify-between">
               <span class="text-gray-500">Hành trình:</span>
-              <span class="font-bold text-gray-900 text-right">${currentBookingTour.title}</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-500">Khách hàng:</span>
-              <span class="font-bold text-gray-900">${name}</span>
-            </div>
-            <div class="flex justify-between">
-              <span class="text-gray-500">Số điện thoại:</span>
-              <span class="font-bold text-gray-900">${phone}</span>
+              <span class="font-bold text-gray-900">${currentBookingTour.title}</span>
             </div>
             <div class="flex justify-between">
               <span class="text-gray-500">Số lượng khách:</span>
@@ -2794,250 +3010,209 @@ function setupBookingModalEvents() {
               <span class="font-bold text-forest">55 Nguyễn Quốc Trị / 489 HQV</span>
             </div>
             <div class="pt-2 border-t border-emerald-200 flex justify-between items-center">
-              <span class="font-bold text-gray-900">Tổng chi phí:</span>
-              <span class="font-black text-forest text-base">${formatCurrency(finalTotal)}</span>
+              <span class="text-gray-600 font-bold">Tổng chi phí dự tính:</span>
+              <span class="font-black text-sm text-forest">${formatCurrency(finalTotal)}</span>
             </div>
           </div>
 
           <p class="text-[11px] text-gray-500 italic">
-            Tư vấn viên Đi Cùng Gió sẽ liên hệ qua Zalo/Điện thoại trong vòng 15 phút để xác nhận và gửi checklist chuẩn bị!
+            💬 Tư vấn viên / Leader đoàn sẽ gọi điện xác nhận và gửi lịch trình chi tiết qua Zalo <strong>${phone}</strong> trong vòng 15 phút.
           </p>
 
           <button 
             type="button" 
             onclick="closeBookingModal()" 
-            class="w-full py-3 rounded-full bg-forest text-white font-bold text-xs sm:text-sm hover:bg-forest/90 transition-all cursor-pointer shadow-sm"
+            class="w-full py-3 rounded-full bg-forest text-white font-bold text-xs hover:bg-forest/90 transition-colors shadow-sm cursor-pointer"
           >
-            Hoàn tất & Quay lại trang chủ
+            Hoàn tất & Tiếp tục khám phá
           </button>
         </div>
       `;
-
       initLucideIcons();
-      showToast('Đăng ký thành công!', `Mã tour ${randomCode} đã được ghi nhận. Chúng tôi sẽ liên hệ bạn ngay!`, 'success');
     }
+
+    showToast('Đăng ký thành công!', 'Chúng tôi đã nhận thông tin giữ chỗ của bạn.', 'success');
   });
 }
-
-window.openSmartBookingModal = openSmartBookingModal;
-window.closeBookingModal = closeBookingModal;
 
 // ==========================================
 // 12. WISHLIST & DRAWER SYSTEM
 // ==========================================
-window.toggleWishlist = function(tourId, e) {
-  if (e) e.stopPropagation();
-  const tour = TOURS_DATA.find(t => t.id === tourId);
-  if (!tour) return;
+function toggleWishlist(tourId, event) {
+  if (event) event.stopPropagation();
 
   if (wishlist.has(tourId)) {
     wishlist.delete(tourId);
-    showToast('Đã xóa khỏi yêu thích', `Đã bỏ lưu "${tour.title}".`, 'info');
+    showToast('Đã xóa khỏi danh sách', 'Đã bỏ lưu hành trình này.', 'info');
   } else {
     wishlist.add(tourId);
-    showToast('Đã lưu vào yêu thích', `"${tour.title}" đã được thêm vào danh sách quan tâm!`, 'success');
+    showToast('Đã lưu yêu thích ❤️', 'Hành trình đã được thêm vào danh sách lưu!', 'success');
   }
 
   try {
-    localStorage.setItem('dicunggio_wishlist', JSON.stringify(Array.from(wishlist)));
-  } catch (err) {}
+    localStorage.setItem('dicunggio_wishlist', JSON.stringify([...wishlist]));
+  } catch (e) {}
 
   updateWishlistBadges();
   renderTours();
-  renderWishlistDrawer();
-};
+}
 
 function updateWishlistBadges() {
+  const badgeCountEls = document.querySelectorAll('.wishlist-count-badge');
   const count = wishlist.size;
-  const badges = document.querySelectorAll('#header-cart-badge, #mobile-wishlist-badge');
-  badges.forEach(b => {
-    b.textContent = count;
+
+  badgeCountEls.forEach(el => {
+    el.textContent = count;
     if (count > 0) {
-      b.classList.remove('hidden');
+      el.classList.remove('hidden');
     } else {
-      b.classList.add('hidden');
+      el.classList.add('hidden');
     }
   });
 }
 
 window.openWishlistDrawer = function() {
   const drawer = document.getElementById('wishlist-drawer');
-  const backdrop = document.getElementById('wishlist-drawer-backdrop');
-  renderWishlistDrawer();
-  if (drawer && backdrop) {
-    backdrop.classList.remove('hidden');
-    drawer.classList.remove('translate-x-full');
-    document.body.style.overflow = 'hidden';
-  }
-};
+  const list = document.getElementById('wishlist-items-list');
+  if (!drawer || !list) return;
 
-window.closeWishlistDrawer = function() {
-  const drawer = document.getElementById('wishlist-drawer');
-  const backdrop = document.getElementById('wishlist-drawer-backdrop');
-  if (drawer && backdrop) {
-    drawer.classList.add('translate-x-full');
-    setTimeout(() => {
-      backdrop.classList.add('hidden');
-      document.body.style.overflow = '';
-    }, 300);
-  }
-};
+  const likedTours = TOURS_DATA.filter(t => wishlist.has(t.id));
 
-function renderWishlistDrawer() {
-  const container = document.getElementById('wishlist-items-container');
-  if (!container) return;
-
-  const savedTours = TOURS_DATA.filter(t => wishlist.has(t.id));
-
-  if (savedTours.length === 0) {
-    container.innerHTML = `
-      <div class="text-center py-12 space-y-3">
-        <div class="w-12 h-12 rounded-full bg-gray-100 text-gray-400 mx-auto flex items-center justify-center">
-          <i data-lucide="heart-off" class="w-6 h-6"></i>
-        </div>
-        <p class="text-xs text-gray-500 font-medium">Bạn chưa lưu tour nào vào danh sách yêu thích.</p>
-        <button 
-          onclick="closeWishlistDrawer()"
-          class="px-4 py-2 rounded-full bg-forest text-white text-xs font-bold hover:bg-forest/90 transition-colors cursor-pointer"
-        >
+  if (likedTours.length === 0) {
+    list.innerHTML = `
+      <div class="py-12 text-center text-gray-400 space-y-3">
+        <i data-lucide="heart-off" class="w-12 h-12 mx-auto stroke-1"></i>
+        <p class="text-xs">Bạn chưa lưu tour nào vào danh sách yêu thích.</p>
+        <button onclick="closeWishlistDrawer()" class="px-4 py-2 rounded-full bg-forest text-white text-xs font-bold hover:bg-forest/90">
           Khám phá tour ngay
         </button>
       </div>
     `;
-    initLucideIcons();
-    return;
-  }
-
-  container.innerHTML = savedTours.map(tour => `
-    <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl border border-gray-100">
-      <img 
-        src="${tour.image}" 
-        alt="${tour.title}" 
-        onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
-        class="w-16 h-16 rounded-xl object-cover shrink-0 cursor-pointer"
-        onclick="openTourDetailModal(${tour.id}); closeWishlistDrawer();"
-      />
-      <div class="flex-1 min-w-0">
-        <h4 
-          class="font-bold text-xs text-gray-900 truncate hover:text-forest transition-colors cursor-pointer"
-          onclick="openTourDetailModal(${tour.id}); closeWishlistDrawer();"
-        >
-          ${tour.title}
-        </h4>
-        <p class="text-xs font-black text-forest mt-0.5">${tour.price}</p>
-        <div class="flex items-center gap-2 mt-1">
+  } else {
+    list.innerHTML = likedTours.map(t => `
+      <div class="flex items-center gap-3 p-3 bg-gray-50 rounded-2xl border border-gray-100 relative group">
+        <img src="${t.image}" alt="${t.title}" class="w-16 h-16 rounded-xl object-cover shrink-0" />
+        <div class="flex-1 min-w-0">
+          <h5 class="font-bold text-xs text-gray-900 truncate">${t.title}</h5>
+          <span class="text-[10px] text-gray-500 block">${t.location} • ${t.duration}</span>
+          <span class="text-xs font-black text-forest mt-0.5 block">${t.price}</span>
+        </div>
+        <div class="flex flex-col gap-1 shrink-0">
           <button 
             type="button" 
-            onclick="closeWishlistDrawer(); openSmartBookingModal(${tour.id});"
-            class="text-[11px] font-bold text-white bg-forest px-2.5 py-0.5 rounded-full hover:bg-forest/90 transition-colors"
+            onclick="openTourDetailModal(${t.id}); closeWishlistDrawer();" 
+            class="p-1.5 rounded-lg bg-white border border-gray-200 text-forest hover:bg-forest hover:text-white transition-colors"
+            title="Xem chi tiết"
           >
-            Đăng ký
+            <i data-lucide="eye" class="w-3.5 h-3.5"></i>
           </button>
           <button 
             type="button" 
-            onclick="toggleWishlist(${tour.id})"
-            class="text-[11px] text-gray-400 hover:text-red-500 transition-colors"
+            onclick="toggleWishlist(${t.id})" 
+            class="p-1.5 rounded-lg bg-white border border-gray-200 text-red-500 hover:bg-red-50 transition-colors"
+            title="Bỏ thích"
           >
-            Xóa
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
           </button>
         </div>
       </div>
-    </div>
-  `).join('');
+    `).join('');
+  }
 
+  drawer.classList.remove('hidden');
   initLucideIcons();
-}
+};
+
+window.closeWishlistDrawer = function() {
+  const drawer = document.getElementById('wishlist-drawer');
+  if (drawer) drawer.classList.add('hidden');
+};
 
 // ==========================================
 // 13. SEARCH OVERLAY & REAL-TIME FILTER
 // ==========================================
 window.openSearchModal = function() {
   const modal = document.getElementById('search-modal');
-  const input = document.getElementById('search-input');
+  const input = document.getElementById('search-modal-input');
   if (modal) {
     modal.classList.remove('hidden');
-    document.body.style.overflow = 'hidden';
     if (input) {
-      input.value = '';
       input.focus();
-      handleSearchInput('');
+      input.value = '';
+      renderSearchResults('');
     }
-    initLucideIcons();
   }
 };
 
 window.closeSearchModal = function() {
   const modal = document.getElementById('search-modal');
-  if (modal) {
-    modal.classList.add('hidden');
-    document.body.style.overflow = '';
-  }
+  if (modal) modal.classList.add('hidden');
 };
 
-window.handleSearchInput = function(query) {
+window.handleLiveSearch = function(query) {
+  renderSearchResults(query.trim().toLowerCase());
+};
+
+function renderSearchResults(q) {
   const container = document.getElementById('search-results-container');
   if (!container) return;
 
-  const q = query.trim().toLowerCase();
-  let results = TOURS_DATA;
-
-  if (q.length > 0) {
-    results = TOURS_DATA.filter(t => 
-      t.title.toLowerCase().includes(q) ||
-      (t.code && t.code.toLowerCase().includes(q)) ||
-      t.location.toLowerCase().includes(q) ||
-      t.description.toLowerCase().includes(q)
-    );
-  }
-
-  if (results.length === 0) {
+  if (!q) {
     container.innerHTML = `
-      <div class="text-center py-8 text-xs text-gray-400">
-        Không tìm thấy hành trình phù hợp với từ khóa "${query}".
+      <div class="py-6 text-center text-xs text-gray-400">
+        Nhập tên ngọn núi hoặc địa danh (vd: Yên Tử, Tà Xùa, Kỳ Quan San, Cúc Phương...)
       </div>
     `;
     return;
   }
 
-  container.innerHTML = results.slice(0, 6).map(tour => `
-    <div 
-      onclick="closeSearchModal(); openTourDetailModal(${tour.id});"
-      class="p-2.5 rounded-xl hover:bg-gray-50 flex items-center gap-3 cursor-pointer transition-colors border border-transparent hover:border-gray-100"
-    >
-      <img 
-        src="${tour.image}" 
-        alt="${tour.title}" 
-        onerror="this.onerror=null; this.src='assets/images/tour-yen-tu.jpg';"
-        class="w-12 h-12 rounded-lg object-cover shrink-0"
-      />
-      <div class="flex-1 min-w-0">
-        <h5 class="text-xs font-bold text-gray-900 truncate">${tour.title}</h5>
-        <p class="text-[11px] text-gray-500">${tour.location} • ${tour.duration}</p>
+  const results = TOURS_DATA.filter(t => 
+    t.title.toLowerCase().includes(q) || 
+    t.location.toLowerCase().includes(q) ||
+    t.description.toLowerCase().includes(q) ||
+    t.code.toLowerCase().includes(q)
+  );
+
+  if (results.length === 0) {
+    container.innerHTML = `
+      <div class="py-8 text-center text-xs text-gray-500">
+        Không tìm thấy hành trình nào với từ khóa "<strong>${q}</strong>".
       </div>
-      <span class="text-xs font-black text-forest shrink-0">${tour.price}</span>
-    </div>
-  `).join('');
-};
+    `;
+  } else {
+    container.innerHTML = results.map(t => `
+      <div 
+        onclick="openTourDetailModal(${t.id}); closeSearchModal();" 
+        class="flex items-center gap-3 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors cursor-pointer border-b border-gray-100 last:border-0"
+      >
+        <img src="${t.image}" alt="${t.title}" class="w-12 h-12 rounded-lg object-cover shrink-0" />
+        <div class="flex-1 min-w-0">
+          <div class="flex items-center gap-1.5">
+            <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest">${t.code}</span>
+            <h5 class="font-bold text-xs text-gray-900 truncate">${t.title}</h5>
+          </div>
+          <span class="text-[11px] text-gray-500 truncate block mt-0.5">${t.location} • ${t.duration}</span>
+        </div>
+        <span class="text-xs font-black text-forest shrink-0">${t.price}</span>
+      </div>
+    `).join('');
+  }
+}
 
 // ==========================================
 // 14. VIDEO MODAL LIGHTBOX
 // ==========================================
 window.openVideoModal = function() {
   const modal = document.getElementById('video-modal');
-  const frame = document.getElementById('video-frame');
-  if (modal && frame) {
-    frame.src = 'https://www.youtube.com/embed/dQw4w9WgXcQ?autoplay=1';
+  if (modal) {
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
-    initLucideIcons();
   }
 };
 
 window.closeVideoModal = function() {
   const modal = document.getElementById('video-modal');
-  const frame = document.getElementById('video-frame');
-  if (modal && frame) {
-    frame.src = '';
+  if (modal) {
     modal.classList.add('hidden');
     document.body.style.overflow = '';
   }
@@ -3058,7 +3233,13 @@ window.openReviewsModal = function() {
           <img src="${rev.avatar}" alt="${rev.name}" class="w-9 h-9 rounded-full object-cover border border-emerald-100 shadow-2xs" />
           <div>
             <h5 class="font-bold text-xs text-gray-900 leading-tight">${rev.name}</h5>
-            <span class="text-[10px] text-forest font-medium">${rev.role}</span>
+            <span class="text-[10px] text-forest font-medium flex items-center gap-1.5 flex-wrap">
+              <span>${rev.role}</span>
+              <span class="inline-flex items-center gap-0.5 text-[9.5px] font-bold text-emerald-700 bg-emerald-50 px-1.5 py-0.2 rounded-full border border-emerald-200">
+                <i data-lucide="badge-check" class="w-3 h-3 text-emerald-600"></i>
+                <span>✓ Đã hoàn thành chặng</span>
+              </span>
+            </span>
           </div>
         </div>
         <div class="flex text-amber-400">
@@ -3084,24 +3265,22 @@ window.closeReviewsModal = function() {
 };
 
 function setupReviewsModalEvents() {
-  const form = document.getElementById('add-review-form');
+  const form = document.getElementById('new-review-form');
   if (!form) return;
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
-    const name = document.getElementById('review-author-input')?.value.trim();
-    const tour = document.getElementById('review-tour-input')?.value.trim();
-    const text = document.getElementById('review-content-input')?.value.trim();
+    const name = document.getElementById('review-author')?.value;
+    const tour = document.getElementById('review-tour')?.value;
+    const text = document.getElementById('review-comment')?.value;
 
-    if (!name || !text) {
-      showToast('Thiếu thông tin', 'Vui lòng nhập tên và nội dung đánh giá.', 'error');
-      return;
-    }
+    if (!name || !text) return;
 
     TESTIMONIALS_DATA.unshift({
       id: Date.now(),
       name: name,
       role: tour || 'Trekker Đi Cùng Gió',
+      verified: true,
       avatar: 'assets/images/avatar-ha.jpg',
       comment: text,
       rating: 5,
@@ -3131,27 +3310,26 @@ function showToast(title, message, type = 'info') {
   toast.innerHTML = `
     ${iconHtml}
     <div class="flex-1 min-w-0">
-      <h5 class="text-xs font-bold text-gray-900">${title}</h5>
-      <p class="text-[11px] text-gray-500 mt-0.5 leading-snug">${message}</p>
+      <h6 class="font-bold text-xs text-gray-900">${title}</h6>
+      <p class="text-xs text-gray-500 mt-0.5">${message}</p>
     </div>
     <button onclick="this.parentElement.remove()" class="text-gray-400 hover:text-gray-600 p-1">
-      <i data-lucide="x" class="w-3.5 h-3.5"></i>
+      <i data-lucide="x" class="w-4 h-4"></i>
     </button>
   `;
 
   document.body.appendChild(toast);
   initLucideIcons();
 
-  requestAnimationFrame(() => {
+  setTimeout(() => {
     toast.classList.remove('translate-y-10', 'opacity-0');
-  });
+  }, 50);
 
   setTimeout(() => {
     toast.classList.add('translate-y-10', 'opacity-0');
     setTimeout(() => toast.remove(), 300);
   }, 3500);
 }
-window.showToast = showToast;
 
 // ==========================================
 // 17. SCROLL OBSERVERS & INTERACTIONS
@@ -3234,3 +3412,23 @@ function setupScrollSpy() {
     });
   });
 }
+
+// ==========================================
+// 18. POLICY MODAL CONTROLLER
+// ==========================================
+window.openPolicyModal = function() {
+  const modal = document.getElementById('policy-modal');
+  if (modal) {
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    initLucideIcons();
+  }
+};
+
+window.closePolicyModal = function() {
+  const modal = document.getElementById('policy-modal');
+  if (modal) {
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+};
