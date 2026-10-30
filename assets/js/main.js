@@ -1863,11 +1863,13 @@ function renderTours(filterCategory = currentCategory) {
 
   container.innerHTML = filtered.map(tour => {
     const isLiked = wishlist.has(tour.id);
+    const displayPrice = tour.priceNum ? formatCurrency(tour.priceNum) : tour.price.replace('/người', '');
+
     return `
-      <div class="tour-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between group">
+      <div class="tour-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col h-full justify-between group">
         
         <!-- Tour Image Container -->
-        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer" onclick="openTourDetailModal(${tour.id})">
+        <div class="relative overflow-hidden aspect-[4/3] bg-gray-100 cursor-pointer shrink-0" onclick="openTourDetailModal(${tour.id})">
           <img 
             src="${tour.image}" 
             alt="${tour.title}" 
@@ -1876,32 +1878,43 @@ function renderTours(filterCategory = currentCategory) {
             class="tour-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
           />
           
-          <!-- Category Badge (Top Left) -->
-          <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-            <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+          <!-- Category & Code Badge (Top Left Corner) -->
+          <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 max-w-[calc(100%-46px)]">
+            <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[10.5px] font-bold px-2 py-0.5 rounded-full shadow-sm truncate">
               ${tour.badge}
             </span>
-            <span class="backdrop-blur-md bg-black/50 text-emerald-200 text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm">
+            <span class="backdrop-blur-md bg-black/60 text-emerald-300 text-[9.5px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
               ${tour.code}
             </span>
           </div>
 
-          <!-- Altitude Badge (Top Center/Left) -->
-          <div class="absolute top-3 left-28 z-10">
-            <span class="backdrop-blur-md bg-black/45 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md shadow-sm">
-              ${tour.altitudeBadge}
-            </span>
-          </div>
+          <!-- Wishlist Heart Button (Top Right Corner) -->
+          <button 
+            type="button" 
+            onclick="toggleWishlist(${tour.id}, event)" 
+            title="${isLiked ? 'Bỏ yêu thích' : 'Lưu tour yêu thích'}"
+            class="heart-btn absolute top-2.5 right-2.5 z-20 w-7 h-7 rounded-full bg-white/85 backdrop-blur-md flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-white transition-all shadow-sm ${isLiked ? 'active' : ''}"
+          >
+            <i data-lucide="heart" class="w-3.5 h-3.5 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : ''}"></i>
+          </button>
 
-          <!-- Real Photo indicator if available -->
+          <!-- Real Photo indicator (Bottom Left Corner) -->
           ${tour.gallery && tour.gallery.length > 0 ? `
             <div class="absolute bottom-2.5 left-2.5 z-10">
-              <span class="backdrop-blur-md bg-black/60 text-emerald-300 text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+              <span class="backdrop-blur-md bg-black/65 text-white text-[10px] font-medium px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
                 <i data-lucide="camera" class="w-3 h-3 text-emerald-300"></i>
                 <span>${tour.gallery.length} ảnh thực tế</span>
               </span>
             </div>
           ` : ''}
+
+          <!-- Altitude Badge (Bottom Right Corner) -->
+          <div class="absolute bottom-2.5 right-2.5 z-10">
+            <span class="backdrop-blur-md bg-black/65 text-emerald-200 text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+              <i data-lucide="mountain" class="w-2.5 h-2.5 text-emerald-300"></i>
+              <span>${tour.altitudeBadge}</span>
+            </span>
+          </div>
 
           <!-- Hover Overlay -->
           <div class="absolute inset-0 backdrop-blur-[2px] bg-black/45 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-3 text-center pointer-events-none">
@@ -1913,71 +1926,73 @@ function renderTours(filterCategory = currentCategory) {
               📍 Lộ trình • Lịch sử • Chính sách hoàn hủy
             </p>
           </div>
-
-          <!-- Wishlist Heart Button -->
-          <button 
-            type="button" 
-            onclick="toggleWishlist(${tour.id}, event)" 
-            title="${isLiked ? 'Bỏ yêu thích' : 'Lưu tour yêu thích'}"
-            class="heart-btn absolute top-3 right-3 z-20 w-8 h-8 rounded-full bg-white/80 backdrop-blur-md flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-white transition-all shadow-sm ${isLiked ? 'active' : ''}"
-          >
-            <i data-lucide="heart" class="w-4 h-4 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : ''}"></i>
-          </button>
         </div>
 
         <!-- Tour Body Content -->
-        <div class="p-4 flex flex-col flex-1 justify-between">
+        <div class="p-3.5 flex flex-col flex-1 justify-between">
           <div>
-            <!-- Meta Details: Location & History Story -->
-            <div class="flex items-center justify-between text-[11px] text-gray-500 mb-1.5">
-              <span class="flex items-center gap-1">
+            <!-- Meta Details: Location & History Story Button -->
+            <div class="flex items-center justify-between text-[11px] text-gray-500 mb-2 gap-2 h-5">
+              <span class="flex items-center gap-1 min-w-0 flex-1 truncate">
                 <i data-lucide="map-pin" class="w-3 h-3 text-forest shrink-0"></i>
-                <span class="truncate max-w-[125px]">${tour.location}</span>
+                <span class="truncate font-medium text-gray-600">${tour.location}</span>
               </span>
               <button 
                 type="button" 
                 onclick="openTourDetailModal(${tour.id}, 2); event.stopPropagation();" 
-                class="inline-flex items-center gap-1 text-[11px] font-semibold text-forest hover:text-forest-dark hover:underline cursor-pointer"
+                class="inline-flex items-center gap-1 text-[10.5px] font-bold text-forest hover:text-forest-dark bg-emerald-50/90 hover:bg-emerald-100/90 px-1.5 py-0.5 rounded transition-colors shrink-0 whitespace-nowrap cursor-pointer"
                 title="Xem lịch sử & câu chuyện địa danh"
               >
-                <i data-lucide="book-open" class="w-3 h-3 text-forest"></i>
+                <i data-lucide="book-open" class="w-3 h-3 text-forest shrink-0"></i>
                 <span>Câu chuyện</span>
               </button>
             </div>
 
-            <!-- Title -->
+            <!-- Title: Locked to h-[40px] for consistent 2-line alignment -->
             <h3 
-              class="font-bold text-gray-900 text-[13.5px] xl:text-[14px] leading-snug line-clamp-2 min-h-[38px] tracking-tight group-hover:text-forest transition-colors cursor-pointer" 
+              class="font-bold text-gray-900 text-[13.5px] leading-snug line-clamp-2 h-[40px] tracking-tight group-hover:text-forest transition-colors cursor-pointer" 
               onclick="openTourDetailModal(${tour.id})" 
               title="${tour.title}"
             >
               ${tour.title}
             </h3>
 
-            <!-- 1-line Short Summary Description -->
-            <p class="text-xs text-gray-600 line-clamp-2 mt-1 mb-2 leading-relaxed">
+            <!-- 1-line / 2-line Description: Locked to h-[36px] -->
+            <p class="text-xs text-gray-600 line-clamp-2 mt-1 mb-2 leading-relaxed h-[36px]" title="${tour.shortSummary || tour.description}">
               ${tour.shortSummary || tour.description}
             </p>
 
-            <!-- Commitment Tag (Từ 5 khách, Lịch chạy) -->
-            <div class="flex items-center gap-1.5 mb-2">
-              <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-forest text-[10px] font-bold border border-emerald-100 flex items-center gap-1">
+            <!-- Commitment Tag & Schedule: Locked to h-6 -->
+            <div class="flex items-center gap-1.5 mb-2.5 h-6">
+              <span class="px-2 py-0.5 rounded-md bg-emerald-50 text-forest text-[10px] font-bold border border-emerald-100/80 flex items-center gap-1 shrink-0">
                 <i data-lucide="check" class="w-3 h-3 text-forest"></i>
                 <span>${tour.minPax}</span>
               </span>
-              <span class="text-[10px] text-gray-500 font-medium">
+              <span class="text-[10px] text-gray-500 font-medium truncate flex-1" title="${tour.departureFrequency}">
                 ${tour.departureFrequency}
               </span>
             </div>
 
-            <!-- Price & Duration -->
-            <div class="flex items-baseline justify-between mt-1">
-              <span class="text-[15px] font-black text-forest whitespace-nowrap">${tour.price}</span>
-              <span class="text-[11px] text-gray-500 font-medium">${tour.duration}</span>
+            <!-- Price & Duration: Clearly separated to prevent text collision -->
+            <div class="flex items-center justify-between gap-2 pt-2 border-t border-gray-100/90">
+              <div class="flex flex-col min-w-0">
+                <span class="text-[9.5px] text-gray-400 font-semibold uppercase tracking-wider">Trọn gói từ</span>
+                <div class="flex items-baseline gap-0.5">
+                  <span class="text-[15px] xl:text-[16px] font-black text-[#1E4D3B] tracking-tight leading-none">
+                    ${displayPrice}
+                  </span>
+                  <span class="text-[10px] text-gray-500 font-normal">/khách</span>
+                </div>
+              </div>
+              <div class="shrink-0 text-right">
+                <span class="inline-block text-[10.5px] text-gray-600 font-medium bg-gray-100/80 px-2 py-0.5 rounded-md border border-gray-200/50 whitespace-nowrap">
+                  ${tour.duration}
+                </span>
+              </div>
             </div>
           </div>
 
-          <!-- Bottom: Rating & Direct Book Button -->
+          <!-- Bottom: Rating & Direct Book Button: Laser-aligned horizontally -->
           <div class="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between gap-1">
             <div class="flex items-center gap-1 shrink-0">
               <div class="flex text-amber-400">
@@ -1987,13 +2002,13 @@ function renderTours(filterCategory = currentCategory) {
                 <i data-lucide="star" class="w-3 h-3 fill-amber-400 text-amber-400"></i>
                 <i data-lucide="star" class="w-3 h-3 fill-amber-400 text-amber-400"></i>
               </div>
-              <span class="text-[11px] text-gray-400 font-medium">(${tour.reviews})</span>
+              <span class="text-[10.5px] text-gray-400 font-semibold">(${tour.reviews || 120})</span>
             </div>
 
             <button 
               type="button" 
               onclick="openSmartBookingModal(${tour.id}); event.stopPropagation();"
-              class="btn-shine whitespace-nowrap px-3.5 py-1.5 rounded-lg bg-[#1E4D3B] text-white text-xs font-semibold shrink-0 hover:bg-forest/90 active:scale-95 transition-all shadow-sm cursor-pointer"
+              class="btn-shine whitespace-nowrap px-3 py-1.5 rounded-lg bg-[#1E4D3B] text-white text-[11px] font-bold shrink-0 hover:bg-forest/90 active:scale-95 transition-all shadow-sm cursor-pointer"
             >
               Đăng ký tour
             </button>
@@ -2018,31 +2033,31 @@ function renderSchedule() {
   container.innerHTML = DEPARTURE_SCHEDULE.map(item => `
     <div 
       onclick="openTourDetailModal(${item.tourId})"
-      class="schedule-row p-3 rounded-xl bg-gray-50/70 border border-gray-100/80 flex items-center justify-between gap-3 cursor-pointer group"
+      class="schedule-row p-2.5 rounded-xl bg-gray-50/70 border border-gray-100/80 flex items-center justify-between gap-2.5 cursor-pointer group hover:bg-emerald-50/50 hover:border-emerald-200/60 transition-all"
       title="Nhấn để xem lộ trình & đăng ký tour này"
     >
       <!-- Date Block -->
-      <div class="flex items-center gap-2.5 shrink-0">
-        <div class="w-11 h-11 rounded-xl bg-[#1E4D3B] text-white flex flex-col items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+      <div class="flex items-center gap-2.5 min-w-0 flex-1">
+        <div class="w-10 h-10 rounded-xl bg-[#1E4D3B] text-white flex flex-col items-center justify-center shadow-xs group-hover:scale-105 transition-transform shrink-0">
           <span class="text-sm font-black leading-none">${item.day}</span>
           <span class="text-[9px] font-bold uppercase tracking-wider text-emerald-200 mt-0.5">${item.month}</span>
         </div>
 
-        <div class="min-w-0">
+        <div class="min-w-0 flex-1">
           <div class="flex items-center gap-1.5">
-            <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest">${item.code}</span>
-            <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate">
+            <span class="text-[9px] font-extrabold px-1.5 py-0.2 rounded bg-emerald-100 text-forest shrink-0">${item.code}</span>
+            <h4 class="text-xs font-bold text-gray-900 group-hover:text-forest transition-colors truncate" title="${item.title}">
               ${item.title}
             </h4>
           </div>
-          <span class="text-[11px] text-gray-500 font-medium">${item.duration} • Hà Nội</span>
+          <span class="text-[10.5px] text-gray-500 font-medium truncate block mt-0.5">${item.duration} • Hà Nội</span>
         </div>
       </div>
 
       <!-- Price & Status Badge -->
-      <div class="text-right shrink-0">
-        <span class="block text-xs font-extrabold text-forest">${item.price}</span>
-        <span class="badge-seat text-[10px] inline-block mt-0.5">${item.status}</span>
+      <div class="text-right shrink-0 pl-1.5 min-w-[70px]">
+        <span class="block text-xs font-black text-[#1E4D3B] whitespace-nowrap">${item.price}</span>
+        <span class="badge-seat text-[9.5px] inline-block mt-0.5 whitespace-nowrap">${item.status}</span>
       </div>
     </div>
   `).join('');

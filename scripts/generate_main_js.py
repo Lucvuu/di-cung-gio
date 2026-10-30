@@ -1870,20 +1870,31 @@ function renderTours(filterCategory = currentCategory) {
             class="tour-card-image w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
           />
           
-          <!-- Category Badge (Top Left) -->
-          <div class="absolute top-3 left-3 z-10 flex items-center gap-1.5">
-            <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[11px] font-bold px-2.5 py-1 rounded-full shadow-sm">
+          <!-- Category & Code Badge (Top Left Corner) -->
+          <div class="absolute top-2.5 left-2.5 z-10 flex items-center gap-1 max-w-[calc(100%-46px)]">
+            <span class="backdrop-blur-md bg-[#1E4D3B]/90 text-white text-[10.5px] font-bold px-2 py-0.5 rounded-full shadow-sm truncate">
               ${tour.badge}
             </span>
-            <span class="backdrop-blur-md bg-black/50 text-emerald-200 text-[10px] font-extrabold px-2 py-0.5 rounded-md shadow-sm">
+            <span class="backdrop-blur-md bg-black/60 text-emerald-300 text-[9.5px] font-extrabold px-1.5 py-0.5 rounded shadow-sm shrink-0">
               ${tour.code}
             </span>
           </div>
 
-          <!-- Altitude Badge (Top Center/Left) -->
-          <div class="absolute top-3 left-28 z-10">
-            <span class="backdrop-blur-md bg-black/45 text-white text-[10px] font-semibold px-2 py-0.5 rounded-md shadow-sm">
-              ${tour.altitudeBadge}
+          <!-- Wishlist Heart Button (Top Right Corner) -->
+          <button 
+            type="button" 
+            onclick="toggleWishlist(${tour.id}, event)" 
+            title="${isLiked ? 'Bỏ yêu thích' : 'Lưu tour yêu thích'}"
+            class="heart-btn absolute top-2.5 right-2.5 z-20 w-7 h-7 rounded-full bg-white/85 backdrop-blur-md flex items-center justify-center text-gray-700 hover:text-red-500 hover:bg-white transition-all shadow-sm ${isLiked ? 'active' : ''}"
+          >
+            <i data-lucide="heart" class="w-3.5 h-3.5 transition-colors ${isLiked ? 'fill-red-500 text-red-500' : ''}"></i>
+          </button>
+
+          <!-- Altitude Badge (Bottom Right Corner) -->
+          <div class="absolute bottom-2.5 right-2.5 z-10">
+            <span class="backdrop-blur-md bg-black/65 text-emerald-200 text-[10px] font-semibold px-2 py-0.5 rounded-full shadow-sm flex items-center gap-1">
+              <i data-lucide="mountain" class="w-2.5 h-2.5 text-emerald-300"></i>
+              <span>${tour.altitudeBadge}</span>
             </span>
           </div>
 
